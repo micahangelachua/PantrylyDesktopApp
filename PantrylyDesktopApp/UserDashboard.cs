@@ -27,5 +27,21 @@ namespace PantrylyDesktopApp
         DataSet PantrylyUsersDS = new DataSet();
         DataTable PantrylyUsersDT = new DataTable();
 
+        private void setConnection()
+        {
+            sql_con = new SQLiteConnection("Data Source = PantrylyDB.db");
+        }
+
+
+        private void executeQuery(string txtQuery)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            sql_cmd.CommandText = txtQuery;
+            sql_cmd.ExecuteNonQuery();
+            sql_con.Close();
+        }
+
     }
 }

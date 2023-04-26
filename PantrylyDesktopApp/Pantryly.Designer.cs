@@ -118,7 +118,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Pantryly";
             this.Text = "Pantryly: Log In";
-            this.Load += new System.EventHandler(this.Pantryly_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
