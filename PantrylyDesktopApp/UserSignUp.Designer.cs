@@ -31,6 +31,7 @@
             this.splitContainer_SignUp = new System.Windows.Forms.SplitContainer();
             this.btn_SignUp = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dtp_Birthday = new System.Windows.Forms.DateTimePicker();
             this.txt_RetypedPassword = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_Email = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnl_WinTitleAndControls = new System.Windows.Forms.Panel();
             this.btn_SignupMinimize = new System.Windows.Forms.Button();
             this.btn_SignupClose = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             // 
             // splitContainer_SignUp
             // 
-            this.splitContainer_SignUp.Location = new System.Drawing.Point(0, 69);
+            this.splitContainer_SignUp.Location = new System.Drawing.Point(0, 50);
             this.splitContainer_SignUp.Name = "splitContainer_SignUp";
             // 
             // splitContainer_SignUp.Panel1
@@ -74,7 +74,7 @@
             this.splitContainer_SignUp.Panel1.Controls.Add(this.label3);
             this.splitContainer_SignUp.Panel1.Controls.Add(this.txt_Email);
             this.splitContainer_SignUp.Panel1.Controls.Add(this.label2);
-            this.splitContainer_SignUp.Size = new System.Drawing.Size(800, 531);
+            this.splitContainer_SignUp.Size = new System.Drawing.Size(800, 550);
             this.splitContainer_SignUp.SplitterDistance = 376;
             this.splitContainer_SignUp.TabIndex = 0;
             // 
@@ -96,11 +96,23 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.label7.Location = new System.Drawing.Point(18, 276);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 22);
             this.label7.TabIndex = 21;
             this.label7.Text = "Birthday:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.label1.Location = new System.Drawing.Point(111, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 52);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Sign Up";
             // 
             // dtp_Birthday
             // 
@@ -125,6 +137,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.label6.Location = new System.Drawing.Point(18, 414);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(178, 22);
@@ -145,6 +158,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.label4.Location = new System.Drawing.Point(18, 345);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 22);
@@ -164,6 +178,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.label5.Location = new System.Drawing.Point(18, 207);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 22);
@@ -183,6 +198,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.label3.Location = new System.Drawing.Point(18, 138);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 22);
@@ -202,22 +218,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.label2.Location = new System.Drawing.Point(18, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 22);
             this.label2.TabIndex = 10;
             this.label2.Text = "Email:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
-            this.label1.Location = new System.Drawing.Point(111, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 52);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Sign Up";
             // 
             // pnl_WinTitleAndControls
             // 
@@ -226,11 +232,8 @@
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_SignupClose);
             this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 0);
             this.pnl_WinTitleAndControls.Name = "pnl_WinTitleAndControls";
-            this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(800, 71);
+            this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(800, 50);
             this.pnl_WinTitleAndControls.TabIndex = 10;
-            this.pnl_WinTitleAndControls.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_WinTitleAndControls_MouseDown);
-            this.pnl_WinTitleAndControls.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_WinTitleAndControls_MouseMove);
-            this.pnl_WinTitleAndControls.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_WinTitleAndControls_MouseUp);
             // 
             // btn_SignupMinimize
             // 
@@ -242,7 +245,6 @@
             this.btn_SignupMinimize.Size = new System.Drawing.Size(20, 20);
             this.btn_SignupMinimize.TabIndex = 12;
             this.btn_SignupMinimize.UseVisualStyleBackColor = false;
-            this.btn_SignupMinimize.Click += new System.EventHandler(this.btn_SignupMinimize_Click);
             // 
             // btn_SignupClose
             // 
@@ -254,7 +256,6 @@
             this.btn_SignupClose.Size = new System.Drawing.Size(20, 20);
             this.btn_SignupClose.TabIndex = 11;
             this.btn_SignupClose.UseVisualStyleBackColor = false;
-            this.btn_SignupClose.Click += new System.EventHandler(this.btn_SignupClose_Click);
             // 
             // UserSignUp
             // 

@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormUtils.cs" />
     <Compile Include="Objects\Checklist.cs" />
     <Compile Include="Objects\PantryItems.cs" />
     <Compile Include="Objects\Pantry.cs" />

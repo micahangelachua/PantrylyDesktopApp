@@ -19,32 +19,13 @@ namespace PantrylyDesktopApp
         public UserSignUp()
         {
             InitializeComponent();
-            // TODO: Make the rounded edges smoother (anti-aliasing?)
-            // Rounded corners for the form 
-            GraphicsPath path = new GraphicsPath();
-            int arcSize = 20;
-            Rectangle rect = new Rectangle(0, 0, Width, Height);
-            path.AddArc(rect.X, rect.Y, arcSize, arcSize, 180, 90);
-            path.AddArc(rect.X + rect.Width - arcSize, rect.Y, arcSize, arcSize, 270, 90);
-            path.AddArc(rect.X + rect.Width - arcSize, rect.Y + rect.Height - arcSize, arcSize, arcSize, 0, 90);
-            path.AddArc(rect.X, rect.Y + rect.Height - arcSize, arcSize, arcSize, 90, 90);
-            Region = new Region(path);
-            this.FormBorderStyle = FormBorderStyle.None;
-
-            // make btn_SignupClose circle.
-            GraphicsPath closePath = new GraphicsPath();
-            closePath.AddEllipse(0, 0, btn_SignupClose.Width, btn_SignupClose.Height);
-            btn_SignupClose.Region = new Region(closePath);
-
-            // make btn_SignupMinimize circle.
-            GraphicsPath minimizePath = new GraphicsPath();
-            minimizePath.AddEllipse(0, 0, btn_SignupMinimize.Width, btn_SignupMinimize.Height);
-            btn_SignupMinimize.Region = new Region(minimizePath);
-
-            // Rounded corners for btn_SignUp
-            GraphicsPath signUpButtonPath = new GraphicsPath();
-            signUpButtonPath.AddEllipse(0, 0, btn_SignUp.Width, btn_SignUp.Height);
-            btn_SignUp.Region = new Region(signUpButtonPath);
+            FormUtils.MakeWindowFormRounded(this);
+            FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
+            FormUtils.MakeButtonRounded(btn_SignupClose);
+            FormUtils.AddCloseButton(btn_SignupClose);
+            FormUtils.MakeButtonRounded(btn_SignupMinimize);
+            FormUtils.AddMinimizeButton(btn_SignupMinimize);
+            FormUtils.MakeButtonRounded(btn_SignUp);
         }
 
         SQLiteConnection sql_con;
@@ -173,40 +154,6 @@ namespace PantrylyDesktopApp
             txt_FirstName.Clear();
             txt_LastName.Clear();
             dtp_Birthday.ResetText();
-        }
-        // Variables to use for dragging around window
-        private bool isDragging = false;
-        private Point lastCursorPos;
-
-        private void pnl_WinTitleAndControls_MouseDown(object sender, MouseEventArgs e)
-        {
-            isDragging = true;
-            lastCursorPos = Cursor.Position;
-        }
-
-        private void pnl_WinTitleAndControls_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
-            {
-                Point deltaCursorPos = new Point(Cursor.Position.X - lastCursorPos.X, Cursor.Position.Y - lastCursorPos.Y);
-                this.Location = new Point(this.Location.X + deltaCursorPos.X, this.Location.Y + deltaCursorPos.Y);
-                lastCursorPos = Cursor.Position;
-            }
-        }
-
-        private void pnl_WinTitleAndControls_MouseUp(object sender, MouseEventArgs e)
-        {
-            isDragging = false;
-        }
-
-        private void btn_SignupClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_SignupMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

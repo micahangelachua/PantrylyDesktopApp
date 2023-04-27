@@ -38,7 +38,6 @@
             this.pnl_WinTitleAndControls = new System.Windows.Forms.Panel();
             this.btn_LoginMinimize = new System.Windows.Forms.Button();
             this.btn_LoginClose = new System.Windows.Forms.Button();
-            this.lbl_LoginForgotPassword = new System.Windows.Forms.Label();
             this.pnl_WinTitleAndControls.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +90,7 @@
             // 
             this.lbl_LoginEmail.AutoSize = true;
             this.lbl_LoginEmail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LoginEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.lbl_LoginEmail.Location = new System.Drawing.Point(180, 229);
             this.lbl_LoginEmail.Name = "lbl_LoginEmail";
             this.lbl_LoginEmail.Size = new System.Drawing.Size(62, 22);
@@ -101,6 +101,7 @@
             // 
             this.lbl_LoginPassword.AutoSize = true;
             this.lbl_LoginPassword.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LoginPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.lbl_LoginPassword.Location = new System.Drawing.Point(180, 305);
             this.lbl_LoginPassword.Name = "lbl_LoginPassword";
             this.lbl_LoginPassword.Size = new System.Drawing.Size(99, 22);
@@ -113,7 +114,7 @@
             this.btn_Signup.FlatAppearance.BorderSize = 0;
             this.btn_Signup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Signup.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btn_Signup.Location = new System.Drawing.Point(633, 18);
+            this.btn_Signup.Location = new System.Drawing.Point(633, 8);
             this.btn_Signup.Name = "btn_Signup";
             this.btn_Signup.Size = new System.Drawing.Size(88, 34);
             this.btn_Signup.TabIndex = 8;
@@ -129,11 +130,8 @@
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_Signup);
             this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 0);
             this.pnl_WinTitleAndControls.Name = "pnl_WinTitleAndControls";
-            this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(733, 71);
+            this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(733, 50);
             this.pnl_WinTitleAndControls.TabIndex = 9;
-            this.pnl_WinTitleAndControls.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_WinTitleAndControls_MouseDown);
-            this.pnl_WinTitleAndControls.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_WinTitleAndControls_MouseMove);
-            this.pnl_WinTitleAndControls.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_WinTitleAndControls_MouseUp);
             // 
             // btn_LoginMinimize
             // 
@@ -145,7 +143,6 @@
             this.btn_LoginMinimize.Size = new System.Drawing.Size(20, 20);
             this.btn_LoginMinimize.TabIndex = 12;
             this.btn_LoginMinimize.UseVisualStyleBackColor = false;
-            this.btn_LoginMinimize.Click += new System.EventHandler(this.btn_LoginMinimize_Click);
             // 
             // btn_LoginClose
             // 
@@ -157,18 +154,6 @@
             this.btn_LoginClose.Size = new System.Drawing.Size(20, 20);
             this.btn_LoginClose.TabIndex = 11;
             this.btn_LoginClose.UseVisualStyleBackColor = false;
-            this.btn_LoginClose.Click += new System.EventHandler(this.btn_LoginClose_Click);
-            // 
-            // lbl_LoginForgotPassword
-            // 
-            this.lbl_LoginForgotPassword.AutoSize = true;
-            this.lbl_LoginForgotPassword.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LoginForgotPassword.ForeColor = System.Drawing.Color.Blue;
-            this.lbl_LoginForgotPassword.Location = new System.Drawing.Point(305, 408);
-            this.lbl_LoginForgotPassword.Name = "lbl_LoginForgotPassword";
-            this.lbl_LoginForgotPassword.Size = new System.Drawing.Size(122, 14);
-            this.lbl_LoginForgotPassword.TabIndex = 11;
-            this.lbl_LoginForgotPassword.Text = "Forgot your password?";
             // 
             // Pantryly
             // 
@@ -176,7 +161,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
             this.ClientSize = new System.Drawing.Size(733, 447);
-            this.Controls.Add(this.lbl_LoginForgotPassword);
             this.Controls.Add(this.lbl_LoginLogo);
             this.Controls.Add(this.pnl_WinTitleAndControls);
             this.Controls.Add(this.lbl_LoginPassword);
@@ -206,7 +190,6 @@
         private System.Windows.Forms.Panel pnl_WinTitleAndControls;
         private System.Windows.Forms.Button btn_LoginMinimize;
         private System.Windows.Forms.Button btn_LoginClose;
-        private System.Windows.Forms.Label lbl_LoginForgotPassword;
     }
 }
 

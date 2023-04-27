@@ -22,27 +22,12 @@ namespace PantrylyDesktopApp
         {
             currentUser_id = user_id;
             InitializeComponent();
-            // TODO: Make the rounded edges smoother (anti-aliasing?)
-            // Rounded corners for the form 
-            GraphicsPath path = new GraphicsPath();
-            int arcSize = 20;
-            Rectangle rect = new Rectangle(0, 0, Width, Height);
-            path.AddArc(rect.X, rect.Y, arcSize, arcSize, 180, 90);
-            path.AddArc(rect.X + rect.Width - arcSize, rect.Y, arcSize, arcSize, 270, 90);
-            path.AddArc(rect.X + rect.Width - arcSize, rect.Y + rect.Height - arcSize, arcSize, arcSize, 0, 90);
-            path.AddArc(rect.X, rect.Y + rect.Height - arcSize, arcSize, arcSize, 90, 90);
-            Region = new Region(path);
-            this.FormBorderStyle = FormBorderStyle.None;
-
-            // make btnDashboardClose circle.
-            GraphicsPath closePath = new GraphicsPath();
-            closePath.AddEllipse(0, 0, btn_DashboardClose.Width, btn_DashboardClose.Height);
-            btn_DashboardClose.Region = new Region(closePath);
-
-            // make btnDashboardMinimize circle.
-            GraphicsPath minimizePath = new GraphicsPath();
-            minimizePath.AddEllipse(0, 0, btn_DashboardMinimize.Width, btn_DashboardMinimize.Height);
-            btn_DashboardMinimize.Region = new Region(minimizePath);
+            FormUtils.MakeWindowFormRounded(this);
+            FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
+            FormUtils.MakeButtonRounded(btn_DashboardClose);
+            FormUtils.AddCloseButton(btn_DashboardClose);
+            FormUtils.MakeButtonRounded(btn_DashboardMinimize);
+            FormUtils.AddMinimizeButton(btn_DashboardMinimize);
         }
 
         SQLiteConnection sql_con;
@@ -86,7 +71,7 @@ namespace PantrylyDesktopApp
             
         }
 
-        private void btnAddNewPantry_Click(object sender, EventArgs e)
+        private void pb_AddNewPantry_Click(object sender, EventArgs e)
         {
             pnl_newPantry = new Panel();
             pnl_newPantry.Size = new Size(250, 200);
@@ -140,38 +125,38 @@ namespace PantrylyDesktopApp
             }
         }
 
-        // Variables to use for dragging around window
-        private bool isDragging = false;
-        private Point lastCursorPos;
-
-        private void pnl_WinTitleAndControls_MouseDown(object sender, MouseEventArgs e)
+        // Switching tab pages
+        private void pb_Dashboard_Click(object sender, EventArgs e)
         {
-            isDragging = true;
-            lastCursorPos = Cursor.Position;
+            tc_UserDashboard.SelectedIndex = 0;
+            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+            pb_Pantry.BackColor = ColorTranslator.FromHtml("#334E4C");
+            pb_Checklist.BackColor = ColorTranslator.FromHtml("#334E4C");
+            pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#334E4C).png";
+            pb_Pantry.ImageLocation = "../../Resources/Icons/condiments(#FFE074).png";
+            pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
         }
 
-        private void pnl_WinTitleAndControls_MouseMove(object sender, MouseEventArgs e)
+        private void pb_Pantry_Click(object sender, EventArgs e)
         {
-            if (isDragging)
-            {
-                Point deltaCursorPos = new Point(Cursor.Position.X - lastCursorPos.X, Cursor.Position.Y - lastCursorPos.Y);
-                this.Location = new Point(this.Location.X + deltaCursorPos.X, this.Location.Y + deltaCursorPos.Y);
-                lastCursorPos = Cursor.Position;
-            }
+            tc_UserDashboard.SelectedIndex = 1;
+            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#334E4C");
+            pb_Pantry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+            pb_Checklist.BackColor = ColorTranslator.FromHtml("#334E4C");
+            pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
+            pb_Pantry.ImageLocation = "../../Resources/Icons/condiments(#334E4C).png";
+            pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
         }
 
-        private void pnl_WinTitleAndControls_MouseUp(object sender, MouseEventArgs e)
+        private void pb_Checklist_Click(object sender, EventArgs e)
         {
-            isDragging = false;
-        }
-        private void btn_DashboardClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_DashboardMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
+            tc_UserDashboard.SelectedIndex = 2;
+            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#334E4C");
+            pb_Pantry.BackColor = ColorTranslator.FromHtml("#334E4C");
+            pb_Checklist.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+            pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
+            pb_Pantry.ImageLocation = "../../Resources/Icons/condiments(#FFE074).png";
+            pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#334E4C).png";
         }
     }
 }
