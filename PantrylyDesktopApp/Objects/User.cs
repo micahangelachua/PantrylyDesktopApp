@@ -21,7 +21,7 @@ namespace PantrylyDesktopApp
 
         private void setConnection()
         {
-            sql_con = new SQLiteConnection("Data Source = PantrylyDB.db");
+            sql_con = new SQLiteConnection("Data Source = ../../Resources/PantrylyDB.db");
         }
 
         private void executeQuery(string txtQuery)
