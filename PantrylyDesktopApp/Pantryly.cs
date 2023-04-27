@@ -72,7 +72,7 @@ namespace PantrylyDesktopApp
 
         private void setConnection()
         {
-            sql_con = new SQLiteConnection("Data Source = PantrylyDB.db");
+            sql_con = new SQLiteConnection("Data Source = PantrylyDB.db; Version = 3; New = False; Compress = True;");
         }
 
         //when credentials match:
@@ -102,7 +102,7 @@ namespace PantrylyDesktopApp
                 LoggingUserId = PantrylyUsersDT.Rows[0][1].ToString(); //assigns the userid that will be send to the next window form.
                 //we should create a user class for this to be safer but idk...
 
-                string userPassword = PantrylyUsersDT.Rows[0][6].ToString(); //variable to compare the input password and the one in the database
+                string userPassword = PantrylyUsersDT.Rows[0][5].ToString(); //variable to compare the input password and the one in the database
 
                 if (userPassword == txt_Password.Text)
                 {
