@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PantrylyDesktopApp.Objects
+namespace PantrylyDesktopApp
 {
     public class Checklist
     {
-        public string Checklist_Id { get; set; }
+        public Guid Checklist_Id { get; set; }
         public string Checklist_Name { get; set; }
-        public List<Item> ChecklistItems { get; set; }
+        public List<PantryItems> ChecklistItems { get; set; }
         public string CreatorEmail { get; set; }
-        public Checklist() { }
+        public Checklist(string name, string email) 
+        {
+            Checklist_Id = Guid.NewGuid();
+            Checklist_Name = name;
+            CreatorEmail = email;
+        }
     }
 }

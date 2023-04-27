@@ -14,6 +14,10 @@ namespace PantrylyDesktopApp
         //DATABASE
         SQLiteConnection sql_con;
         SQLiteCommand sql_cmd;
+        SQLiteDataAdapter DB;
+
+        DataSet PantrylyUsersDS = new DataSet();
+        DataTable PantrylyUsersDT = new DataTable();
 
         private void setConnection()
         {
@@ -36,7 +40,10 @@ namespace PantrylyDesktopApp
         public string LastName { get; private set; }
         public string Birthday { get; private set; }
         public string Email { get; private set; }
-        public string Password { get; private set; }
+        public string Password { get; private set; } //no apostrophes please idk how to.
+
+        public List<Pantry> pantries { get; private set; }
+        public List<Checklist> checklists { get; private set; }
         
         //user constructor
         public User(string fname, string lname, string bday, string email, string password)
@@ -58,5 +65,6 @@ namespace PantrylyDesktopApp
             executeQuery(txtQuery);
             MessageBox.Show("Your account has been created.");
         }
+
     }
 }

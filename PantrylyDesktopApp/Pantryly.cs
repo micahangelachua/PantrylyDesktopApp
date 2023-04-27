@@ -90,7 +90,7 @@ namespace PantrylyDesktopApp
             setConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = $"Select * from Users where user_Email = {txt_Email.Text}"; //gets data row with the email input
+            string CommandText = "Select * from Users where user_Email = '"+txt_Email.Text+"'"; //gets data row with the email input
             DB = new SQLiteDataAdapter(CommandText, sql_con);
 
             PantrylyUsersDS.Reset();

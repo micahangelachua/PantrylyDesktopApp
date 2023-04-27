@@ -24,8 +24,12 @@ namespace PantrylyDesktopApp
         SQLiteCommand sql_cmd;
         SQLiteDataAdapter DB;
 
-        DataSet PantrylyUsersDS = new DataSet();
-        DataTable PantrylyUsersDT = new DataTable();
+        DataSet UserPantriesDS = new DataSet();
+        DataTable UserPantriesDT = new DataTable();
+
+        DataSet UserChecklistDS = new DataSet();
+        DataTable UserChecklistDT = new DataTable();
+
 
         private void setConnection()
         {
@@ -41,6 +45,21 @@ namespace PantrylyDesktopApp
             sql_cmd.CommandText = txtQuery;
             sql_cmd.ExecuteNonQuery();
             sql_con.Close();
+        }
+
+        private void GetUserPantries(string user_id)
+        {
+            //each pantry has an FK of the user id. it will retrieve all pantries that have the user id as foreign key.
+        }
+
+        private void GetUserChecklist(string user_id)
+        {
+
+        }
+
+        public void OpenPantry(string pantry_id)
+        {
+            
         }
 
     }
