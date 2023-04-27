@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,7 +58,7 @@ namespace PantrylyDesktopApp
         }
 
         //method that checks if email is already in database
-        private bool CheckUserEmail() 
+        private bool CheckUserEmail()
         {
             setConnection();
             sql_con.Open();
@@ -72,6 +73,7 @@ namespace PantrylyDesktopApp
             bool result;
             if (PantrylyUsersDT.Rows.Count == 1)
             {
+                
                 result = false; //meaning the email cannot be used because there is a user with that email
             }
             else
@@ -101,22 +103,49 @@ namespace PantrylyDesktopApp
 
         private bool CheckPassword()
         {
-            return txt_Password.Text == txt_RetypedPassword.Text ? true: false;
+            return txt_Password.Text == txt_RetypedPassword.Text ? true : false;
         }
 
-        private string UserIdGenerator()
-        {
 
+        private void btn_SignUp_Click(object sender, EventArgs e)
+        {
+            if (CheckUserEmail() && CheckAge() && CheckPassword() && CheckTextbox())
+            {
+                User newUser = new User(txt_FirstName.Text, txt_LastName.Text, dtp_Birthday.Value.ToString(), txt_Email.Text, txt_Password.Text);
+                newUser.AddNewUser();
+                ClearText();
+
+            } else
+            {
+                if (!CheckTextbox())
+                {
+                    MessageBox.Show("Complete all required fields.");
+                }
+                else if (!CheckUserEmail())
+                {
+                    MessageBox.Show("Email is already in use.");
+                }
+                else if (!CheckAge())
+                {
+                    MessageBox.Show("You are too young.");
+                }
+                else if (!CheckPassword())
+                {
+                    MessageBox.Show("Password doesn't match");
+                }
+
+                ClearText();
+            }
         }
 
-        private void AddNewUser()//Add new user to database
+        private void ClearText()
         {
-            string txtQuery = @"INSERT INTO Users (user_ID, user_FirstName, user_LastName, user_Birthday, user_Email, user_Password) VLAUES('"+User+"')";
-        }
-
-        private void btn_SignUp_Click(object sender, EventArgs e) 
-        {
-            
+            txt_Email.Clear();
+            txt_Password.Clear();
+            txt_RetypedPassword.Clear();
+            txt_FirstName.Clear();
+            txt_LastName.Clear();
+            dtp_Birthday.ResetText();
         }
     }
 }
