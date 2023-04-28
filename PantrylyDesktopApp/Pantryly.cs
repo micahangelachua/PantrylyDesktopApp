@@ -64,9 +64,8 @@ namespace PantrylyDesktopApp
 
             if (PantrylyUsersDT.Rows.Count == 1)//row count will be 1 if there is one (there should only be one because emails should be unique)
             {
-                LoggingUserId = PantrylyUsersDT.Rows[0][1].ToString(); //assigns the userid that will be send to the next window form.
-                //we should create a user class for this to be safer but idk...
-
+                LoggingUserId = PantrylyUsersDT.Rows[0][0].ToString(); //assigns the userid that will be send to the next window form.
+                
                 string userPassword = PantrylyUsersDT.Rows[0][5].ToString(); //variable to compare the input password and the one in the database
 
                 if (userPassword == txt_Password.Text)

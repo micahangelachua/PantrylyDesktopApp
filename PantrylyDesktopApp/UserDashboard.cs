@@ -14,22 +14,7 @@ namespace PantrylyDesktopApp
 {
     public partial class UserDashboard : Form
     {
-        private Panel pnl_newPantry;
-        private TextBox txt_newPantryName;
-        private Label lbl_newPantryName;
-        string currentUser_id = "";
-        public UserDashboard(string user_id)
-        {
-            currentUser_id = user_id;
-            InitializeComponent();
-            FormUtils.MakeWindowFormRounded(this);
-            FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
-            FormUtils.MakeButtonRounded(btn_DashboardClose);
-            FormUtils.AddCloseButton(btn_DashboardClose);
-            FormUtils.MakeButtonRounded(btn_DashboardMinimize);
-            FormUtils.AddMinimizeButton(btn_DashboardMinimize);
-        }
-
+        //Database
         SQLiteConnection sql_con;
         SQLiteCommand sql_cmd;
         SQLiteDataAdapter DB;
@@ -40,7 +25,48 @@ namespace PantrylyDesktopApp
         DataSet UserChecklistDS = new DataSet();
         DataTable UserChecklistDT = new DataTable();
 
+        DataSet PantrylyUsersDS = new DataSet();
+        DataTable PantrylyUsersDT = new DataTable();
 
+        //Initialize variables
+        private Panel pnl_newPantry;
+        private TextBox txt_newPantryName;
+        private Label lbl_newPantryName;
+
+        private string currentUser_Id, currentUser_Fname, currentUser_Email; //i don't know is this a proper way of doing this.
+        private void GetCurrentUser(string id) //just in case i will need this set of codes..
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "Select * from Users where user_ID = '" + id + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            PantrylyUsersDS.Reset();
+            DB.Fill(PantrylyUsersDS);
+            PantrylyUsersDT = PantrylyUsersDS.Tables[0];
+
+            currentUser_Id = PantrylyUsersDT.Rows[0][0].ToString();
+            currentUser_Fname = PantrylyUsersDT.Rows[0][1].ToString();
+            currentUser_Email = PantrylyUsersDT.Rows[0][4].ToString();
+        }
+
+        //Constructor
+        public UserDashboard(string id)
+        {
+            GetCurrentUser(id); //method that assigns private variables for current user
+            
+            InitializeComponent();
+            FormUtils.MakeWindowFormRounded(this);
+            FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
+            FormUtils.MakeButtonRounded(btn_DashboardClose);
+            FormUtils.AddCloseButton(btn_DashboardClose);
+            FormUtils.MakeButtonRounded(btn_DashboardMinimize);
+            FormUtils.AddMinimizeButton(btn_DashboardMinimize);
+
+            lbl_UserFname.Text = currentUser_Fname;
+        }
+        
         private void setConnection()
         {
             sql_con = new SQLiteConnection("Data Source = ../../Resources/PantrylyDB.db; Version = 3; New = False; Compress = True;");
@@ -55,6 +81,8 @@ namespace PantrylyDesktopApp
             sql_cmd.ExecuteNonQuery();
             sql_con.Close();
         }
+
+        
 
         private void GetUserPantries(string user_id)
         {
@@ -116,7 +144,11 @@ namespace PantrylyDesktopApp
                 {
                     lbl_newPantryName.Text = newName;
                     pnl_newPantry.Controls.Add(lbl_newPantryName);
-                    // add query to execute for adding the pantry to the table
+
+
+                    Pantry newPantry = new Pantry(currentUser_Email, newName);
+                    newPantry.CreateNewPantry();
+
                 }
                 else
                 {

@@ -34,21 +34,21 @@ namespace PantrylyDesktopApp
             sql_con.Close();
         }
         public Guid Pantry_Id { get; set; }
-        public string PantryName { get; set; }
+        public string Pantry_Name { get; set; }
         public List<PantryItems> PantryItems { get; set; }
-        public string PantryOwnerEmail { get; set; }
+        public string Pantry_CreatorEmail { get; set; }
         
         public Pantry(string ownerEmail, string name)
         {
             Pantry_Id = Guid.NewGuid();
-            PantryName = name;
-            PantryOwnerEmail = ownerEmail;
+            Pantry_Name = name;
+            Pantry_CreatorEmail = ownerEmail;
         }
 
         public void CreateNewPantry()
         {
-            string txtQuery = @"INSERT INTO Pantry (pantry_ID, pantry_Name, pantry_User, pantry_CreatorID) 
-                            VALUES('" + Pantry_Id + "', '" + PantryName + "','" + PantryOwnerEmail + "')";
+            string txtQuery = @"INSERT INTO Pantry (pantry_ID, pantry_Name, pantry_CreatorID) 
+                            VALUES('" + Pantry_Id + "', '" + Pantry_Name + "','" + Pantry_CreatorEmail + "')";
 
             executeQuery(txtQuery);
             MessageBox.Show("Added a new pantry.");
