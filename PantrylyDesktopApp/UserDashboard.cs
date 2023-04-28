@@ -32,6 +32,9 @@ namespace PantrylyDesktopApp
         private Panel pnl_newPantry;
         private TextBox txt_newPantryName;
         private Label lbl_newPantryName;
+        private Panel pnl_newChecklist;
+        private TextBox txt_newChecklistName;
+        private Label lbl_newChecklistName;
 
         private string currentUser_Id, currentUser_Fname, currentUser_Email; //i don't know is this a proper way of doing this.
         private void GetCurrentUser(string id) //just in case i will need this set of codes..
@@ -144,15 +147,63 @@ namespace PantrylyDesktopApp
                 {
                     lbl_newPantryName.Text = newName;
                     pnl_newPantry.Controls.Add(lbl_newPantryName);
-
-
                     Pantry newPantry = new Pantry(currentUser_Email, newName);
                     newPantry.CreateNewPantry();
-
                 }
                 else
                 {
                     flp_PantriesContainer.Controls.Remove(pnl_newPantry);
+                }
+            }
+        }
+
+        private void pb_AddNewChecklist_Click(object sender, EventArgs e)
+        {
+            pnl_newChecklist = new Panel();
+            pnl_newChecklist.Size = new Size(250, 200);
+            pnl_newChecklist.BorderStyle = BorderStyle.None;
+            pnl_newChecklist.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+
+            txt_newChecklistName = new TextBox();
+            txt_newChecklistName.Text = "Enter Checklist name...";
+            txt_newChecklistName.Size = new Size(250, 37);
+            txt_newChecklistName.Location = new Point(0, 0);
+
+            lbl_newChecklistName = new Label();
+            lbl_newChecklistName.Text = "New Checklist";
+            lbl_newChecklistName.Size = new Size(250, 37);
+            lbl_newChecklistName.BackColor = ColorTranslator.FromHtml("#31A78F");
+            lbl_newChecklistName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+            lbl_newChecklistName.TextAlign = ContentAlignment.MiddleCenter;
+
+            pnl_newChecklist.Controls.Add(txt_newChecklistName);
+
+            // Add the new panel to the FlowLayoutPanel
+            DialogResult result = MessageBox.Show("Are you sure you want to create a new Checklist?", "New Checklist", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                flp_ChecklistsContainer.Controls.Add(pnl_newChecklist);
+                txt_newChecklistName.Focus();
+                txt_newChecklistName.KeyDown += new KeyEventHandler(txt_newChecklistName_KeyDown);
+            }
+        }
+
+        private void txt_newChecklistName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string newName = txt_newChecklistName.Text;
+                txt_newChecklistName.Dispose();
+                if (!string.IsNullOrEmpty(newName))
+                {
+                    lbl_newChecklistName.Text = newName;
+                    pnl_newChecklist.Controls.Add(lbl_newChecklistName);
+                    //Checklist newEntry = new Checklist(currentUser_Email, newName);
+                    //newEntry.CreateNewChecklist();
+                }
+                else
+                {
+                    pnl_newChecklist.Controls.Remove(txt_newChecklistName);
                 }
             }
         }

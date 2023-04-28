@@ -44,7 +44,7 @@ namespace PantrylyDesktopApp
             Checklist_CreatorEmail = email;
         }
 
-        public void CreateNewPantry()
+        public void CreateNewChecklist()
         {
             string txtQuery = @"INSERT INTO Checklist (checklist_ID, checklist_Name, checklist_CreatorID) 
                             VALUES('" + Checklist_Id + "', '" + Checklist_Name + "','" + Checklist_CreatorEmail + "')";
