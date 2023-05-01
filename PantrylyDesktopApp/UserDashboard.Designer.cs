@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pb_Checklist = new System.Windows.Forms.PictureBox();
+            this.pb_Settings = new System.Windows.Forms.PictureBox();
             this.pb_UserPicture = new System.Windows.Forms.PictureBox();
-            this.pb_Pantry = new System.Windows.Forms.PictureBox();
+            this.pb_Checklist = new System.Windows.Forms.PictureBox();
             this.pb_Dashboard = new System.Windows.Forms.PictureBox();
             this.lbl_AddNewPantry = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,14 +51,18 @@
             this.pnl_AddNewChecklist = new System.Windows.Forms.Panel();
             this.lbl_AddNewChecklist = new System.Windows.Forms.Label();
             this.pb_AddNewChecklist = new System.Windows.Forms.PictureBox();
-            this.tp_UserPantries = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.tp_UserChecklists = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tp_UserSettings = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
+            this.tp_UserProfileSettings = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblChecklists = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Checklist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Pantry)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Checklist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Dashboard)).BeginInit();
             this.pnl_AddNewPantry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddNewPantry)).BeginInit();
@@ -69,32 +73,33 @@
             this.flp_ChecklistsContainer.SuspendLayout();
             this.pnl_AddNewChecklist.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddNewChecklist)).BeginInit();
-            this.tp_UserPantries.SuspendLayout();
             this.tp_UserChecklists.SuspendLayout();
+            this.tp_UserSettings.SuspendLayout();
+            this.tp_UserProfileSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
-            this.panel1.Controls.Add(this.pb_Checklist);
+            this.panel1.Controls.Add(this.pb_Settings);
             this.panel1.Controls.Add(this.pb_UserPicture);
-            this.panel1.Controls.Add(this.pb_Pantry);
+            this.panel1.Controls.Add(this.pb_Checklist);
             this.panel1.Controls.Add(this.pb_Dashboard);
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(159, 672);
             this.panel1.TabIndex = 0;
             // 
-            // pb_Checklist
+            // pb_Settings
             // 
-            this.pb_Checklist.Image = ((System.Drawing.Image)(resources.GetObject("pb_Checklist.Image")));
-            this.pb_Checklist.Location = new System.Drawing.Point(28, 439);
-            this.pb_Checklist.Name = "pb_Checklist";
-            this.pb_Checklist.Size = new System.Drawing.Size(100, 93);
-            this.pb_Checklist.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_Checklist.TabIndex = 12;
-            this.pb_Checklist.TabStop = false;
-            this.pb_Checklist.Click += new System.EventHandler(this.pb_Checklist_Click);
+            this.pb_Settings.Image = ((System.Drawing.Image)(resources.GetObject("pb_Settings.Image")));
+            this.pb_Settings.Location = new System.Drawing.Point(28, 439);
+            this.pb_Settings.Name = "pb_Settings";
+            this.pb_Settings.Size = new System.Drawing.Size(100, 93);
+            this.pb_Settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Settings.TabIndex = 12;
+            this.pb_Settings.TabStop = false;
+            this.pb_Settings.Click += new System.EventHandler(this.pb_Settings_Click);
             // 
             // pb_UserPicture
             // 
@@ -105,17 +110,18 @@
             this.pb_UserPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_UserPicture.TabIndex = 9;
             this.pb_UserPicture.TabStop = false;
+            this.pb_UserPicture.Click += new System.EventHandler(this.pb_UserPicture_Click);
             // 
-            // pb_Pantry
+            // pb_Checklist
             // 
-            this.pb_Pantry.Image = ((System.Drawing.Image)(resources.GetObject("pb_Pantry.Image")));
-            this.pb_Pantry.Location = new System.Drawing.Point(28, 325);
-            this.pb_Pantry.Name = "pb_Pantry";
-            this.pb_Pantry.Size = new System.Drawing.Size(100, 93);
-            this.pb_Pantry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_Pantry.TabIndex = 11;
-            this.pb_Pantry.TabStop = false;
-            this.pb_Pantry.Click += new System.EventHandler(this.pb_Pantry_Click);
+            this.pb_Checklist.Image = ((System.Drawing.Image)(resources.GetObject("pb_Checklist.Image")));
+            this.pb_Checklist.Location = new System.Drawing.Point(28, 325);
+            this.pb_Checklist.Name = "pb_Checklist";
+            this.pb_Checklist.Size = new System.Drawing.Size(100, 93);
+            this.pb_Checklist.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Checklist.TabIndex = 11;
+            this.pb_Checklist.TabStop = false;
+            this.pb_Checklist.Click += new System.EventHandler(this.pb_Checklist_Click);
             // 
             // pb_Dashboard
             // 
@@ -154,11 +160,11 @@
             // lbl_DasboardLogo
             // 
             this.lbl_DasboardLogo.AutoSize = true;
-            this.lbl_DasboardLogo.Font = new System.Drawing.Font("Pacifico", 28F);
+            this.lbl_DasboardLogo.Font = new System.Drawing.Font("Pacifico", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(1073, 3);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(166, 67);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(171, 72);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -207,9 +213,10 @@
             // 
             this.pnl_WinTitleAndControls.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnl_WinTitleAndControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.pnl_WinTitleAndControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_DashboardMinimize);
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_DashboardClose);
-            this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 1);
+            this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 0);
             this.pnl_WinTitleAndControls.Name = "pnl_WinTitleAndControls";
             this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(1414, 50);
             this.pnl_WinTitleAndControls.TabIndex = 11;
@@ -240,8 +247,9 @@
             // 
             this.tc_UserDashboard.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tc_UserDashboard.Controls.Add(this.tp_UserOverview);
-            this.tc_UserDashboard.Controls.Add(this.tp_UserPantries);
             this.tc_UserDashboard.Controls.Add(this.tp_UserChecklists);
+            this.tc_UserDashboard.Controls.Add(this.tp_UserSettings);
+            this.tc_UserDashboard.Controls.Add(this.tp_UserProfileSettings);
             this.tc_UserDashboard.Location = new System.Drawing.Point(154, 32);
             this.tc_UserDashboard.Name = "tc_UserDashboard";
             this.tc_UserDashboard.SelectedIndex = 0;
@@ -267,12 +275,15 @@
             // lbl_UserFname
             // 
             this.lbl_UserFname.AutoSize = true;
-            this.lbl_UserFname.Location = new System.Drawing.Point(14, 15);
+            this.lbl_UserFname.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_UserFname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
+            this.lbl_UserFname.Location = new System.Drawing.Point(11, 12);
             this.lbl_UserFname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_UserFname.Name = "lbl_UserFname";
-            this.lbl_UserFname.Size = new System.Drawing.Size(17, 13);
+            this.lbl_UserFname.Size = new System.Drawing.Size(26, 21);
             this.lbl_UserFname.TabIndex = 13;
             this.lbl_UserFname.Text = "Hi";
+            this.lbl_UserFname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flp_ChecklistsContainer
             // 
@@ -314,49 +325,92 @@
             this.pb_AddNewChecklist.TabStop = false;
             this.pb_AddNewChecklist.Click += new System.EventHandler(this.pb_AddNewChecklist_Click);
             // 
-            // tp_UserPantries
-            // 
-            this.tp_UserPantries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
-            this.tp_UserPantries.Controls.Add(this.label1);
-            this.tp_UserPantries.Location = new System.Drawing.Point(4, 25);
-            this.tp_UserPantries.Name = "tp_UserPantries";
-            this.tp_UserPantries.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_UserPantries.Size = new System.Drawing.Size(1255, 668);
-            this.tp_UserPantries.TabIndex = 1;
-            this.tp_UserPantries.Text = "Pantries";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Pacifico", 28F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
-            this.label1.Location = new System.Drawing.Point(1073, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 67);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Pantryly";
-            // 
             // tp_UserChecklists
             // 
             this.tp_UserChecklists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
-            this.tp_UserChecklists.Controls.Add(this.label4);
+            this.tp_UserChecklists.Controls.Add(this.lblChecklists);
+            this.tp_UserChecklists.Controls.Add(this.panel2);
+            this.tp_UserChecklists.Controls.Add(this.label1);
             this.tp_UserChecklists.Location = new System.Drawing.Point(4, 25);
             this.tp_UserChecklists.Name = "tp_UserChecklists";
             this.tp_UserChecklists.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserChecklists.Size = new System.Drawing.Size(1255, 668);
-            this.tp_UserChecklists.TabIndex = 2;
-            this.tp_UserChecklists.Text = "Checklists";
+            this.tp_UserChecklists.TabIndex = 1;
+            this.tp_UserChecklists.Text = "Pantries";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Pacifico", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
+            this.label1.Location = new System.Drawing.Point(1073, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(171, 72);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Pantryly";
+            // 
+            // tp_UserSettings
+            // 
+            this.tp_UserSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
+            this.tp_UserSettings.Controls.Add(this.label4);
+            this.tp_UserSettings.Location = new System.Drawing.Point(4, 25);
+            this.tp_UserSettings.Name = "tp_UserSettings";
+            this.tp_UserSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_UserSettings.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserSettings.TabIndex = 2;
+            this.tp_UserSettings.Text = "Checklists";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Pacifico", 28F);
+            this.label4.Font = new System.Drawing.Font("Pacifico", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.label4.Location = new System.Drawing.Point(1073, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 67);
+            this.label4.Size = new System.Drawing.Size(171, 72);
             this.label4.TabIndex = 4;
             this.label4.Text = "Pantryly";
+            // 
+            // tp_UserProfileSettings
+            // 
+            this.tp_UserProfileSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
+            this.tp_UserProfileSettings.Controls.Add(this.label5);
+            this.tp_UserProfileSettings.Location = new System.Drawing.Point(4, 25);
+            this.tp_UserProfileSettings.Name = "tp_UserProfileSettings";
+            this.tp_UserProfileSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_UserProfileSettings.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserProfileSettings.TabIndex = 3;
+            this.tp_UserProfileSettings.Text = "tabPage1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Pacifico", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
+            this.label5.Location = new System.Drawing.Point(1073, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(171, 72);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Pantryly";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.panel2.Location = new System.Drawing.Point(39, 116);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 492);
+            this.panel2.TabIndex = 12;
+            // 
+            // lblChecklists
+            // 
+            this.lblChecklists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(116)))));
+            this.lblChecklists.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChecklists.Location = new System.Drawing.Point(22, 79);
+            this.lblChecklists.Name = "lblChecklists";
+            this.lblChecklists.Size = new System.Drawing.Size(283, 37);
+            this.lblChecklists.TabIndex = 1;
+            this.lblChecklists.Text = "CHECKLISTS";
+            this.lblChecklists.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserDashboard
             // 
@@ -373,9 +427,9 @@
             this.Text = "UserDashboard";
             this.Load += new System.EventHandler(this.UserDashboard_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Checklist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Settings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Pantry)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Checklist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Dashboard)).EndInit();
             this.pnl_AddNewPantry.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddNewPantry)).EndInit();
@@ -387,10 +441,12 @@
             this.flp_ChecklistsContainer.ResumeLayout(false);
             this.pnl_AddNewChecklist.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddNewChecklist)).EndInit();
-            this.tp_UserPantries.ResumeLayout(false);
-            this.tp_UserPantries.PerformLayout();
             this.tp_UserChecklists.ResumeLayout(false);
             this.tp_UserChecklists.PerformLayout();
+            this.tp_UserSettings.ResumeLayout(false);
+            this.tp_UserSettings.PerformLayout();
+            this.tp_UserProfileSettings.ResumeLayout(false);
+            this.tp_UserProfileSettings.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -401,9 +457,9 @@
         private System.Windows.Forms.Label lbl_AddNewPantry;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_DasboardLogo;
-        private System.Windows.Forms.PictureBox pb_Checklist;
+        private System.Windows.Forms.PictureBox pb_Settings;
         private System.Windows.Forms.PictureBox pb_UserPicture;
-        private System.Windows.Forms.PictureBox pb_Pantry;
+        private System.Windows.Forms.PictureBox pb_Checklist;
         private System.Windows.Forms.PictureBox pb_Dashboard;
         private System.Windows.Forms.Panel pnl_AddNewPantry;
         private System.Windows.Forms.Label label3;
@@ -415,13 +471,17 @@
         private System.Windows.Forms.TabPage tp_UserOverview;
         private System.Windows.Forms.Panel pnl_AddNewChecklist;
         private System.Windows.Forms.Label lbl_AddNewChecklist;
-        private System.Windows.Forms.TabPage tp_UserPantries;
         private System.Windows.Forms.TabPage tp_UserChecklists;
+        private System.Windows.Forms.TabPage tp_UserSettings;
         private System.Windows.Forms.FlowLayoutPanel flp_ChecklistsContainer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pb_AddNewPantry;
         private System.Windows.Forms.PictureBox pb_AddNewChecklist;
         private System.Windows.Forms.Label lbl_UserFname;
+        private System.Windows.Forms.TabPage tp_UserProfileSettings;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblChecklists;
+        private System.Windows.Forms.Panel panel2;
     }
 }

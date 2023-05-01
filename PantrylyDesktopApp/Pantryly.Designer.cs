@@ -44,7 +44,7 @@
             // lbl_LoginLogo
             // 
             this.lbl_LoginLogo.AutoSize = true;
-            this.lbl_LoginLogo.Font = new System.Drawing.Font("Pacifico", 48F);
+            this.lbl_LoginLogo.Font = new System.Drawing.Font("Pacifico", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LoginLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_LoginLogo.Location = new System.Drawing.Point(218, 74);
             this.lbl_LoginLogo.Name = "lbl_LoginLogo";
@@ -125,6 +125,7 @@
             // pnl_WinTitleAndControls
             // 
             this.pnl_WinTitleAndControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.pnl_WinTitleAndControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_LoginMinimize);
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_LoginClose);
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_Signup);

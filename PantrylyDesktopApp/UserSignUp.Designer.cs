@@ -228,6 +228,7 @@
             // pnl_WinTitleAndControls
             // 
             this.pnl_WinTitleAndControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.pnl_WinTitleAndControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_SignupMinimize);
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_SignupClose);
             this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 0);
