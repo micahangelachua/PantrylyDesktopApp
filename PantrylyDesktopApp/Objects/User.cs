@@ -108,26 +108,5 @@ namespace PantrylyDesktopApp
             MessageBox.Show("Your account has been created.");
         }
 
-        public List<Pantry> GetPantries(string userEmail)
-        {
-            setConnection();
-            sql_con.Open();
-            sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM Pantry WHERE pantry_CreatorID = '"+userEmail+"'";
-            DB = new SQLiteDataAdapter(CommandText, sql_con);
-
-            PantryDS.Reset();
-            DB.Fill(PantryDS);
-            PantryDT = PantryDS.Tables[0];
-
-            for (int i = 0; i < PantryDT.Rows.Count; i++)
-            {
-                Pantry pantry = new Pantry(userEmail, PantryDT.Rows[i][1].ToString());
-                pantries.Add(pantry);
-            }
-            
-            return pantries;
-        }
-
     }
 }

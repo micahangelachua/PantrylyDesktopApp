@@ -158,7 +158,7 @@
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(1073, 3);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(176, 73);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(166, 67);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -209,7 +209,7 @@
             this.pnl_WinTitleAndControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_DashboardMinimize);
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_DashboardClose);
-            this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 0);
+            this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 1);
             this.pnl_WinTitleAndControls.Name = "pnl_WinTitleAndControls";
             this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(1414, 50);
             this.pnl_WinTitleAndControls.TabIndex = 11;
@@ -259,7 +259,7 @@
             this.tp_UserOverview.Controls.Add(this.label3);
             this.tp_UserOverview.Location = new System.Drawing.Point(4, 25);
             this.tp_UserOverview.Name = "tp_UserOverview";
-            this.tp_UserOverview.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tp_UserOverview.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserOverview.Size = new System.Drawing.Size(1255, 668);
             this.tp_UserOverview.TabIndex = 0;
             this.tp_UserOverview.Text = "Overview";
@@ -320,7 +320,7 @@
             this.tp_UserPantries.Controls.Add(this.label1);
             this.tp_UserPantries.Location = new System.Drawing.Point(4, 25);
             this.tp_UserPantries.Name = "tp_UserPantries";
-            this.tp_UserPantries.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tp_UserPantries.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserPantries.Size = new System.Drawing.Size(1255, 668);
             this.tp_UserPantries.TabIndex = 1;
             this.tp_UserPantries.Text = "Pantries";
@@ -332,7 +332,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.label1.Location = new System.Drawing.Point(1073, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 73);
+            this.label1.Size = new System.Drawing.Size(166, 67);
             this.label1.TabIndex = 4;
             this.label1.Text = "Pantryly";
             // 
@@ -342,7 +342,7 @@
             this.tp_UserChecklists.Controls.Add(this.label4);
             this.tp_UserChecklists.Location = new System.Drawing.Point(4, 25);
             this.tp_UserChecklists.Name = "tp_UserChecklists";
-            this.tp_UserChecklists.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tp_UserChecklists.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserChecklists.Size = new System.Drawing.Size(1255, 668);
             this.tp_UserChecklists.TabIndex = 2;
             this.tp_UserChecklists.Text = "Checklists";
@@ -354,7 +354,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.label4.Location = new System.Drawing.Point(1073, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(176, 73);
+            this.label4.Size = new System.Drawing.Size(166, 67);
             this.label4.TabIndex = 4;
             this.label4.Text = "Pantryly";
             // 
@@ -371,6 +371,7 @@
             this.Name = "UserDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserDashboard";
+            this.Load += new System.EventHandler(this.UserDashboard_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Checklist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).EndInit();

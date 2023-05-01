@@ -14,7 +14,7 @@ namespace PantrylyDesktopApp
 {
     public partial class UserDashboard : Form
     {
-        //Database
+        #region DATABASE
         SQLiteConnection sql_con;
         SQLiteCommand sql_cmd;
         SQLiteDataAdapter DB;
@@ -27,8 +27,9 @@ namespace PantrylyDesktopApp
 
         DataSet PantrylyUsersDS = new DataSet();
         DataTable PantrylyUsersDT = new DataTable();
+        #endregion
 
-        //Initialize variables
+        #region VARIABLES
         private Panel pnl_newPantry;
         private TextBox txt_newPantryName;
         private Label lbl_newPantryName;
@@ -36,7 +37,16 @@ namespace PantrylyDesktopApp
         private TextBox txt_newChecklistName;
         private Label lbl_newChecklistName;
 
+        private Panel pnl_Pantry;
+        private Label lbl_PantryName;
+        private Panel pnl_Checklist;
+        private Label lbl_ChecklistName;
+        
+
         private string currentUser_Id, currentUser_Fname, currentUser_Email; //i don't know is this a proper way of doing this.
+        #endregion
+
+        
         private void GetCurrentUser(string id) //just in case i will need this set of codes..
         {
             setConnection();
@@ -53,11 +63,59 @@ namespace PantrylyDesktopApp
             currentUser_Fname = PantrylyUsersDT.Rows[0][1].ToString();
             currentUser_Email = PantrylyUsersDT.Rows[0][4].ToString();
         }
+        #region ONLOAD_METHODS
+        public List<Pantry> GetPantries(string userEmail)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM Pantry WHERE pantry_CreatorID = '" + userEmail + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
 
+            UserPantriesDS.Reset();
+            DB.Fill(UserPantriesDS);
+            UserPantriesDT = UserPantriesDS.Tables[0];
+
+            List<Pantry> pantries = new List<Pantry>();
+
+            for (int i = 0; i < UserPantriesDT.Rows.Count; i++)
+            {
+                Pantry pantry = new Pantry(userEmail, UserPantriesDT.Rows[i][1].ToString());
+                pantries.Add(pantry);
+            }
+
+            return pantries;
+        }
+
+        public List<Checklist> GetChecklists(string userEmail)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM Checklist WHERE checklist_CreatorID = '" + userEmail + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            UserChecklistDS.Reset();
+            DB.Fill(UserChecklistDS);
+            UserChecklistDT = UserChecklistDS.Tables[0];
+
+            List<Checklist> checklists = new List<Checklist>();
+
+            for (int i = 0; i < UserChecklistDT.Rows.Count; i++)
+            {
+                Checklist checklist = new Checklist(UserChecklistDT.Rows[i][1].ToString(), userEmail);
+                checklists.Add(checklist);
+            }
+
+            return checklists;
+        }
+        #endregion
+        
         //Constructor
         public UserDashboard(string id)
         {
             GetCurrentUser(id); //method that assigns private variables for current user
+            
             
             InitializeComponent();
             FormUtils.MakeWindowFormRounded(this);
@@ -85,21 +143,10 @@ namespace PantrylyDesktopApp
             sql_con.Close();
         }
 
-        
-
-        private void GetUserPantries(string user_id)
+        private void UserDashboard_Load(object sender, EventArgs e)
         {
-            //each pantry has an FK of the user id. it will retrieve all pantries that have the user id as foreign key.
-        }
-
-        private void GetUserChecklist(string user_id)
-        {
-
-        }
-
-        public void OpenPantry(string pantry_id)
-        {
-            
+            LoadPantries();
+            LoadChecklist();
         }
 
         private void pb_AddNewPantry_Click(object sender, EventArgs e)
@@ -134,8 +181,39 @@ namespace PantrylyDesktopApp
                  * if this isn't used, nothing happens after the user presses enter
                  */
                 txt_newPantryName.KeyDown += new KeyEventHandler(txt_newPantryName_KeyDown);
+                
+                
+                //LoadPantries(); instead of adding control; it needs to reload with the new data from database
             }
         }
+
+        //Show All Pantries of the current user
+        private void LoadPantries()
+        {
+            //flp_PantriesContainer.Controls.Clear();
+
+            List<Pantry> pantries = GetPantries(currentUser_Email);
+
+            foreach (Pantry pantry in pantries)
+            {
+                pnl_Pantry = new Panel();
+                pnl_Pantry.Size = new Size(250, 200);
+                pnl_Pantry.BorderStyle = BorderStyle.None;
+                pnl_Pantry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+
+                lbl_PantryName = new Label();
+                lbl_PantryName.Text = pantry.Pantry_Name;
+                lbl_PantryName.Size = new Size(250, 37);
+                lbl_PantryName.BackColor = ColorTranslator.FromHtml("#D4664E");
+                lbl_PantryName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+                lbl_PantryName.TextAlign = ContentAlignment.MiddleCenter;
+
+                pnl_Pantry.Controls.Add(lbl_PantryName);
+
+                flp_PantriesContainer.Controls.Add(pnl_Pantry);
+            }
+        }
+        
 
         private void txt_newPantryName_KeyDown(object sender, KeyEventArgs e)
         {
@@ -147,6 +225,7 @@ namespace PantrylyDesktopApp
                 {
                     lbl_newPantryName.Text = newName;
                     pnl_newPantry.Controls.Add(lbl_newPantryName);
+
                     Pantry newPantry = new Pantry(currentUser_Email, newName);
                     newPantry.CreateNewPantry();
                 }
@@ -154,6 +233,31 @@ namespace PantrylyDesktopApp
                 {
                     flp_PantriesContainer.Controls.Remove(pnl_newPantry);
                 }
+            }
+        }
+
+        private void LoadChecklist()
+        {
+            List<Checklist> checklists = GetChecklists(currentUser_Email);
+
+            foreach (Checklist checklist in checklists)
+            {
+                pnl_Checklist = new Panel();
+                pnl_Checklist.Size = new Size(250, 200);
+                pnl_Checklist.BorderStyle = BorderStyle.None;
+                pnl_Checklist.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+
+                lbl_ChecklistName = new Label();
+                lbl_ChecklistName.Text = checklist.Checklist_Name;
+                lbl_ChecklistName.Size = new Size(250, 37);
+                lbl_ChecklistName.BackColor = ColorTranslator.FromHtml("#31A78F");
+                lbl_ChecklistName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+                lbl_ChecklistName.TextAlign = ContentAlignment.MiddleCenter;
+
+                pnl_Checklist.Controls.Add(lbl_ChecklistName);
+
+                flp_ChecklistsContainer.Controls.Add(pnl_Checklist);
+
             }
         }
 
@@ -184,6 +288,7 @@ namespace PantrylyDesktopApp
             {
                 flp_ChecklistsContainer.Controls.Add(pnl_newChecklist);
                 txt_newChecklistName.Focus();
+
                 txt_newChecklistName.KeyDown += new KeyEventHandler(txt_newChecklistName_KeyDown);
             }
         }
@@ -198,8 +303,9 @@ namespace PantrylyDesktopApp
                 {
                     lbl_newChecklistName.Text = newName;
                     pnl_newChecklist.Controls.Add(lbl_newChecklistName);
-                    //Checklist newEntry = new Checklist(currentUser_Email, newName);
-                    //newEntry.CreateNewChecklist();
+
+                    Checklist newEntry = new Checklist(newName, currentUser_Email);
+                    newEntry.CreateNewChecklist();
                 }
                 else
                 {
@@ -219,6 +325,8 @@ namespace PantrylyDesktopApp
             pb_Pantry.ImageLocation = "../../Resources/Icons/condiments(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
         }
+
+       
 
         private void pb_Pantry_Click(object sender, EventArgs e)
         {

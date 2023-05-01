@@ -53,5 +53,30 @@ namespace PantrylyDesktopApp
             executeQuery(txtQuery);
             MessageBox.Show("Added a new pantry.");
         }
+
+        /**
+        public List<Pantry> GetPantries(string userEmail) //just in case i will need this set of codes..
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM Pantry WHERE pantry_CreatorID = '" + userEmail + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            PantryDS.Reset();
+            DB.Fill(PantryDS);
+            PantryDT = PantryDS.Tables[0];
+
+            List<Pantry> pantries = new List<Pantry>();
+
+            for (int i = 0; i < PantryDT.Rows.Count; i++)
+            {
+                Pantry pantry = new Pantry(userEmail, PantryDT.Rows[i][1].ToString());
+                pantries.Add(pantry);
+            }
+
+            return pantries;
+        }**/
+
     }
 }
