@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,9 +32,17 @@ namespace PantrylyDesktopApp
 
         public static void MakeButtonRounded(Button button)
         {
-            // make button 1 circular.
+            int cornerRadius = 15;
             GraphicsPath buttonPath = new GraphicsPath();
-            buttonPath.AddEllipse(0, 0, button.Width, button.Height);
+            buttonPath.StartFigure();
+            buttonPath.AddArc(new Rectangle(0, 0, cornerRadius * 2, cornerRadius * 2), 180, 90);
+            buttonPath.AddLine(cornerRadius, 0, button.Width - cornerRadius, 0);
+            buttonPath.AddArc(new Rectangle(button.Width - cornerRadius * 2, 0, cornerRadius * 2, cornerRadius * 2), -90, 90);
+            buttonPath.AddLine(button.Width, cornerRadius, button.Width, button.Height - cornerRadius);
+            buttonPath.AddArc(new Rectangle(button.Width - cornerRadius * 2, button.Height - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2), 0, 90);
+            buttonPath.AddLine(button.Width - cornerRadius, button.Height, cornerRadius, button.Height);
+            buttonPath.AddArc(new Rectangle(0, button.Height - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2), 90, 90);
+            buttonPath.CloseFigure();
             button.Region = new Region(buttonPath);
         }
 
