@@ -56,6 +56,13 @@ namespace PantrylyDesktopApp
         private Label lbl_PantryName;
         private Panel pnl_Checklist;
         private Label lbl_ChecklistName;
+
+        private Panel pnl_ChecklistEntry;
+        private Label lbl_ChecklistEntryName;
+        private Label lbl_ChecklistEntryDateCreated;
+        private CheckBox chk_NewChecklistItemName;
+        private TextBox txt_NewChecklistItemName;
+        private CheckBox chk_CrossedChecklistItemName;
         
 
         private string currentUser_Id, currentUser_Fname, currentUser_Email; //i don't know is this a proper way of doing this.
@@ -132,14 +139,11 @@ namespace PantrylyDesktopApp
         {
             GetCurrentUser(id); //method that assigns private variables for current user
             
-            
             InitializeComponent();
             FormUtils.MakeWindowFormRounded(this);
             FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
-            FormUtils.MakeButtonRounded(btn_DashboardClose);
-            FormUtils.AddCloseButton(btn_DashboardClose);
-            FormUtils.MakeButtonRounded(btn_DashboardMinimize);
-            FormUtils.AddMinimizeButton(btn_DashboardMinimize);
+            FormUtils.AddCloseButton(pb_DashboardClose);
+            FormUtils.AddMinimizeButton(pb_DashboardMinimize);
 
             lbl_UserFname.Text = currentUser_Fname;
         }
@@ -148,6 +152,8 @@ namespace PantrylyDesktopApp
         {
             LoadPantries();
             LoadChecklist();
+            LoadChecklistsEntries();
+            LoadChecklistItems();
         }
 
         private void pb_AddNewPantry_Click(object sender, EventArgs e)
@@ -166,7 +172,7 @@ namespace PantrylyDesktopApp
             lbl_newPantryName.Text = "New Pantry";
             lbl_newPantryName.Size = new Size(250, 37);
             lbl_newPantryName.BackColor = ColorTranslator.FromHtml("#D4664E");
-            lbl_newPantryName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+            lbl_newPantryName.Font = new Font("Ink Free", 16, FontStyle.Regular);
             lbl_newPantryName.TextAlign = ContentAlignment.MiddleCenter;
 
             pnl_newPantry.Controls.Add(txt_newPantryName);
@@ -206,7 +212,7 @@ namespace PantrylyDesktopApp
                 lbl_PantryName.Text = pantry.Pantry_Name;
                 lbl_PantryName.Size = new Size(250, 37);
                 lbl_PantryName.BackColor = ColorTranslator.FromHtml("#D4664E");
-                lbl_PantryName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+                lbl_PantryName.Font = new Font("Ink Free", 16, FontStyle.Regular);
                 lbl_PantryName.TextAlign = ContentAlignment.MiddleCenter;
 
                 pnl_Pantry.Controls.Add(lbl_PantryName);
@@ -237,6 +243,7 @@ namespace PantrylyDesktopApp
             }
         }
 
+        #region Checklists
         private void LoadChecklist()
         {
             List<Checklist> checklists = GetChecklists(currentUser_Email);
@@ -252,7 +259,7 @@ namespace PantrylyDesktopApp
                 lbl_ChecklistName.Text = checklist.Checklist_Name;
                 lbl_ChecklistName.Size = new Size(250, 37);
                 lbl_ChecklistName.BackColor = ColorTranslator.FromHtml("#31A78F");
-                lbl_ChecklistName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+                lbl_ChecklistName.Font = new Font("Ink Free", 16, FontStyle.Regular);
                 lbl_ChecklistName.TextAlign = ContentAlignment.MiddleCenter;
 
                 pnl_Checklist.Controls.Add(lbl_ChecklistName);
@@ -278,7 +285,7 @@ namespace PantrylyDesktopApp
             lbl_newChecklistName.Text = "New Checklist";
             lbl_newChecklistName.Size = new Size(250, 37);
             lbl_newChecklistName.BackColor = ColorTranslator.FromHtml("#31A78F");
-            lbl_newChecklistName.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+            lbl_newChecklistName.Font = new Font("Ink Free", 16, FontStyle.Regular);
             lbl_newChecklistName.TextAlign = ContentAlignment.MiddleCenter;
 
             pnl_newChecklist.Controls.Add(txt_newChecklistName);
@@ -314,15 +321,122 @@ namespace PantrylyDesktopApp
                 }
             }
         }
+        #endregion
 
-        // Switching tab pages
+        private void LoadChecklistsEntries() // Dunno how to name this
+        {
+            List<Checklist> checklists = GetChecklists(currentUser_Email);
+
+            foreach (Checklist checklist in checklists)
+            {
+                pnl_ChecklistEntry = new Panel();
+                pnl_ChecklistEntry.Size = new Size(230, 40);
+                pnl_ChecklistEntry.BorderStyle = BorderStyle.None;
+                pnl_ChecklistEntry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+
+                lbl_ChecklistEntryName = new Label();
+                lbl_ChecklistEntryName.Text = checklist.Checklist_Name;
+                lbl_ChecklistEntryName.Size = new Size(115, 25);
+                lbl_ChecklistEntryName.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+                lbl_ChecklistEntryName.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
+                lbl_ChecklistEntryName.TextAlign = ContentAlignment.MiddleLeft;
+                lbl_ChecklistEntryName.Location = new Point(0, 0);
+
+                lbl_ChecklistEntryDateCreated = new Label();
+                lbl_ChecklistEntryDateCreated.Text = "Date"; // Should contain the date
+                lbl_ChecklistEntryDateCreated.Size = new Size(115, 25);
+                lbl_ChecklistEntryDateCreated.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+                lbl_ChecklistEntryDateCreated.Font = new Font("Ink Free", 12, FontStyle.Regular);
+                lbl_ChecklistEntryDateCreated.TextAlign = ContentAlignment.MiddleLeft;
+                lbl_ChecklistEntryDateCreated.Location = new Point(lbl_ChecklistEntryName.Right + 15, lbl_ChecklistEntryName.Top);
+
+                pnl_ChecklistEntry.Controls.Add(lbl_ChecklistEntryName);
+                pnl_ChecklistEntry.Controls.Add(lbl_ChecklistEntryDateCreated);
+
+                flp_ChecklistEntryContainer.Controls.Add(pnl_ChecklistEntry);
+            }
+        }
+
+        #region ChecklistItems
+        private void LoadChecklistItems()
+        {
+            CheckBox chk_NewChecklistItemName = new CheckBox();
+            chk_NewChecklistItemName.AutoSize = true;
+            chk_NewChecklistItemName.Text = "Item Name";
+            chk_NewChecklistItemName.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+            chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
+            chk_NewChecklistItemName.TextAlign = ContentAlignment.MiddleLeft;
+
+            chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
+
+            flp_ChecklistItems.Controls.Add(chk_NewChecklistItemName);
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if (checkBox.Checked)
+            {
+                flp_ChecklistItems.Controls.Remove(checkBox);
+
+                flp_CrossedChecklistItems.Controls.Add(checkBox);
+                checkBox.Font = new Font("Comic Sans MS", 14, FontStyle.Strikeout);
+            }
+            else
+            {
+                flp_CrossedChecklistItems.Controls.Remove(checkBox);
+
+                flp_ChecklistItems.Controls.Add(checkBox);
+                checkBox.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
+            }
+        }
+
+        private void pb_AddItem_Click(object sender, EventArgs e)
+        {
+            txt_NewChecklistItemName = new TextBox();
+            txt_NewChecklistItemName.Text = "Enter Item name...";
+            txt_NewChecklistItemName.Size = new Size(250, 37);
+            txt_NewChecklistItemName.Location = new Point(0, 0);
+
+            chk_NewChecklistItemName = new CheckBox();
+            chk_NewChecklistItemName.Text = "New Item";
+            chk_NewChecklistItemName.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+            chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
+            chk_NewChecklistItemName.TextAlign = ContentAlignment.MiddleLeft;
+            chk_NewChecklistItemName.Size = new Size(250, 37);
+            chk_NewChecklistItemName.Location = new Point(0, 0);
+
+            flp_ChecklistItems.Controls.Add(txt_NewChecklistItemName);
+
+            txt_NewChecklistItemName.Focus();
+            txt_NewChecklistItemName.KeyDown += new KeyEventHandler(txt_NewChecklistItemName_KeyDown);
+        }
+
+        private void txt_NewChecklistItemName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string newName = txt_NewChecklistItemName.Text;
+                txt_NewChecklistItemName.Dispose();
+                if (!string.IsNullOrEmpty(newName))
+                {
+                    chk_NewChecklistItemName.Text = newName;
+                    flp_ChecklistItems.Controls.Add(chk_NewChecklistItemName);
+                    chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
+                }
+                else
+                {
+                    flp_ChecklistItems.Controls.Remove(txt_NewChecklistItemName);
+                }
+            }
+        }
+        #endregion
+
+        #region SwitchingTabPages
         private void pb_Dashboard_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 0;
             pb_UserPicture.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-            pb_Checklist.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Settings.BackColor = ColorTranslator.FromHtml("#334E4C");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#334E4C).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
@@ -332,9 +446,6 @@ namespace PantrylyDesktopApp
         {
             tc_UserDashboard.SelectedIndex = 1;
             pb_UserPicture.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Checklist.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-            pb_Settings.BackColor = ColorTranslator.FromHtml("#334E4C");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#334E4C).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
@@ -344,9 +455,6 @@ namespace PantrylyDesktopApp
         {
             tc_UserDashboard.SelectedIndex = 2;
             pb_UserPicture.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Checklist.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Settings.BackColor = ColorTranslator.FromHtml("#D9D9D9");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#334E4C).png";
@@ -356,13 +464,10 @@ namespace PantrylyDesktopApp
         {
             tc_UserDashboard.SelectedIndex = 3;
             pb_UserPicture.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-            pb_Dashboard.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Checklist.BackColor = ColorTranslator.FromHtml("#334E4C");
-            pb_Settings.BackColor = ColorTranslator.FromHtml("#334E4C");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
         }
-
+        #endregion
     }
 }
