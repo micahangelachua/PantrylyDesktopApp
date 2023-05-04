@@ -19,15 +19,6 @@ namespace PantrylyDesktopApp
         SQLiteCommand sql_cmd;
         SQLiteDataAdapter DB;
 
-        DataSet UserPantriesDS = new DataSet();
-        DataTable UserPantriesDT = new DataTable();
-
-        DataSet UserChecklistDS = new DataSet();
-        DataTable UserChecklistDT = new DataTable();
-
-        DataSet PantrylyUsersDS = new DataSet();
-        DataTable PantrylyUsersDT = new DataTable();
-
         private void setConnection()
         {
             sql_con = new SQLiteConnection("Data Source = ../../Resources/PantrylyDB.db; Version = 3; New = False; Compress = True;");
@@ -63,89 +54,28 @@ namespace PantrylyDesktopApp
         private CheckBox chk_NewChecklistItemName;
         private TextBox txt_NewChecklistItemName;
         private CheckBox chk_CrossedChecklistItemName;
-        
 
-        private string currentUser_Id, currentUser_Fname, currentUser_Email; //i don't know is this a proper way of doing this.
+        private User currentUser;
+        private List<Checklist> userChecklists = new List<Checklist>();
+        private List<Pantry> userPantries = new List<Pantry>();
+       
+
         #endregion
-
-        #region ONLOAD_METHODS
-        public List<Pantry> GetPantries(string userEmail)
-        {
-            setConnection();
-            sql_con.Open();
-            sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM Pantry WHERE pantry_CreatorID = '" + userEmail + "'";
-            DB = new SQLiteDataAdapter(CommandText, sql_con);
-
-            UserPantriesDS.Reset();
-            DB.Fill(UserPantriesDS);
-            UserPantriesDT = UserPantriesDS.Tables[0];
-
-            List<Pantry> pantries = new List<Pantry>();
-
-            for (int i = 0; i < UserPantriesDT.Rows.Count; i++)
-            {
-                Pantry pantry = new Pantry(userEmail, UserPantriesDT.Rows[i][1].ToString());
-                pantries.Add(pantry);
-            }
-
-            return pantries;
-        }
-
-        public List<Checklist> GetChecklists(string userEmail)
-        {
-            setConnection();
-            sql_con.Open();
-            sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM Checklist WHERE checklist_CreatorID = '" + userEmail + "'";
-            DB = new SQLiteDataAdapter(CommandText, sql_con);
-
-            UserChecklistDS.Reset();
-            DB.Fill(UserChecklistDS);
-            UserChecklistDT = UserChecklistDS.Tables[0];
-
-            List<Checklist> checklists = new List<Checklist>();
-
-            for (int i = 0; i < UserChecklistDT.Rows.Count; i++)
-            {
-                Checklist checklist = new Checklist(UserChecklistDT.Rows[i][1].ToString(), userEmail);
-                checklists.Add(checklist);
-            }
-
-            return checklists;
-        }
-        #endregion
-
-        private void GetCurrentUser(string id) //just in case i will need this set of codes..
-        {
-            setConnection();
-            sql_con.Open();
-            sql_cmd = sql_con.CreateCommand();
-            string CommandText = "Select * from Users where user_ID = '" + id + "'";
-            DB = new SQLiteDataAdapter(CommandText, sql_con);
-
-            PantrylyUsersDS.Reset();
-            DB.Fill(PantrylyUsersDS);
-            PantrylyUsersDT = PantrylyUsersDS.Tables[0];
-
-            currentUser_Id = PantrylyUsersDT.Rows[0][0].ToString();
-            currentUser_Fname = PantrylyUsersDT.Rows[0][1].ToString();
-            currentUser_Email = PantrylyUsersDT.Rows[0][4].ToString();
-        }
-
-        
         //Constructor
         public UserDashboard(string id)
         {
-            GetCurrentUser(id); //method that assigns private variables for current user
-            
+            currentUser = new User(id); //method that assigns private variables for current user
+
+            userChecklists = currentUser.GetUserChecklists(currentUser.Email); //Get user's checklists
+            userPantries = currentUser.GetUserPantries(currentUser.Email); // Get user's pantries
+
             InitializeComponent();
             FormUtils.MakeWindowFormRounded(this);
             FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
             FormUtils.AddCloseButton(pb_DashboardClose);
             FormUtils.AddMinimizeButton(pb_DashboardMinimize);
 
-            lbl_UserFname.Text = currentUser_Fname;
+            lbl_UserFname.Text = currentUser.FirstName;
         }
 
         private void UserDashboard_Load(object sender, EventArgs e)
@@ -156,6 +86,7 @@ namespace PantrylyDesktopApp
             LoadChecklistItems();
         }
 
+        #region Pantry
         private void pb_AddNewPantry_Click(object sender, EventArgs e)
         {
             pnl_newPantry = new Panel();
@@ -199,9 +130,7 @@ namespace PantrylyDesktopApp
         {
             //flp_PantriesContainer.Controls.Clear();
 
-            List<Pantry> pantries = GetPantries(currentUser_Email);
-
-            foreach (Pantry pantry in pantries)
+            foreach (Pantry pantry in userPantries)
             {
                 pnl_Pantry = new Panel();
                 pnl_Pantry.Size = new Size(250, 200);
@@ -233,7 +162,7 @@ namespace PantrylyDesktopApp
                     lbl_newPantryName.Text = newName;
                     pnl_newPantry.Controls.Add(lbl_newPantryName);
 
-                    Pantry newPantry = new Pantry(currentUser_Email, newName);
+                    Pantry newPantry = new Pantry(currentUser.Email, newName);
                     newPantry.CreateNewPantry();
                 }
                 else
@@ -242,13 +171,13 @@ namespace PantrylyDesktopApp
                 }
             }
         }
+        #endregion
 
         #region Checklists
+        //----------------- Checklist Dashboard : Start -------------------------
         private void LoadChecklist()
         {
-            List<Checklist> checklists = GetChecklists(currentUser_Email);
-
-            foreach (Checklist checklist in checklists)
+            foreach (Checklist checklist in userChecklists)
             {
                 pnl_Checklist = new Panel();
                 pnl_Checklist.Size = new Size(250, 200);
@@ -312,7 +241,7 @@ namespace PantrylyDesktopApp
                     lbl_newChecklistName.Text = newName;
                     pnl_newChecklist.Controls.Add(lbl_newChecklistName);
 
-                    Checklist newEntry = new Checklist(newName, currentUser_Email);
+                    Checklist newEntry = new Checklist(newName, currentUser.Email);
                     newEntry.CreateNewChecklist();
                 }
                 else
@@ -321,13 +250,15 @@ namespace PantrylyDesktopApp
                 }
             }
         }
-        #endregion
 
-        private void LoadChecklistsEntries() // Dunno how to name this
+        //----------------- Checklist Dashboard : End -------------------------
+        //
+        //
+        //
+        //----------------- Checklist TabPage : Start-------------------------
+        private void LoadChecklistsEntries() 
         {
-            List<Checklist> checklists = GetChecklists(currentUser_Email);
-
-            foreach (Checklist checklist in checklists)
+            foreach (Checklist checklist in userChecklists)
             {
                 pnl_ChecklistEntry = new Panel();
                 pnl_ChecklistEntry.Size = new Size(230, 40);
@@ -343,7 +274,7 @@ namespace PantrylyDesktopApp
                 lbl_ChecklistEntryName.Location = new Point(0, 0);
 
                 lbl_ChecklistEntryDateCreated = new Label();
-                lbl_ChecklistEntryDateCreated.Text = "Date"; // Should contain the date
+                lbl_ChecklistEntryDateCreated.Text = checklist.Checklist_DateCreated;
                 lbl_ChecklistEntryDateCreated.Size = new Size(115, 25);
                 lbl_ChecklistEntryDateCreated.BackColor = ColorTranslator.FromHtml("#D9D9D9");
                 lbl_ChecklistEntryDateCreated.Font = new Font("Ink Free", 12, FontStyle.Regular);
@@ -357,9 +288,12 @@ namespace PantrylyDesktopApp
             }
         }
 
+        #endregion
+
         #region ChecklistItems
         private void LoadChecklistItems()
         {
+
             CheckBox chk_NewChecklistItemName = new CheckBox();
             chk_NewChecklistItemName.AutoSize = true;
             chk_NewChecklistItemName.Text = "Item Name";
@@ -407,7 +341,7 @@ namespace PantrylyDesktopApp
             chk_NewChecklistItemName.Location = new Point(0, 0);
 
             flp_ChecklistItems.Controls.Add(txt_NewChecklistItemName);
-
+            
             txt_NewChecklistItemName.Focus();
             txt_NewChecklistItemName.KeyDown += new KeyEventHandler(txt_NewChecklistItemName_KeyDown);
         }

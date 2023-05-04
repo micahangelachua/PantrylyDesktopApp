@@ -34,6 +34,7 @@ namespace PantrylyDesktopApp
             sql_con.Close();
         }
         public Guid Pantry_Id { get; set; }
+        public string PantryID { get; set; }
         public string Pantry_Name { get; set; }
         public List<PantryItems> PantryItems { get; set; }
         public string Pantry_CreatorEmail { get; set; }
@@ -41,8 +42,26 @@ namespace PantrylyDesktopApp
         public Pantry(string ownerEmail, string name)
         {
             Pantry_Id = Guid.NewGuid();
+            PantryID = Pantry_Id.ToString();
             Pantry_Name = name;
             Pantry_CreatorEmail = ownerEmail;
+        }
+
+        public Pantry(string id)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM Pantry WHERE pantry_ID = '" + id + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            PantryDS.Reset();
+            DB.Fill(PantryDS);
+            PantryDT = PantryDS.Tables[0];
+
+            PantryID = id;
+            Pantry_Name = PantryDT.Rows[0][1].ToString();
+            Pantry_CreatorEmail = PantryDT.Rows[0][2].ToString();
         }
 
         public void CreateNewPantry()
@@ -53,30 +72,6 @@ namespace PantrylyDesktopApp
             executeQuery(txtQuery);
             MessageBox.Show("Added a new pantry.");
         }
-
-        /**
-        public List<Pantry> GetPantries(string userEmail) //just in case i will need this set of codes..
-        {
-            setConnection();
-            sql_con.Open();
-            sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM Pantry WHERE pantry_CreatorID = '" + userEmail + "'";
-            DB = new SQLiteDataAdapter(CommandText, sql_con);
-
-            PantryDS.Reset();
-            DB.Fill(PantryDS);
-            PantryDT = PantryDS.Tables[0];
-
-            List<Pantry> pantries = new List<Pantry>();
-
-            for (int i = 0; i < PantryDT.Rows.Count; i++)
-            {
-                Pantry pantry = new Pantry(userEmail, PantryDT.Rows[i][1].ToString());
-                pantries.Add(pantry);
-            }
-
-            return pantries;
-        }**/
 
     }
 }
