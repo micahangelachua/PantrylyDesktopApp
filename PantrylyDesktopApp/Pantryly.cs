@@ -20,10 +20,8 @@ namespace PantrylyDesktopApp
             InitializeComponent();
             FormUtils.MakeWindowFormRounded(this);
             FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
-            FormUtils.MakeButtonRounded(btn_LoginClose);
-            FormUtils.AddCloseButton(btn_LoginClose);
-            FormUtils.MakeButtonRounded(btn_LoginMinimize);
-            FormUtils.AddMinimizeButton(btn_LoginMinimize);
+            FormUtils.AddCloseButton(pb_LoginClose);
+            FormUtils.AddMinimizeButton(pb_LoginMinimize);
             FormUtils.MakeButtonRounded(btn_Signup);
             FormUtils.MakeButtonRounded(btn_Login);
         }

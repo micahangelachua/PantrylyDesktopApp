@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pantryly));
             this.lbl_LoginLogo = new System.Windows.Forms.Label();
             this.txt_Email = new System.Windows.Forms.TextBox();
             this.txt_Password = new System.Windows.Forms.TextBox();
@@ -36,9 +37,11 @@
             this.lbl_LoginPassword = new System.Windows.Forms.Label();
             this.btn_Signup = new System.Windows.Forms.Button();
             this.pnl_WinTitleAndControls = new System.Windows.Forms.Panel();
-            this.btn_LoginMinimize = new System.Windows.Forms.Button();
-            this.btn_LoginClose = new System.Windows.Forms.Button();
+            this.pb_LoginMinimize = new System.Windows.Forms.PictureBox();
+            this.pb_LoginClose = new System.Windows.Forms.PictureBox();
             this.pnl_WinTitleAndControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_LoginMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_LoginClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_LoginLogo
@@ -74,6 +77,7 @@
             // btn_Login
             // 
             this.btn_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.btn_Login.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Login.FlatAppearance.BorderSize = 0;
             this.btn_Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Login.Font = new System.Drawing.Font("Comic Sans MS", 12F);
@@ -111,6 +115,7 @@
             // btn_Signup
             // 
             this.btn_Signup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(116)))));
+            this.btn_Signup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Signup.FlatAppearance.BorderSize = 0;
             this.btn_Signup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Signup.Font = new System.Drawing.Font("Comic Sans MS", 12F);
@@ -126,35 +131,35 @@
             // 
             this.pnl_WinTitleAndControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
             this.pnl_WinTitleAndControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_WinTitleAndControls.Controls.Add(this.btn_LoginMinimize);
-            this.pnl_WinTitleAndControls.Controls.Add(this.btn_LoginClose);
+            this.pnl_WinTitleAndControls.Controls.Add(this.pb_LoginMinimize);
             this.pnl_WinTitleAndControls.Controls.Add(this.btn_Signup);
+            this.pnl_WinTitleAndControls.Controls.Add(this.pb_LoginClose);
             this.pnl_WinTitleAndControls.Location = new System.Drawing.Point(0, 0);
             this.pnl_WinTitleAndControls.Name = "pnl_WinTitleAndControls";
             this.pnl_WinTitleAndControls.Size = new System.Drawing.Size(733, 50);
             this.pnl_WinTitleAndControls.TabIndex = 9;
             // 
-            // btn_LoginMinimize
+            // pb_LoginMinimize
             // 
-            this.btn_LoginMinimize.BackColor = System.Drawing.Color.Lime;
-            this.btn_LoginMinimize.FlatAppearance.BorderSize = 0;
-            this.btn_LoginMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_LoginMinimize.Location = new System.Drawing.Point(38, 12);
-            this.btn_LoginMinimize.Name = "btn_LoginMinimize";
-            this.btn_LoginMinimize.Size = new System.Drawing.Size(20, 20);
-            this.btn_LoginMinimize.TabIndex = 12;
-            this.btn_LoginMinimize.UseVisualStyleBackColor = false;
+            this.pb_LoginMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_LoginMinimize.Image = ((System.Drawing.Image)(resources.GetObject("pb_LoginMinimize.Image")));
+            this.pb_LoginMinimize.Location = new System.Drawing.Point(42, 12);
+            this.pb_LoginMinimize.Name = "pb_LoginMinimize";
+            this.pb_LoginMinimize.Size = new System.Drawing.Size(25, 25);
+            this.pb_LoginMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_LoginMinimize.TabIndex = 17;
+            this.pb_LoginMinimize.TabStop = false;
             // 
-            // btn_LoginClose
+            // pb_LoginClose
             // 
-            this.btn_LoginClose.BackColor = System.Drawing.Color.Red;
-            this.btn_LoginClose.FlatAppearance.BorderSize = 0;
-            this.btn_LoginClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_LoginClose.Location = new System.Drawing.Point(12, 12);
-            this.btn_LoginClose.Name = "btn_LoginClose";
-            this.btn_LoginClose.Size = new System.Drawing.Size(20, 20);
-            this.btn_LoginClose.TabIndex = 11;
-            this.btn_LoginClose.UseVisualStyleBackColor = false;
+            this.pb_LoginClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_LoginClose.Image = ((System.Drawing.Image)(resources.GetObject("pb_LoginClose.Image")));
+            this.pb_LoginClose.Location = new System.Drawing.Point(11, 12);
+            this.pb_LoginClose.Name = "pb_LoginClose";
+            this.pb_LoginClose.Size = new System.Drawing.Size(25, 25);
+            this.pb_LoginClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_LoginClose.TabIndex = 16;
+            this.pb_LoginClose.TabStop = false;
             // 
             // Pantryly
             // 
@@ -174,6 +179,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pantryly: Log In";
             this.pnl_WinTitleAndControls.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_LoginMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_LoginClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,8 +196,8 @@
         private System.Windows.Forms.Label lbl_LoginPassword;
         private System.Windows.Forms.Button btn_Signup;
         private System.Windows.Forms.Panel pnl_WinTitleAndControls;
-        private System.Windows.Forms.Button btn_LoginMinimize;
-        private System.Windows.Forms.Button btn_LoginClose;
+        private System.Windows.Forms.PictureBox pb_LoginMinimize;
+        private System.Windows.Forms.PictureBox pb_LoginClose;
     }
 }
 
