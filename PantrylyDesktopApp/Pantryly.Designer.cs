@@ -48,7 +48,7 @@
             // 
             this.lbl_LoginLogo.AutoSize = true;
             this.lbl_LoginLogo.Font = new System.Drawing.Font("Pacifico", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LoginLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
+            this.lbl_LoginLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(108)))), ((int)(((byte)(78)))));
             this.lbl_LoginLogo.Location = new System.Drawing.Point(218, 74);
             this.lbl_LoginLogo.Name = "lbl_LoginLogo";
             this.lbl_LoginLogo.Size = new System.Drawing.Size(296, 124);
@@ -58,21 +58,21 @@
             // txt_Email
             // 
             this.txt_Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.txt_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txt_Email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Email.Location = new System.Drawing.Point(184, 254);
             this.txt_Email.Name = "txt_Email";
-            this.txt_Email.Size = new System.Drawing.Size(369, 26);
-            this.txt_Email.TabIndex = 3;
+            this.txt_Email.Size = new System.Drawing.Size(369, 29);
+            this.txt_Email.TabIndex = 0;
             // 
             // txt_Password
             // 
             this.txt_Password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.txt_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txt_Password.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Password.Location = new System.Drawing.Point(184, 330);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PasswordChar = '*';
-            this.txt_Password.Size = new System.Drawing.Size(369, 26);
-            this.txt_Password.TabIndex = 4;
+            this.txt_Password.Size = new System.Drawing.Size(369, 29);
+            this.txt_Password.TabIndex = 1;
             // 
             // btn_Login
             // 
@@ -85,7 +85,7 @@
             this.btn_Login.Location = new System.Drawing.Point(292, 371);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(149, 34);
-            this.btn_Login.TabIndex = 5;
+            this.btn_Login.TabIndex = 2;
             this.btn_Login.Text = "LOG IN";
             this.btn_Login.UseVisualStyleBackColor = false;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
@@ -93,22 +93,22 @@
             // lbl_LoginEmail
             // 
             this.lbl_LoginEmail.AutoSize = true;
-            this.lbl_LoginEmail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LoginEmail.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LoginEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
-            this.lbl_LoginEmail.Location = new System.Drawing.Point(180, 229);
+            this.lbl_LoginEmail.Location = new System.Drawing.Point(180, 227);
             this.lbl_LoginEmail.Name = "lbl_LoginEmail";
-            this.lbl_LoginEmail.Size = new System.Drawing.Size(62, 22);
+            this.lbl_LoginEmail.Size = new System.Drawing.Size(62, 24);
             this.lbl_LoginEmail.TabIndex = 6;
             this.lbl_LoginEmail.Text = "Email:";
             // 
             // lbl_LoginPassword
             // 
             this.lbl_LoginPassword.AutoSize = true;
-            this.lbl_LoginPassword.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LoginPassword.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LoginPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
-            this.lbl_LoginPassword.Location = new System.Drawing.Point(180, 305);
+            this.lbl_LoginPassword.Location = new System.Drawing.Point(180, 303);
             this.lbl_LoginPassword.Name = "lbl_LoginPassword";
-            this.lbl_LoginPassword.Size = new System.Drawing.Size(99, 22);
+            this.lbl_LoginPassword.Size = new System.Drawing.Size(93, 24);
             this.lbl_LoginPassword.TabIndex = 7;
             this.lbl_LoginPassword.Text = "Password:";
             // 
