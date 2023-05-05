@@ -218,8 +218,8 @@ namespace PantrylyDesktopApp
 
                 foreach (Panel panel in flp_ChecklistsContainer.Controls.OfType<Panel>())
                 {
-                    panel.Click += Panel_Click;
                     panel.Click += pb_Checklist_Click;
+                    panel.Click += Panel_Click;
                 }
             }
         }
@@ -245,7 +245,16 @@ namespace PantrylyDesktopApp
                     
                     string checklistId = ((TextBox)control).Text;
                     selectedChecklist = new Checklist(checklistId);
-                    
+
+                    for (int i = flp_ChecklistItems.Controls.Count - 1; i >= 0; i--)
+                    {
+                        Control cntrl = flp_ChecklistItems.Controls[i];
+                        if (cntrl is CheckBox)
+                        {
+                            flp_ChecklistItems.Controls.RemoveAt(i);
+                        }
+                    }
+
                     selectedChecklist_ChecklistItems = selectedChecklist.GetChecklistItems(checklistId);
 
                     ExpandSelectedChecklist(selectedChecklist);
