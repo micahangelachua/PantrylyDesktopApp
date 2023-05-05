@@ -15,8 +15,8 @@ namespace PantrylyDesktopApp
         SQLiteCommand sql_cmd;
         SQLiteDataAdapter DB;
 
-        DataSet ChecklistItemDS = new DataSet();
-        DataTable ChecklistItemDT = new DataTable();
+        DataSet ChecklistItemsDS = new DataSet();
+        DataTable ChecklistItemsDT = new DataTable();
 
         private void setConnection()
         {
@@ -35,16 +35,36 @@ namespace PantrylyDesktopApp
         #endregion
 
         public Guid ChecklistItem_ID { get; set; }
+        public string ChecklistItemID { get; set; }
         public string Description { get; set; }
         public string ChecklistItem_ChecklistID { get; set; }
         public int ChecklistItem_isDone { get; set; }
 
-        public ChecklistItems(string description, string checklist)
+        public ChecklistItems(string description, string checklistID)
         {
             ChecklistItem_ID = Guid.NewGuid();
+            ChecklistItemID = ChecklistItem_ID.ToString();
             Description = description;
-            ChecklistItem_ChecklistID = checklist;
+            ChecklistItem_ChecklistID = checklistID;
             ChecklistItem_isDone = 0;
+        }
+
+        public ChecklistItems(string id)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM ChecklistItems WHERE checklistItems_ID = '" + id + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            ChecklistItemsDS.Reset();
+            DB.Fill(ChecklistItemsDS);
+            ChecklistItemsDT = ChecklistItemsDS.Tables[0];
+
+            ChecklistItemID = ChecklistItemsDT.Rows[0][0].ToString();
+            Description = ChecklistItemsDT.Rows[0][1].ToString();
+            ChecklistItem_ChecklistID = ChecklistItemsDT.Rows[0][2].ToString();
+            ChecklistItem_isDone = int.Parse(ChecklistItemsDT.Rows[0][3].ToString());
         }
 
         public void AddItemToChecklist()
@@ -53,6 +73,11 @@ namespace PantrylyDesktopApp
                             VALUES ('" + ChecklistItem_ID + "', '" + Description + "','" + ChecklistItem_ChecklistID + "','" + ChecklistItem_isDone + "')";
 
             executeQuery(txtQuery);
+        }
+
+        public void UpdateChecklistItemDescription (string newDescription, string id)
+        {
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PantrylyDesktopApp
 {
@@ -17,6 +18,9 @@ namespace PantrylyDesktopApp
 
         DataSet ChecklistDS = new DataSet();
         DataTable ChecklistDT = new DataTable();
+
+        DataSet ChecklistItemsDS = new DataSet();
+        DataTable ChecklistItemsDT = new DataTable();
 
         private void setConnection()
         {
@@ -36,7 +40,7 @@ namespace PantrylyDesktopApp
         public Guid Checklist_Id { get; set; }
         public string ChecklistID { get; set; }
         public string Checklist_Name { get; set; }
-        public List<PantryItems> ChecklistItems { get; set; }
+        public List<ChecklistItems> ChecklistItems { get; set; }
         public string Checklist_CreatorEmail { get; set; }
         public string Checklist_DateCreated { get; set; }
         
@@ -93,6 +97,36 @@ namespace PantrylyDesktopApp
 
             executeQuery(txtQuery);
             MessageBox.Show("Added a new checklist.");
+        }
+
+        public void UpdateTitleChecklist(string newTitle, string id)
+        {
+            string txtQuery = "UPDATE Checklist set checklist_Name = '"+newTitle+ "' WHERE checklist_ID = '"+id+"' ";
+            
+            executeQuery(txtQuery);
+        }
+
+        public List<ChecklistItems> GetChecklistItems(string checklistId)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM ChecklistItems WHERE checklistItems_ChecklistID = '" + checklistId + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            ChecklistItemsDS.Reset();
+            DB.Fill(ChecklistItemsDS);
+            ChecklistItemsDT = ChecklistItemsDS.Tables[0];
+
+            List<ChecklistItems> checklistItems = new List<ChecklistItems>();
+
+            for (int i = 0; i < ChecklistItemsDT.Rows.Count; i++)
+            {
+                ChecklistItems checklistItem = new ChecklistItems(ChecklistItemsDT.Rows[i][0].ToString());
+                checklistItems.Add(checklistItem);
+            }
+
+            return checklistItems;
         }
     }
 }
