@@ -207,12 +207,12 @@ namespace PantrylyDesktopApp
                 foreach (Panel panel in flp_ChecklistsContainer.Controls.OfType<Panel>())
                 {
                     panel.Click += pb_Checklist_Click;
-                    panel.Click += Panel_Click;
+                    panel.Click += pnl_Checklist_Click;
                 }
             }
         }
 
-        private void Panel_Click(object sender, EventArgs e)
+        private void pnl_Checklist_Click(object sender, EventArgs e)
         {
             Panel clickedPanel = (Panel)sender;
             string checklistName = null;
