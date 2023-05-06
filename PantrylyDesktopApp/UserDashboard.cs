@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -45,11 +46,9 @@ namespace PantrylyDesktopApp
 
         private Panel pnl_Pantry;
         private Label lbl_PantryName;
-        private TextBox txt_PantryId;
 
         private Panel pnl_Checklist;
         private Label lbl_ChecklistName;
-        private TextBox txt_ChecklistId;
 
         private Panel pnl_ChecklistEntry;
         private Label lbl_ChecklistEntryName;
@@ -58,8 +57,6 @@ namespace PantrylyDesktopApp
         private CheckBox chk_NewChecklistItemName;
         private TextBox txt_NewChecklistItemName;
         private CheckBox chk_CrossedChecklistItemName;
-
-        private Label lbl_ItemId;//will use to get each checklist item....
 
         private User currentUser;
         private List<Checklist> userChecklists = new List<Checklist>();
@@ -196,21 +193,12 @@ namespace PantrylyDesktopApp
 
                 lbl_ChecklistName = new Label();
                 lbl_ChecklistName.Text = checklist.Checklist_Name;
-
+                lbl_ChecklistName.Tag = checklist.ChecklistID;
                 
-                txt_ChecklistId = new TextBox();
-                txt_ChecklistId.Size = new Size(250, 37);
-                txt_ChecklistId.Enabled = false;
-                txt_ChecklistId.Text = checklist.ChecklistID;
-                txt_ChecklistId.Hide();
-                
-
                 lbl_ChecklistName.Size = new Size(250, 37);
                 lbl_ChecklistName.BackColor = ColorTranslator.FromHtml("#31A78F");
                 lbl_ChecklistName.Font = new Font("Ink Free", 16, FontStyle.Regular);
                 lbl_ChecklistName.TextAlign = ContentAlignment.MiddleCenter;
-
-                pnl_Checklist.Controls.Add(txt_ChecklistId);
 
                 pnl_Checklist.Controls.Add(lbl_ChecklistName);
                 
@@ -233,23 +221,18 @@ namespace PantrylyDesktopApp
                 if (control is Label)
                 {
                     checklistName = ((Label)control).Text;
-                    break;
-                }
-            }
-
-            foreach (Control control in clickedPanel.Controls)
-            {
-                if (control is TextBox)
-                {   
-                    //selectedChecklist_ChecklistItems.Clear();
-                    
-                    string checklistId = ((TextBox)control).Text;
+                    string checklistId = ((Label)control).Tag.ToString();
                     selectedChecklist = new Checklist(checklistId);
-
+                    
                     for (int i = flp_ChecklistItems.Controls.Count - 1; i >= 0; i--)
                     {
                         Control cntrl = flp_ChecklistItems.Controls[i];
                         if (cntrl is CheckBox)
+                        {
+                            flp_ChecklistItems.Controls.RemoveAt(i);
+                        }
+
+                        if (cntrl is Label)
                         {
                             flp_ChecklistItems.Controls.RemoveAt(i);
                         }
@@ -258,6 +241,7 @@ namespace PantrylyDesktopApp
                     selectedChecklist_ChecklistItems = selectedChecklist.GetChecklistItems(checklistId);
 
                     ExpandSelectedChecklist(selectedChecklist);
+
                     break;
                 }
             }
@@ -401,21 +385,34 @@ namespace PantrylyDesktopApp
                 chk_NewChecklistItemName.AutoSize = true;
                 chk_NewChecklistItemName.Text = item.Description;
                 chk_NewChecklistItemName.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-                chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
+                
                 chk_NewChecklistItemName.TextAlign = ContentAlignment.MiddleLeft;
-
+                chk_NewChecklistItemName.Tag = item.ChecklistItemID;
 
                 chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
+                
 
-                flp_ChecklistItems.Controls.Add(chk_NewChecklistItemName);
+                if (item.ChecklistItem_isDone == 0) 
+                {
+                    chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
+                    flp_ChecklistItems.Controls.Add(chk_NewChecklistItemName);
+                } 
+                else 
+                {
+                    chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Strikeout);
+                    flp_CrossedChecklistItems.Controls.Add(chk_NewChecklistItemName);
+                }
+                
             }
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
+            ChecklistItems item = new ChecklistItems(checkBox.Tag.ToString());
             if (checkBox.Checked)
             {
+                item.UpdateChecklistIsDone(1);
                 flp_ChecklistItems.Controls.Remove(checkBox);
 
                 flp_CrossedChecklistItems.Controls.Add(checkBox);
@@ -423,6 +420,7 @@ namespace PantrylyDesktopApp
             }
             else
             {
+                item.UpdateChecklistIsDone(0);
                 flp_CrossedChecklistItems.Controls.Remove(checkBox);
 
                 flp_ChecklistItems.Controls.Add(checkBox);
