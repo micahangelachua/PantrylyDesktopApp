@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace PantrylyDesktopApp
 {
@@ -49,7 +50,7 @@ namespace PantrylyDesktopApp
             ChecklistItem_isDone = 0;
         }
 
-        public ChecklistItems(string id)
+        public ChecklistItems(string id) //constructor to get and set object properties
         {
             setConnection();
             sql_con.Open();
@@ -67,6 +68,7 @@ namespace PantrylyDesktopApp
             ChecklistItem_isDone = int.Parse(ChecklistItemsDT.Rows[0][3].ToString());
         }
 
+        // Create:
         public void AddItemToChecklist()
         {
             string txtQuery = @"INSERT INTO ChecklistItems (checklistItems_ID, checklistItems_Description, checklistItems_ChecklistID, checklistItems_isDone)
@@ -75,9 +77,26 @@ namespace PantrylyDesktopApp
             executeQuery(txtQuery);
         }
 
-        public void UpdateChecklistItemDescription (string newDescription, string id)
+        // Update:
+        public void UpdateChecklistItemDescription (string newDescription)
         {
+            string txtQuery = @"UPDATE ChecklistItems set checklistItems_Description = '" + newDescription + "' WHERE checklistItems_ID = '" + ChecklistItemID + "'";
 
+            executeQuery(txtQuery);
+        }
+
+        public void UpdateChecklistIsDone(int isDone)
+        {
+            string txtQuery = @"UPDATE ChecklistItems set checklistItems_isDone = '" + isDone + "' WHERE checklistItems_ID = '" + ChecklistItemID + "'";
+            
+            executeQuery(txtQuery);
+        }
+
+        // Delete:
+        public void DeleteChecklistItem()
+        {
+            string txtQuery = "DELETE FROM ChecklistItems WHERE checklistItems_ID = '" + ChecklistItemID + "'";
+            executeQuery(txtQuery);
         }
     }
 }
