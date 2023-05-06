@@ -286,7 +286,7 @@ namespace PantrylyDesktopApp
                     }
                 }
 
-                checklistEntryPanel.BackColor = ColorTranslator.FromHtml("#FFFF00");
+                checklistEntryPanel.BackColor = Color.FromArgb(128, 255, 224, 116);
                 checklistEntryPanel.Refresh();
             }
         }
