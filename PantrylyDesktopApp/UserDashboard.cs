@@ -355,7 +355,7 @@ namespace PantrylyDesktopApp
             foreach (Checklist checklist in userChecklists)
             {
                 pnl_ChecklistEntry = new Panel();
-                pnl_ChecklistEntry.Size = new Size(230, 40);
+                pnl_ChecklistEntry.Size = new Size(244, 30);
                 pnl_ChecklistEntry.BorderStyle = BorderStyle.None;
                 pnl_ChecklistEntry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
 
@@ -372,7 +372,7 @@ namespace PantrylyDesktopApp
                 lbl_ChecklistEntryDateCreated.Size = new Size(115, 25);
                 lbl_ChecklistEntryDateCreated.BackColor = Color.Transparent;
                 lbl_ChecklistEntryDateCreated.Font = new Font("Ink Free", 12, FontStyle.Regular);
-                lbl_ChecklistEntryDateCreated.TextAlign = ContentAlignment.MiddleLeft;
+                lbl_ChecklistEntryDateCreated.TextAlign = ContentAlignment.MiddleRight;
                 lbl_ChecklistEntryDateCreated.Location = new Point(lbl_ChecklistEntryName.Right + 15, lbl_ChecklistEntryName.Top);
 
                 pnl_ChecklistEntry.Controls.Add(lbl_ChecklistEntryName);
