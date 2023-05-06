@@ -238,6 +238,20 @@ namespace PantrylyDesktopApp
                         }
                     }
 
+                    for (int i = flp_CrossedChecklistItems.Controls.Count - 1; i >= 0; i--)
+                    {
+                        Control cntrl = flp_CrossedChecklistItems.Controls[i];
+                        if (cntrl is CheckBox)
+                        {
+                            flp_CrossedChecklistItems.Controls.RemoveAt(i);
+                        }
+
+                        if (cntrl is Label)
+                        {
+                            flp_CrossedChecklistItems.Controls.RemoveAt(i);
+                        }
+                    }
+
                     selectedChecklist_ChecklistItems = selectedChecklist.GetChecklistItems(checklistId);
 
                     ExpandSelectedChecklist(selectedChecklist);
