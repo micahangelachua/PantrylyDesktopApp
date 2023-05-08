@@ -127,7 +127,6 @@ namespace PantrylyDesktopApp
                  */
                 txt_newPantryName.KeyDown += new KeyEventHandler(txt_newPantryName_KeyDown);
                 
-                
                 //LoadPantries(); instead of adding control; it needs to reload with the new data from database
             }
         }
@@ -223,34 +222,19 @@ namespace PantrylyDesktopApp
                     checklistName = ((Label)control).Text;
                     string checklistId = ((Label)control).Tag.ToString();
                     selectedChecklist = new Checklist(checklistId);
-                    
-                    for (int i = flp_ChecklistItems.Controls.Count - 1; i >= 0; i--)
-                    {
-                        Control cntrl = flp_ChecklistItems.Controls[i];
-                        if (cntrl is CheckBox)
-                        {
-                            flp_ChecklistItems.Controls.RemoveAt(i);
-                        }
 
-                        if (cntrl is Label)
-                        {
-                            flp_ChecklistItems.Controls.RemoveAt(i);
-                        }
-                    }
-
-                    for (int i = flp_CrossedChecklistItems.Controls.Count - 1; i >= 0; i--)
-                    {
-                        Control cntrl = flp_CrossedChecklistItems.Controls[i];
-                        if (cntrl is CheckBox)
-                        {
-                            flp_CrossedChecklistItems.Controls.RemoveAt(i);
-                        }
-
-                        if (cntrl is Label)
-                        {
-                            flp_CrossedChecklistItems.Controls.RemoveAt(i);
-                        }
-                    }
+                    /*
+                     * HOW THIS WORKS:
+                     * - flp_ChecklistItems.Controls - return collection of all controls in this FlowLayoutPanel.
+                     * - OfType<CheckBox> - works as a filter, so return just the checkboxes.
+                     * - ToList() - place filtered collection in a list.
+                     * - ForEach(x => flp_ChecklistItems.Controls.Remove(x)) - pretty much a foreach loop for removing the
+                     * filtered collection, in this case it's the checkboxes.
+                     */
+                    flp_ChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
+                    flp_ChecklistItems.Controls.OfType<Label>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
+                    flp_CrossedChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_CrossedChecklistItems.Controls.Remove(x));
+                    flp_CrossedChecklistItems.Controls.OfType<Label>().ToList().ForEach(x => flp_CrossedChecklistItems.Controls.Remove(x));
 
                     selectedChecklist_ChecklistItems = selectedChecklist.GetChecklistItems(checklistId);
 
@@ -260,35 +244,24 @@ namespace PantrylyDesktopApp
                 }
             }
 
-            Panel checklistEntryPanel = null;
-            foreach (Control control in flp_ChecklistEntryContainer.Controls)
-            {
-                if (control is Panel)
-                {
-                    foreach (Control innerControl in control.Controls)
-                    {
-                        if (innerControl is Label && ((Label)innerControl).Text == checklistName)
-                        {
-                            checklistEntryPanel = (Panel)control;
-                            break;
-                        }
-                    }
-                }
-            }
-
+            /*
+             * HOW THIS WORKS:
+             * - panelsToClear - list of Panel controls.
+             * - FirstOrDefault() - return only the first Panel that matches the specified condition. In this case it's
+             * any label control that has a "Text" property whose value is the same as checklistName.
+             */
+            var panelsToClear = flp_ChecklistEntryContainer.Controls.OfType<Panel>().ToList();
+            var checklistEntryPanel = panelsToClear.FirstOrDefault(x => x.Controls.OfType<Label>().Any(label => label.Text == checklistName));
+            panelsToClear.ForEach(x => x.BackColor = ColorTranslator.FromHtml("#D9D9D9"));
             if (checklistEntryPanel != null)
             {
-                foreach (Control control in flp_ChecklistEntryContainer.Controls)
-                {
-                    if (control is Panel)
-                    {
-                        control.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-                    }
-                }
-
                 checklistEntryPanel.BackColor = Color.FromArgb(128, 255, 224, 116);
-                checklistEntryPanel.Refresh();
             }
+            /*
+             * ?.Refresh() - a null-conditional operator, bale only execute this if checklistEntryPanel
+             * is not null.
+             */
+            checklistEntryPanel?.Refresh();
         }
 
         private void pb_AddNewChecklist_Click(object sender, EventArgs e)
