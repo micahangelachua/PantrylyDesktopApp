@@ -138,7 +138,6 @@
             this.pb_UserPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_UserPicture.TabIndex = 9;
             this.pb_UserPicture.TabStop = false;
-            this.pb_UserPicture.Click += new System.EventHandler(this.pb_UserPicture_Click);
             // 
             // pb_Checklist
             // 

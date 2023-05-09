@@ -153,6 +153,7 @@ namespace PantrylyDesktopApp
                 pnl_Pantry.Controls.Add(lbl_PantryName);
 
                 flp_PantriesContainer.Controls.Add(pnl_Pantry);
+                pnl_Pantry.Click += pnl_Pantry_Click;
             }
         }
         
@@ -176,6 +177,65 @@ namespace PantrylyDesktopApp
                     flp_PantriesContainer.Controls.Remove(pnl_newPantry);
                 }
             }
+        }
+
+        /*
+         * TODO: Dynamically add panels inside a FlowLayoutPanel for pantry items.
+         * FlowLayoutPanel:
+         *   [
+         *     - Pantry Name (Label)
+         *     - Ellipsis/MoreOptions Button (PictureBox)
+         *     - Panel:
+         *         [
+         *           - Item Name (Label)
+         *           - Item Quantity (Label)
+         *           - Unit of Measurement(?) (Label)
+         *           - Add Button (PictureBox)
+         *           - Deduct Button (PictureBox)
+         *           - Ellipsis/MoreOptions Button (PictureBox)
+         *         ]
+         *   ]
+         */
+        // Event for clicking on a pantry panel in Dashboard.
+        private void pnl_Pantry_Click(object sender, EventArgs e)
+        {
+            lbl_UserOverviewPantries.Visible = false;
+            lbl_UserOverviewChecklists.Visible = false;
+            flp_PantriesContainer.Visible = false;
+            flp_ChecklistsContainer.Visible = false;
+
+            Panel pantryPanel = new Panel();
+            pantryPanel.BackColor = Color.White;
+            pantryPanel.Dock = DockStyle.Fill;
+
+            Label pantryNameLabel = new Label();
+            pantryNameLabel.Text = ((Panel)sender).Controls[0].Text; // Get the pantry name from the clicked panel
+            pantryNameLabel.Font = new Font("Arial", 20, FontStyle.Bold);
+            pantryNameLabel.AutoSize = true;
+            pantryNameLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+            Button closeButton = new Button();
+            closeButton.Text = "X";
+            closeButton.Font = new Font("Arial", 16, FontStyle.Bold);
+            closeButton.AutoSize = true;
+            closeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            closeButton.Click += new EventHandler(CloseButton_Click);
+
+            pantryPanel.Controls.Add(pantryNameLabel);
+            pantryPanel.Controls.Add(closeButton);
+
+            tp_UserOverview.Controls.Add(pantryPanel);
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            // Remove the pantry details panel from the user overview tab page
+            tp_UserOverview.Controls.RemoveAt(tp_UserOverview.Controls.Count - 1);
+
+            lbl_UserOverviewPantries.Visible = true;
+            lbl_UserOverviewChecklists.Visible = true;
+            flp_PantriesContainer.Visible = true;
+            flp_ChecklistsContainer.Visible = true;
         }
         #endregion
 
