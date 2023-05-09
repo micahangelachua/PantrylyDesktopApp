@@ -464,7 +464,6 @@ namespace PantrylyDesktopApp
         private void pb_Dashboard_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 0;
-            pb_UserPicture.BackColor = ColorTranslator.FromHtml("#334E4C");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#334E4C).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
@@ -473,7 +472,6 @@ namespace PantrylyDesktopApp
         private void pb_Checklist_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 1;
-            pb_UserPicture.BackColor = ColorTranslator.FromHtml("#334E4C");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#334E4C).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
@@ -482,19 +480,9 @@ namespace PantrylyDesktopApp
         private void pb_Settings_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 2;
-            pb_UserPicture.BackColor = ColorTranslator.FromHtml("#334E4C");
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#334E4C).png";
-        }
-
-        private void pb_UserPicture_Click(object sender, EventArgs e)
-        {
-            tc_UserDashboard.SelectedIndex = 3;
-            pb_UserPicture.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-            pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
-            pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
-            pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
         }
         #endregion
     }
