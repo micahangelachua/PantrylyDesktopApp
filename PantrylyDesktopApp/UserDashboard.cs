@@ -197,22 +197,58 @@ namespace PantrylyDesktopApp
             tc_UserDashboard.SelectedIndex = 3;
         }
 
-            Panel pantryPanel = new Panel();
-            pantryPanel.BackColor = Color.White;
-            pantryPanel.Dock = DockStyle.Fill;
+        private void pb_AddPantryItem_Click(object sender, EventArgs e)
+        {
+            pnl_NewPantryItem = new Panel();
+            pnl_NewPantryItem.Size = new Size(1068, 100);
+            pnl_NewPantryItem.BackColor = ColorTranslator.FromHtml("#FCF5EF");
+            pnl_NewPantryItem.Margin = new Padding(3, 3, 3, 25);
 
-            Label pantryNameLabel = new Label();
-            pantryNameLabel.Text = ((Panel)sender).Controls[0].Text; // Get the pantry name from the clicked panel
-            pantryNameLabel.Font = new Font("Arial", 20, FontStyle.Bold);
-            pantryNameLabel.AutoSize = true;
-            pantryNameLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            txt_NewPantryItemName = new TextBox();
+            txt_NewPantryItemName.Text = "Enter Item name...";
+            txt_NewPantryItemName.Size = new Size(250, 37);
+            txt_NewPantryItemName.Location = new Point(442, 34);
+            txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
 
-            Button closeButton = new Button();
-            closeButton.Text = "X";
-            closeButton.Font = new Font("Arial", 16, FontStyle.Bold);
-            closeButton.AutoSize = true;
-            closeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            closeButton.Click += new EventHandler(CloseButton_Click);
+            lbl_NewPantryItemName = new Label();
+            lbl_NewPantryItemName.Size = new Size(250, 37);
+            lbl_NewPantryItemName.Text = "New Item";
+            lbl_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
+            lbl_NewPantryItemName.ForeColor = ColorTranslator.FromHtml("#334E4C");
+            lbl_NewPantryItemName.Location = new Point((pnl_NewPantryItem.Width - lbl_NewPantryItemName.Width) / 2, 15);
+            lbl_NewPantryItemName.TextAlign = ContentAlignment.MiddleCenter;
+
+            lbl_PantryItemQty = new Label();
+            lbl_PantryItemQty.Size = new Size(26, 30);
+            lbl_PantryItemQty.Text = "0";
+            lbl_PantryItemQty.Location = new Point((pnl_NewPantryItem.Width - lbl_PantryItemQty.Width) / 2, 56);
+            lbl_PantryItemQty.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+            lbl_PantryItemQty.ForeColor = ColorTranslator.FromHtml("#334E4C");
+
+            pb_DecPantryItem = new PictureBox();
+            pb_DecPantryItem.ImageLocation = "../../Resources/Icons/minus(#334E4C).png";
+            pb_DecPantryItem.Size = new Size(25, 25);
+            pb_DecPantryItem.Location = new Point(480, 59);
+            pb_DecPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_DecPantryItem.Cursor = Cursors.Hand;
+
+            pb_IncPantryItem = new PictureBox();
+            pb_IncPantryItem.ImageLocation = "../../Resources/Icons/add(#334E4C).png";
+            pb_IncPantryItem.Size = new Size(25, 25);
+            pb_IncPantryItem.Location = new Point(563, 59);
+            pb_IncPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_IncPantryItem.Cursor = Cursors.Hand;
+
+            pb_Ellipsis = new PictureBox();
+            pb_Ellipsis.ImageLocation = "../../Resources/Icons/ellipsis(#929292).png";
+            pb_Ellipsis.Size = new Size(25, 25);
+            pb_Ellipsis.Location = new Point(1040, 10);
+            pb_Ellipsis.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_Ellipsis.Cursor = Cursors.Hand;
+
+            pnl_NewPantryItem.Controls.Add(txt_NewPantryItemName);
+            pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
+            pb_IncPantryItem.Click += new EventHandler(pb_IncPantryItem_Click);
 
             pantryPanel.Controls.Add(pantryNameLabel);
             pantryPanel.Controls.Add(closeButton);
