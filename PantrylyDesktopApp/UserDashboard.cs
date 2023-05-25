@@ -191,23 +191,6 @@ namespace PantrylyDesktopApp
             }
         }
 
-        /*
-         * TODO: Dynamically add panels inside a FlowLayoutPanel for pantry items.
-         * FlowLayoutPanel:
-         *   [
-         *     - Pantry Name (Label)
-         *     - Ellipsis/MoreOptions Button (PictureBox)
-         *     - Panel:
-         *         [
-         *           - Item Name (Label)
-         *           - Item Quantity (Label)
-         *           - Unit of Measurement(?) (Label)
-         *           - Add Button (PictureBox)
-         *           - Deduct Button (PictureBox)
-         *           - Ellipsis/MoreOptions Button (PictureBox)
-         *         ]
-         *   ]
-         */
         // Event for clicking on a pantry panel in Dashboard.
         private void pnl_Pantry_Click(object sender, EventArgs e)
         {
