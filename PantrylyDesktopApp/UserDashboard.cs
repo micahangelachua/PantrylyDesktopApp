@@ -290,6 +290,15 @@ namespace PantrylyDesktopApp
         {
             // Increment lbl_PantryItemQty
         }
+
+        /*
+         * TODO: Add event that when Ellipsis is clicked on a pantry item panel, it will show a panel with 2 buttons:
+         * "Edit" and "Delete", when Edit is clicked, panel's visibility will be turned to false and a textbox will be shown
+         * for user to enter new name for Item entry.
+         * 
+         * Maybe(?) - Event where user clicks on Item Name label to edit the name, same for item quantity label to edit quantity
+         * instead of clicking the inc and dec button till desired number is reached?
+         */
         #endregion
         
 
