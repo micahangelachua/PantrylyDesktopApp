@@ -250,8 +250,14 @@ namespace PantrylyDesktopApp
             pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
             pb_IncPantryItem.Click += new EventHandler(pb_IncPantryItem_Click);
 
-            pantryPanel.Controls.Add(pantryNameLabel);
-            pantryPanel.Controls.Add(closeButton);
+            DialogResult result = MessageBox.Show("Are you sure you want to add a new item?", "New Item", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                flp_SelectedPantryItems.Controls.Add(pnl_NewPantryItem);
+                txt_NewPantryItemName.Focus();
+                txt_NewPantryItemName.KeyDown += new KeyEventHandler(txt_NewPantryItemName_KeyDown);
+            }
+        }
 
             tp_UserOverview.Controls.Add(pantryPanel);
         }
