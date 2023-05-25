@@ -44,6 +44,14 @@ namespace PantrylyDesktopApp
         private TextBox txt_newChecklistName;
         private Label lbl_newChecklistName;
 
+        private Panel pnl_NewPantryItem;
+        private TextBox txt_NewPantryItemName;
+        private Label lbl_NewPantryItemName;
+        private Label lbl_PantryItemQty;
+        private PictureBox pb_DecPantryItem;
+        private PictureBox pb_IncPantryItem;
+        private PictureBox pb_Ellipsis;
+
         private Panel pnl_Pantry;
         private Label lbl_PantryName;
 
