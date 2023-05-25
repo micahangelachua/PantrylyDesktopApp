@@ -65,7 +65,12 @@
             this.flp_ChecklistEntryContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.lblChecklists = new System.Windows.Forms.Label();
             this.tp_UserSettings = new System.Windows.Forms.TabPage();
-            this.tp_UserProfileSettings = new System.Windows.Forms.TabPage();
+            this.tp_UserSelectedPantry = new System.Windows.Forms.TabPage();
+            this.flp_SelectedPantryItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnl_AddPantryItem = new System.Windows.Forms.Panel();
+            this.pb_AddPantryItem = new System.Windows.Forms.PictureBox();
+            this.lbl_AddPantryItem = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).BeginInit();
@@ -88,6 +93,10 @@
             this.pnl_ChecklistName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tp_UserSelectedPantry.SuspendLayout();
+            this.flp_SelectedPantryItems.SuspendLayout();
+            this.pnl_AddPantryItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -191,7 +200,7 @@
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(651, 1);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(105, 42);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(111, 46);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -278,7 +287,7 @@
             this.tc_UserDashboard.Controls.Add(this.tp_UserOverview);
             this.tc_UserDashboard.Controls.Add(this.tp_UserChecklists);
             this.tc_UserDashboard.Controls.Add(this.tp_UserSettings);
-            this.tc_UserDashboard.Controls.Add(this.tp_UserProfileSettings);
+            this.tc_UserDashboard.Controls.Add(this.tp_UserSelectedPantry);
             this.tc_UserDashboard.Location = new System.Drawing.Point(154, 32);
             this.tc_UserDashboard.Name = "tc_UserDashboard";
             this.tc_UserDashboard.SelectedIndex = 0;
@@ -492,15 +501,75 @@
             this.tp_UserSettings.TabIndex = 2;
             this.tp_UserSettings.Text = "Checklists";
             // 
-            // tp_UserProfileSettings
+            // tp_UserSelectedPantry
             // 
-            this.tp_UserProfileSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
-            this.tp_UserProfileSettings.Location = new System.Drawing.Point(4, 25);
-            this.tp_UserProfileSettings.Name = "tp_UserProfileSettings";
-            this.tp_UserProfileSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_UserProfileSettings.Size = new System.Drawing.Size(1255, 668);
-            this.tp_UserProfileSettings.TabIndex = 3;
-            this.tp_UserProfileSettings.Text = "tabPage1";
+            this.tp_UserSelectedPantry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
+            this.tp_UserSelectedPantry.Controls.Add(this.flp_SelectedPantryItems);
+            this.tp_UserSelectedPantry.Controls.Add(this.label2);
+            this.tp_UserSelectedPantry.Location = new System.Drawing.Point(4, 25);
+            this.tp_UserSelectedPantry.Name = "tp_UserSelectedPantry";
+            this.tp_UserSelectedPantry.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_UserSelectedPantry.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserSelectedPantry.TabIndex = 3;
+            this.tp_UserSelectedPantry.Text = "Selected Pantry";
+            // 
+            // flp_SelectedPantryItems
+            // 
+            this.flp_SelectedPantryItems.AutoScroll = true;
+            this.flp_SelectedPantryItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(221)))), ((int)(((byte)(240)))));
+            this.flp_SelectedPantryItems.Controls.Add(this.pnl_AddPantryItem);
+            this.flp_SelectedPantryItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flp_SelectedPantryItems.Location = new System.Drawing.Point(63, 100);
+            this.flp_SelectedPantryItems.Name = "flp_SelectedPantryItems";
+            this.flp_SelectedPantryItems.Padding = new System.Windows.Forms.Padding(25);
+            this.flp_SelectedPantryItems.Size = new System.Drawing.Size(1128, 497);
+            this.flp_SelectedPantryItems.TabIndex = 1;
+            this.flp_SelectedPantryItems.WrapContents = false;
+            // 
+            // pnl_AddPantryItem
+            // 
+            this.pnl_AddPantryItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(245)))), ((int)(((byte)(239)))));
+            this.pnl_AddPantryItem.Controls.Add(this.pb_AddPantryItem);
+            this.pnl_AddPantryItem.Controls.Add(this.lbl_AddPantryItem);
+            this.pnl_AddPantryItem.Location = new System.Drawing.Point(28, 28);
+            this.pnl_AddPantryItem.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
+            this.pnl_AddPantryItem.Name = "pnl_AddPantryItem";
+            this.pnl_AddPantryItem.Size = new System.Drawing.Size(1068, 100);
+            this.pnl_AddPantryItem.TabIndex = 0;
+            // 
+            // pb_AddPantryItem
+            // 
+            this.pb_AddPantryItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_AddPantryItem.Image = ((System.Drawing.Image)(resources.GetObject("pb_AddPantryItem.Image")));
+            this.pb_AddPantryItem.Location = new System.Drawing.Point(376, 25);
+            this.pb_AddPantryItem.Name = "pb_AddPantryItem";
+            this.pb_AddPantryItem.Size = new System.Drawing.Size(50, 50);
+            this.pb_AddPantryItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_AddPantryItem.TabIndex = 1;
+            this.pb_AddPantryItem.TabStop = false;
+            this.pb_AddPantryItem.Click += new System.EventHandler(this.pb_AddPantryItem_Click);
+            // 
+            // lbl_AddPantryItem
+            // 
+            this.lbl_AddPantryItem.AutoSize = true;
+            this.lbl_AddPantryItem.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AddPantryItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.lbl_AddPantryItem.Location = new System.Drawing.Point(442, 34);
+            this.lbl_AddPantryItem.Name = "lbl_AddPantryItem";
+            this.lbl_AddPantryItem.Size = new System.Drawing.Size(121, 33);
+            this.lbl_AddPantryItem.TabIndex = 0;
+            this.lbl_AddPantryItem.Text = "Add Item";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.label2.Location = new System.Drawing.Point(10, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 39);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Pantry Name";
             // 
             // UserDashboard
             // 
@@ -542,6 +611,12 @@
             this.pnl_ChecklistName.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tp_UserSelectedPantry.ResumeLayout(false);
+            this.tp_UserSelectedPantry.PerformLayout();
+            this.flp_SelectedPantryItems.ResumeLayout(false);
+            this.pnl_AddPantryItem.ResumeLayout(false);
+            this.pnl_AddPantryItem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -570,7 +645,6 @@
         private System.Windows.Forms.PictureBox pb_AddNewPantry;
         private System.Windows.Forms.PictureBox pb_AddNewChecklist;
         private System.Windows.Forms.Label lbl_UserFname;
-        private System.Windows.Forms.TabPage tp_UserProfileSettings;
         private System.Windows.Forms.Label lblChecklists;
         private System.Windows.Forms.PictureBox pb_DashboardMinimize;
         private System.Windows.Forms.PictureBox pb_DashboardClose;
@@ -585,5 +659,11 @@
         private System.Windows.Forms.PictureBox pb_ChecklistDelete;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_ChecklistDetailsName;
+        private System.Windows.Forms.TabPage tp_UserSelectedPantry;
+        private System.Windows.Forms.FlowLayoutPanel flp_SelectedPantryItems;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnl_AddPantryItem;
+        private System.Windows.Forms.PictureBox pb_AddPantryItem;
+        private System.Windows.Forms.Label lbl_AddPantryItem;
     }
 }

@@ -273,7 +273,7 @@ namespace PantrylyDesktopApp
                     pnl_NewPantryItem.Controls.Add(pb_DecPantryItem);
                     pnl_NewPantryItem.Controls.Add(pb_IncPantryItem);
                     pnl_NewPantryItem.Controls.Add(pb_Ellipsis);
-        }
+                }
                 else
                 {
                     flp_SelectedPantryItems.Controls.Remove(pnl_NewPantryItem);
@@ -626,7 +626,6 @@ namespace PantrylyDesktopApp
         #endregion
 
         #region SwitchingTabPages
-
         private void pb_Dashboard_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 0;
