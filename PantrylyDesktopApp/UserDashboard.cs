@@ -126,15 +126,13 @@ namespace PantrylyDesktopApp
                  * if this isn't used, nothing happens after the user presses enter
                  */
                 txt_newPantryName.KeyDown += new KeyEventHandler(txt_newPantryName_KeyDown);
-                
-                //LoadPantries(); instead of adding control; it needs to reload with the new data from database
+               
             }
         }
 
         //Show All Pantries of the current user
         private void LoadPantries()
         {
-            //flp_PantriesContainer.Controls.Clear();
 
             foreach (Pantry pantry in userPantries)
             {
