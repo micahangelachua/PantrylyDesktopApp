@@ -128,5 +128,18 @@ namespace PantrylyDesktopApp
 
             return checklistItems;
         }
+
+        //Delete
+        public void DeleteChecklistItems()
+        {
+            string txtQuery = "DELETE FROM ChecklistItems WHERE checklistItems_ChecklistID = '" + ChecklistID + "'";
+            executeQuery(txtQuery);
+        }
+
+        public void DeleteChecklist()
+        {
+            string txtQuery = "DELETE FROM Checklist WHERE checklist_ID = '" + ChecklistID + "'";
+            executeQuery(txtQuery);
+        }
     }
 }

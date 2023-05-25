@@ -59,7 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pb_AddItem = new System.Windows.Forms.PictureBox();
             this.pnl_ChecklistName = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pb_ChecklistDelete = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_ChecklistDetailsName = new System.Windows.Forms.Label();
             this.flp_ChecklistEntryContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -88,7 +88,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddItem)).BeginInit();
             this.pnl_ChecklistName.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,7 +193,7 @@
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(651, 1);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(111, 46);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(105, 42);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -423,7 +423,7 @@
             // 
             // pnl_ChecklistName
             // 
-            this.pnl_ChecklistName.Controls.Add(this.pictureBox2);
+            this.pnl_ChecklistName.Controls.Add(this.pb_ChecklistDelete);
             this.pnl_ChecklistName.Controls.Add(this.pictureBox1);
             this.pnl_ChecklistName.Controls.Add(this.lbl_ChecklistDetailsName);
             this.pnl_ChecklistName.Location = new System.Drawing.Point(30, 25);
@@ -431,16 +431,16 @@
             this.pnl_ChecklistName.Size = new System.Drawing.Size(700, 100);
             this.pnl_ChecklistName.TabIndex = 0;
             // 
-            // pictureBox2
+            // pb_ChecklistDelete
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(657, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
+            this.pb_ChecklistDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_ChecklistDelete.Image = ((System.Drawing.Image)(resources.GetObject("pb_ChecklistDelete.Image")));
+            this.pb_ChecklistDelete.Location = new System.Drawing.Point(657, 12);
+            this.pb_ChecklistDelete.Name = "pb_ChecklistDelete";
+            this.pb_ChecklistDelete.Size = new System.Drawing.Size(30, 30);
+            this.pb_ChecklistDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_ChecklistDelete.TabIndex = 22;
+            this.pb_ChecklistDelete.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -543,7 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddItem)).EndInit();
             this.pnl_ChecklistName.ResumeLayout(false);
             this.pnl_ChecklistName.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -585,7 +585,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pb_AddItem;
         private System.Windows.Forms.Panel pnl_ChecklistName;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pb_ChecklistDelete;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_ChecklistDetailsName;
     }

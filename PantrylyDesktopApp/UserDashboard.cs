@@ -543,5 +543,7 @@ namespace PantrylyDesktopApp
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#334E4C).png";
         }
         #endregion
+
+       
     }
 }
