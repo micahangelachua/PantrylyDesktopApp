@@ -47,10 +47,10 @@
             this.pb_DashboardClose = new System.Windows.Forms.PictureBox();
             this.tc_UserDashboard = new System.Windows.Forms.TabControl();
             this.tp_UserOverview = new System.Windows.Forms.TabPage();
-            this.flp_ChecklistsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_AddNewChecklist = new System.Windows.Forms.Panel();
             this.lbl_AddNewChecklist = new System.Windows.Forms.Label();
             this.pb_AddNewChecklist = new System.Windows.Forms.PictureBox();
+            this.flp_ChecklistsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.tp_UserChecklists = new System.Windows.Forms.TabPage();
             this.pnl_ChecklistDetailsContainer = new System.Windows.Forms.Panel();
             this.flp_CrossedChecklistItems = new System.Windows.Forms.FlowLayoutPanel();
@@ -310,15 +310,6 @@
             this.tp_UserOverview.TabIndex = 0;
             this.tp_UserOverview.Text = "Overview";
             // 
-            // flp_ChecklistsContainer
-            // 
-            this.flp_ChecklistsContainer.AutoScroll = true;
-            this.flp_ChecklistsContainer.Location = new System.Drawing.Point(284, 381);
-            this.flp_ChecklistsContainer.Name = "flp_ChecklistsContainer";
-            this.flp_ChecklistsContainer.Size = new System.Drawing.Size(946, 233);
-            this.flp_ChecklistsContainer.TabIndex = 12;
-            this.flp_ChecklistsContainer.WrapContents = false;
-            // 
             // pnl_AddNewChecklist
             // 
             this.pnl_AddNewChecklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
@@ -351,6 +342,15 @@
             this.pb_AddNewChecklist.TabIndex = 12;
             this.pb_AddNewChecklist.TabStop = false;
             this.pb_AddNewChecklist.Click += new System.EventHandler(this.pb_AddNewChecklist_Click);
+            // 
+            // flp_ChecklistsContainer
+            // 
+            this.flp_ChecklistsContainer.AutoScroll = true;
+            this.flp_ChecklistsContainer.Location = new System.Drawing.Point(284, 381);
+            this.flp_ChecklistsContainer.Name = "flp_ChecklistsContainer";
+            this.flp_ChecklistsContainer.Size = new System.Drawing.Size(946, 233);
+            this.flp_ChecklistsContainer.TabIndex = 12;
+            this.flp_ChecklistsContainer.WrapContents = false;
             // 
             // tp_UserChecklists
             // 
@@ -541,7 +541,7 @@
             // 
             this.pb_AddPantryItem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb_AddPantryItem.Image = ((System.Drawing.Image)(resources.GetObject("pb_AddPantryItem.Image")));
-            this.pb_AddPantryItem.Location = new System.Drawing.Point(376, 25);
+            this.pb_AddPantryItem.Location = new System.Drawing.Point(441, 25);
             this.pb_AddPantryItem.Name = "pb_AddPantryItem";
             this.pb_AddPantryItem.Size = new System.Drawing.Size(50, 50);
             this.pb_AddPantryItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -554,7 +554,7 @@
             this.lbl_AddPantryItem.AutoSize = true;
             this.lbl_AddPantryItem.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_AddPantryItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
-            this.lbl_AddPantryItem.Location = new System.Drawing.Point(442, 34);
+            this.lbl_AddPantryItem.Location = new System.Drawing.Point(507, 34);
             this.lbl_AddPantryItem.Name = "lbl_AddPantryItem";
             this.lbl_AddPantryItem.Size = new System.Drawing.Size(121, 33);
             this.lbl_AddPantryItem.TabIndex = 0;
