@@ -71,6 +71,7 @@
             this.pb_AddPantryItem = new System.Windows.Forms.PictureBox();
             this.lbl_AddPantryItem = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pb_EditChecklistTitle = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).BeginInit();
@@ -97,6 +98,7 @@
             this.flp_SelectedPantryItems.SuspendLayout();
             this.pnl_AddPantryItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -200,7 +202,7 @@
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(651, 1);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(111, 46);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(105, 42);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -430,6 +432,7 @@
             // 
             // pnl_ChecklistName
             // 
+            this.pnl_ChecklistName.Controls.Add(this.pb_EditChecklistTitle);
             this.pnl_ChecklistName.Controls.Add(this.pb_ChecklistDelete);
             this.pnl_ChecklistName.Controls.Add(this.pictureBox1);
             this.pnl_ChecklistName.Controls.Add(this.lbl_ChecklistDetailsName);
@@ -571,6 +574,17 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Pantry Name";
             // 
+            // pb_EditChecklistTitle
+            // 
+            this.pb_EditChecklistTitle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_EditChecklistTitle.Image = ((System.Drawing.Image)(resources.GetObject("pb_EditChecklistTitle.Image")));
+            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(585, 12);
+            this.pb_EditChecklistTitle.Name = "pb_EditChecklistTitle";
+            this.pb_EditChecklistTitle.Size = new System.Drawing.Size(30, 30);
+            this.pb_EditChecklistTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_EditChecklistTitle.TabIndex = 23;
+            this.pb_EditChecklistTitle.TabStop = false;
+            // 
             // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,6 +631,7 @@
             this.pnl_AddPantryItem.ResumeLayout(false);
             this.pnl_AddPantryItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -665,5 +680,6 @@
         private System.Windows.Forms.Panel pnl_AddPantryItem;
         private System.Windows.Forms.PictureBox pb_AddPantryItem;
         private System.Windows.Forms.Label lbl_AddPantryItem;
+        private System.Windows.Forms.PictureBox pb_EditChecklistTitle;
     }
 }
