@@ -281,15 +281,14 @@ namespace PantrylyDesktopApp
             }
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void pb_DecPantryItem_Click(object sender, EventArgs e)
         {
-            // Remove the pantry details panel from the user overview tab page
-            tp_UserOverview.Controls.RemoveAt(tp_UserOverview.Controls.Count - 1);
+            // Decrement lbl_PantryItemQty
+        }
 
-            lbl_UserOverviewPantries.Visible = true;
-            lbl_UserOverviewChecklists.Visible = true;
-            flp_PantriesContainer.Visible = true;
-            flp_ChecklistsContainer.Visible = true;
+        private void pb_IncPantryItem_Click(object sender, EventArgs e)
+        {
+            // Increment lbl_PantryItemQty
         }
         #endregion
         
