@@ -194,10 +194,8 @@ namespace PantrylyDesktopApp
         // Event for clicking on a pantry panel in Dashboard.
         private void pnl_Pantry_Click(object sender, EventArgs e)
         {
-            lbl_UserOverviewPantries.Visible = false;
-            lbl_UserOverviewChecklists.Visible = false;
-            flp_PantriesContainer.Visible = false;
-            flp_ChecklistsContainer.Visible = false;
+            tc_UserDashboard.SelectedIndex = 3;
+        }
 
             Panel pantryPanel = new Panel();
             pantryPanel.BackColor = Color.White;
