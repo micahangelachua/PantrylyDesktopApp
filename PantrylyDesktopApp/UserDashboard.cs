@@ -73,9 +73,6 @@ namespace PantrylyDesktopApp
         {
             currentUser = new User(id); //method that assigns private variables for current user
 
-            userChecklists = currentUser.GetUserChecklists(currentUser.Email); //Get user's checklists
-            userPantries = currentUser.GetUserPantries(currentUser.Email); // Get user's pantries
-
             InitializeComponent();
             FormUtils.MakeWindowFormRounded(this);
             FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
@@ -133,6 +130,14 @@ namespace PantrylyDesktopApp
         //Show All Pantries of the current user
         private void LoadPantries()
         {
+            userPantries.Clear();
+            userPantries = currentUser.GetUserPantries(currentUser.Email);
+
+            foreach (Control control in flp_PantriesContainer.Controls)
+            {
+                flp_PantriesContainer.Controls.OfType<Label>().ToList().ForEach(x => flp_PantriesContainer.Controls.Remove(x));
+                flp_PantriesContainer.Controls.OfType<Panel>().ToList().ForEach(x => flp_PantriesContainer.Controls.Remove(x));
+            }
 
             foreach (Pantry pantry in userPantries)
             {
@@ -169,6 +174,7 @@ namespace PantrylyDesktopApp
 
                     Pantry newPantry = new Pantry(currentUser.Email, newName);
                     newPantry.CreateNewPantry();
+                    LoadChecklist();
                 }
                 else
                 {
@@ -236,11 +242,21 @@ namespace PantrylyDesktopApp
             flp_ChecklistsContainer.Visible = true;
         }
         #endregion
+        
 
         #region Checklists
         //----------------- Checklist Dashboard : Start -------------------------
         private void LoadChecklist()
         {
+            userChecklists.Clear();
+            userChecklists = currentUser.GetUserChecklists(currentUser.Email);
+
+            foreach (Control control in flp_ChecklistsContainer.Controls)
+            {
+                flp_ChecklistsContainer.Controls.OfType<Label>().ToList().ForEach(x => flp_ChecklistsContainer.Controls.Remove(x));
+                flp_ChecklistsContainer.Controls.OfType<Panel>().ToList().ForEach(x => flp_ChecklistsContainer.Controls.Remove(x));
+            }
+
             foreach (Checklist checklist in userChecklists)
             {
                 pnl_Checklist = new Panel();
@@ -271,6 +287,7 @@ namespace PantrylyDesktopApp
 
         private void pnl_Checklist_Click(object sender, EventArgs e)
         {
+            LoadChecklistsEntries();
             Panel clickedPanel = (Panel)sender;
             string checklistName = null;
             foreach (Control control in clickedPanel.Controls)
@@ -367,6 +384,8 @@ namespace PantrylyDesktopApp
 
                     Checklist newEntry = new Checklist(newName, currentUser.Email);
                     newEntry.CreateNewChecklist();
+
+                    LoadChecklist(); 
                 }
                 else
                 {
@@ -381,14 +400,25 @@ namespace PantrylyDesktopApp
         //
         //
         //----------------- Checklist TabPage : Start-------------------------
-        private void LoadChecklistsEntries() 
+        private void LoadChecklistsEntries()
         {
+            userChecklists.Clear();
+            userChecklists = currentUser.GetUserChecklists(currentUser.Email);
+
+            foreach (Control control in flp_ChecklistEntryContainer.Controls)
+            {
+                flp_ChecklistEntryContainer.Controls.OfType<Label>().ToList().ForEach(x => flp_ChecklistEntryContainer.Controls.Remove(x));
+                flp_ChecklistEntryContainer.Controls.OfType<Panel>().ToList().ForEach(x => flp_ChecklistEntryContainer.Controls.Remove(x));
+            }
+
             foreach (Checklist checklist in userChecklists)
             {
                 pnl_ChecklistEntry = new Panel();
                 pnl_ChecklistEntry.Size = new Size(244, 30);
                 pnl_ChecklistEntry.BorderStyle = BorderStyle.None;
                 pnl_ChecklistEntry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+
+                pnl_ChecklistEntry.Tag = checklist.ChecklistID;
 
                 lbl_ChecklistEntryName = new Label();
                 lbl_ChecklistEntryName.Text = checklist.Checklist_Name;
@@ -397,6 +427,8 @@ namespace PantrylyDesktopApp
                 lbl_ChecklistEntryName.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
                 lbl_ChecklistEntryName.TextAlign = ContentAlignment.MiddleLeft;
                 lbl_ChecklistEntryName.Location = new Point(0, 0);
+
+                lbl_ChecklistEntryName.Tag = checklist.ChecklistID;
 
                 lbl_ChecklistEntryDateCreated = new Label();
                 lbl_ChecklistEntryDateCreated.Text = checklist.Checklist_DateCreated;
@@ -410,6 +442,11 @@ namespace PantrylyDesktopApp
                 pnl_ChecklistEntry.Controls.Add(lbl_ChecklistEntryDateCreated);
 
                 flp_ChecklistEntryContainer.Controls.Add(pnl_ChecklistEntry);
+
+                foreach (Panel panel in flp_ChecklistEntryContainer.Controls.OfType<Panel>())
+                {
+                    panel.Click += pnl_Checklist_Click;
+                }
             }
         }
 
@@ -424,6 +461,18 @@ namespace PantrylyDesktopApp
         #region ChecklistItems
         private void LoadChecklistItems()
         {
+            selectedChecklist_ChecklistItems.Clear();
+            selectedChecklist_ChecklistItems = selectedChecklist.GetChecklistItems(selectedChecklist.ChecklistID);
+
+            foreach (Control control in flp_ChecklistItems.Controls)
+            {
+                flp_ChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
+            }
+            foreach (Control control in flp_CrossedChecklistItems.Controls)
+            {
+                flp_CrossedChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_CrossedChecklistItems.Controls.Remove(x));
+            }
+
             foreach (ChecklistItems item in selectedChecklist_ChecklistItems)
             {
                 CheckBox chk_NewChecklistItemName = new CheckBox();
@@ -519,6 +568,7 @@ namespace PantrylyDesktopApp
         #endregion
 
         #region SwitchingTabPages
+
         private void pb_Dashboard_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 0;
@@ -542,8 +592,19 @@ namespace PantrylyDesktopApp
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
             pb_Settings.ImageLocation = "../../Resources/Icons/settings(#334E4C).png";
         }
+
         #endregion
 
-       
+        private void pb_ChecklistDelete_Click(object sender, EventArgs e)
+        {
+            selectedChecklist.DeleteChecklistItems();
+            selectedChecklist.DeleteChecklist();
+
+            LoadChecklist();
+            LoadChecklistsEntries();
+
+            selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
+            ExpandSelectedChecklist(selectedChecklist);
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace PantrylyDesktopApp
             Checklist_DateCreated = ChecklistDT.Rows[0][3].ToString();
         }
 
-        public Checklist(string id) //constructor to get specific checklist, idk if this will be used...
+        public Checklist(string id) 
         {
             ChecklistID = id;
             setConnection();
