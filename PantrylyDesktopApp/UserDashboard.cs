@@ -259,7 +259,26 @@ namespace PantrylyDesktopApp
             }
         }
 
-            tp_UserOverview.Controls.Add(pantryPanel);
+        private void txt_NewPantryItemName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string newName = txt_NewPantryItemName.Text;
+                txt_NewPantryItemName.Dispose();
+                if (!string.IsNullOrEmpty(newName))
+                {
+                    lbl_NewPantryItemName.Text = newName;
+                    pnl_NewPantryItem.Controls.Add(lbl_NewPantryItemName);
+                    pnl_NewPantryItem.Controls.Add(lbl_PantryItemQty);
+                    pnl_NewPantryItem.Controls.Add(pb_DecPantryItem);
+                    pnl_NewPantryItem.Controls.Add(pb_IncPantryItem);
+                    pnl_NewPantryItem.Controls.Add(pb_Ellipsis);
+        }
+                else
+                {
+                    flp_SelectedPantryItems.Controls.Remove(pnl_NewPantryItem);
+                }
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
