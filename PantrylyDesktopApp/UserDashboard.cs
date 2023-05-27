@@ -51,6 +51,8 @@ namespace PantrylyDesktopApp
         private PictureBox pb_DecPantryItem;
         private PictureBox pb_IncPantryItem;
         private PictureBox pb_Ellipsis;
+        private PictureBox pb_Edit;
+        private PictureBox pb_Delete;
 
         private Panel pnl_Pantry;
         private Label lbl_PantryName;
@@ -239,12 +241,19 @@ namespace PantrylyDesktopApp
             pb_IncPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
             pb_IncPantryItem.Cursor = Cursors.Hand;
 
-            pb_Ellipsis = new PictureBox();
-            pb_Ellipsis.ImageLocation = "../../Resources/Icons/ellipsis(#929292).png";
-            pb_Ellipsis.Size = new Size(25, 25);
-            pb_Ellipsis.Location = new Point(1040, 10);
-            pb_Ellipsis.SizeMode = PictureBoxSizeMode.Zoom;
-            pb_Ellipsis.Cursor = Cursors.Hand;
+            pb_Edit = new PictureBox();
+            pb_Edit.ImageLocation = "../../Resources/Icons/edit(#334e4c).png";
+            pb_Edit.Size = new Size(25, 25);
+            pb_Edit.Location = new Point(1000, 10);
+            pb_Edit.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_Edit.Cursor = Cursors.Hand;
+
+            pb_Delete = new PictureBox();
+            pb_Delete.ImageLocation = "../../Resources/Icons/bin(#334e4c).png";
+            pb_Delete.Size = new Size(25, 25);
+            pb_Delete.Location = new Point(1030, 10);
+            pb_Delete.SizeMode = PictureBoxSizeMode.Zoom;
+            pb_Delete.Cursor = Cursors.Hand;
 
             pnl_NewPantryItem.Controls.Add(txt_NewPantryItemName);
             pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
@@ -272,7 +281,8 @@ namespace PantrylyDesktopApp
                     pnl_NewPantryItem.Controls.Add(lbl_PantryItemQty);
                     pnl_NewPantryItem.Controls.Add(pb_DecPantryItem);
                     pnl_NewPantryItem.Controls.Add(pb_IncPantryItem);
-                    pnl_NewPantryItem.Controls.Add(pb_Ellipsis);
+                    pnl_NewPantryItem.Controls.Add(pb_Edit);
+                    pnl_NewPantryItem.Controls.Add(pb_Delete);
                 }
                 else
                 {
