@@ -199,6 +199,11 @@ namespace PantrylyDesktopApp
             tc_UserDashboard.SelectedIndex = 3;
         }
 
+        private void pb_DeleteSelectedPantry_Click(object sender, EventArgs e)
+        {
+            // Delete the selected Pantry
+        }
+
         private void pb_AddPantryItem_Click(object sender, EventArgs e)
         {
             pnl_NewPantryItem = new Panel();
@@ -552,7 +557,7 @@ namespace PantrylyDesktopApp
                 chk_NewChecklistItemName.Tag = item.ChecklistItemID;
 
                 chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
-                
+
 
                 if (item.ChecklistItem_isDone == 0) 
                 {

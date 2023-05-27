@@ -59,19 +59,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pb_AddItem = new System.Windows.Forms.PictureBox();
             this.pnl_ChecklistName = new System.Windows.Forms.Panel();
+            this.pb_EditChecklistTitle = new System.Windows.Forms.PictureBox();
             this.pb_ChecklistDelete = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_ChecklistDetailsName = new System.Windows.Forms.Label();
             this.flp_ChecklistEntryContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.lblChecklists = new System.Windows.Forms.Label();
             this.tp_UserSettings = new System.Windows.Forms.TabPage();
             this.tp_UserSelectedPantry = new System.Windows.Forms.TabPage();
+            this.pb_DeleteSelectedPantry = new System.Windows.Forms.PictureBox();
             this.flp_SelectedPantryItems = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_AddPantryItem = new System.Windows.Forms.Panel();
             this.pb_AddPantryItem = new System.Windows.Forms.PictureBox();
             this.lbl_AddPantryItem = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pb_EditChecklistTitle = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).BeginInit();
@@ -92,13 +92,13 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddItem)).BeginInit();
             this.pnl_ChecklistName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tp_UserSelectedPantry.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_DeleteSelectedPantry)).BeginInit();
             this.flp_SelectedPantryItems.SuspendLayout();
             this.pnl_AddPantryItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -202,7 +202,7 @@
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(651, 1);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(105, 42);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(111, 46);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -434,12 +434,22 @@
             // 
             this.pnl_ChecklistName.Controls.Add(this.pb_EditChecklistTitle);
             this.pnl_ChecklistName.Controls.Add(this.pb_ChecklistDelete);
-            this.pnl_ChecklistName.Controls.Add(this.pictureBox1);
             this.pnl_ChecklistName.Controls.Add(this.lbl_ChecklistDetailsName);
             this.pnl_ChecklistName.Location = new System.Drawing.Point(30, 25);
             this.pnl_ChecklistName.Name = "pnl_ChecklistName";
             this.pnl_ChecklistName.Size = new System.Drawing.Size(700, 100);
             this.pnl_ChecklistName.TabIndex = 0;
+            // 
+            // pb_EditChecklistTitle
+            // 
+            this.pb_EditChecklistTitle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_EditChecklistTitle.Image = ((System.Drawing.Image)(resources.GetObject("pb_EditChecklistTitle.Image")));
+            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(621, 12);
+            this.pb_EditChecklistTitle.Name = "pb_EditChecklistTitle";
+            this.pb_EditChecklistTitle.Size = new System.Drawing.Size(30, 30);
+            this.pb_EditChecklistTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_EditChecklistTitle.TabIndex = 23;
+            this.pb_EditChecklistTitle.TabStop = false;
             // 
             // pb_ChecklistDelete
             // 
@@ -452,17 +462,6 @@
             this.pb_ChecklistDelete.TabIndex = 22;
             this.pb_ChecklistDelete.TabStop = false;
             this.pb_ChecklistDelete.Click += new System.EventHandler(this.pb_ChecklistDelete_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(621, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
             // 
             // lbl_ChecklistDetailsName
             // 
@@ -507,6 +506,7 @@
             // tp_UserSelectedPantry
             // 
             this.tp_UserSelectedPantry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
+            this.tp_UserSelectedPantry.Controls.Add(this.pb_DeleteSelectedPantry);
             this.tp_UserSelectedPantry.Controls.Add(this.flp_SelectedPantryItems);
             this.tp_UserSelectedPantry.Controls.Add(this.label2);
             this.tp_UserSelectedPantry.Location = new System.Drawing.Point(4, 25);
@@ -515,6 +515,17 @@
             this.tp_UserSelectedPantry.Size = new System.Drawing.Size(1255, 668);
             this.tp_UserSelectedPantry.TabIndex = 3;
             this.tp_UserSelectedPantry.Text = "Selected Pantry";
+            // 
+            // pb_DeleteSelectedPantry
+            // 
+            this.pb_DeleteSelectedPantry.Image = ((System.Drawing.Image)(resources.GetObject("pb_DeleteSelectedPantry.Image")));
+            this.pb_DeleteSelectedPantry.Location = new System.Drawing.Point(1209, 6);
+            this.pb_DeleteSelectedPantry.Name = "pb_DeleteSelectedPantry";
+            this.pb_DeleteSelectedPantry.Size = new System.Drawing.Size(40, 40);
+            this.pb_DeleteSelectedPantry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_DeleteSelectedPantry.TabIndex = 0;
+            this.pb_DeleteSelectedPantry.TabStop = false;
+            this.pb_DeleteSelectedPantry.Click += new System.EventHandler(this.pb_DeleteSelectedPantry_Click);
             // 
             // flp_SelectedPantryItems
             // 
@@ -574,17 +585,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Pantry Name";
             // 
-            // pb_EditChecklistTitle
-            // 
-            this.pb_EditChecklistTitle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pb_EditChecklistTitle.Image = ((System.Drawing.Image)(resources.GetObject("pb_EditChecklistTitle.Image")));
-            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(585, 12);
-            this.pb_EditChecklistTitle.Name = "pb_EditChecklistTitle";
-            this.pb_EditChecklistTitle.Size = new System.Drawing.Size(30, 30);
-            this.pb_EditChecklistTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_EditChecklistTitle.TabIndex = 23;
-            this.pb_EditChecklistTitle.TabStop = false;
-            // 
             // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,15 +623,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddItem)).EndInit();
             this.pnl_ChecklistName.ResumeLayout(false);
             this.pnl_ChecklistName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tp_UserSelectedPantry.ResumeLayout(false);
             this.tp_UserSelectedPantry.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_DeleteSelectedPantry)).EndInit();
             this.flp_SelectedPantryItems.ResumeLayout(false);
             this.pnl_AddPantryItem.ResumeLayout(false);
             this.pnl_AddPantryItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -672,7 +672,6 @@
         private System.Windows.Forms.PictureBox pb_AddItem;
         private System.Windows.Forms.Panel pnl_ChecklistName;
         private System.Windows.Forms.PictureBox pb_ChecklistDelete;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_ChecklistDetailsName;
         private System.Windows.Forms.TabPage tp_UserSelectedPantry;
         private System.Windows.Forms.FlowLayoutPanel flp_SelectedPantryItems;
@@ -681,5 +680,6 @@
         private System.Windows.Forms.PictureBox pb_AddPantryItem;
         private System.Windows.Forms.Label lbl_AddPantryItem;
         private System.Windows.Forms.PictureBox pb_EditChecklistTitle;
+        private System.Windows.Forms.PictureBox pb_DeleteSelectedPantry;
     }
 }
