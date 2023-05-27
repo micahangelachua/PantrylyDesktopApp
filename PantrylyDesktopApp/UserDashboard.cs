@@ -88,6 +88,9 @@ namespace PantrylyDesktopApp
             FormUtils.AddDraggableWindowTitle(pnl_WinTitleAndControls);
             FormUtils.AddCloseButton(pb_DashboardClose);
             FormUtils.AddMinimizeButton(pb_DashboardMinimize);
+            FormUtils.MakeButtonRounded(btn_EditUserInfo);
+            FormUtils.MakeButtonRounded(btn_Cancel);
+            FormUtils.MakeButtonRounded(btn_Confirm);
 
             lbl_UserFname.Text = currentUser.FirstName;
         }
@@ -678,5 +681,54 @@ namespace PantrylyDesktopApp
             selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
             ExpandSelectedChecklist(selectedChecklist);
         }
+
+        #region UserSettings
+        private void btn_EditUserInfo_Click(object sender, EventArgs e)
+        {
+            txt_UserFirstname.Visible = true;
+            txt_UserLastname.Visible = true;
+            dtp_UserBirthdate.Enabled = true;
+            label6.Visible = true;
+            pnl_UserPassword.Visible = true;
+            btn_Cancel.Visible = true;
+            btn_Confirm.Visible = true;
+            btn_EditUserInfo.Visible = false;
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            txt_UserFirstname.Text = string.Empty;
+            txt_UserLastname.Text = string.Empty;
+            txt_UserPassword.Text = string.Empty;
+
+            txt_UserFirstname.Visible = false;
+            txt_UserLastname.Visible = false;
+            dtp_UserBirthdate.Enabled = false;
+            label6.Visible = false;
+            pnl_UserPassword.Visible = false;
+            btn_Cancel.Visible = false;
+            btn_Confirm.Visible = false;
+            btn_EditUserInfo.Visible = true;
+        }
+
+        private void btn_Confirm_Click(object sender, EventArgs e)
+        {
+            txt_UserFirstname.Text = string.Empty;
+            txt_UserLastname.Text = string.Empty;
+            txt_UserPassword.Text = string.Empty;
+
+            txt_UserFirstname.Visible = false;
+            txt_UserLastname.Visible = false;
+            dtp_UserBirthdate.Enabled = false;
+            label6.Visible = false;
+            pnl_UserPassword.Visible = false;
+            btn_Cancel.Visible = false;
+            btn_Confirm.Visible = false;
+            btn_EditUserInfo.Visible = true;
+
+            DialogResult msgConfirm = MessageBox.Show("Please Log back in", "SUCCESS");
+            this.Close();
+        }
+        #endregion
     }
 }

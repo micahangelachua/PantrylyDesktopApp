@@ -65,6 +65,14 @@
             this.flp_ChecklistEntryContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.lblChecklists = new System.Windows.Forms.Label();
             this.tp_UserSettings = new System.Windows.Forms.TabPage();
+            this.btn_EditUserInfo = new System.Windows.Forms.Button();
+            this.lbl_UserLastname = new System.Windows.Forms.Label();
+            this.lbl_UserFirstname = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_UserSettings = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tp_UserSelectedPantry = new System.Windows.Forms.TabPage();
             this.pb_DeleteSelectedPantry = new System.Windows.Forms.PictureBox();
             this.flp_SelectedPantryItems = new System.Windows.Forms.FlowLayoutPanel();
@@ -72,6 +80,17 @@
             this.pb_AddPantryItem = new System.Windows.Forms.PictureBox();
             this.lbl_AddPantryItem = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnl_UserFirstname = new System.Windows.Forms.Panel();
+            this.pnl_UserLastname = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dtp_UserBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pnl_UserPassword = new System.Windows.Forms.Panel();
+            this.txt_UserPassword = new System.Windows.Forms.TextBox();
+            this.txt_UserFirstname = new System.Windows.Forms.TextBox();
+            this.txt_UserLastname = new System.Windows.Forms.TextBox();
+            this.btn_Confirm = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Settings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UserPicture)).BeginInit();
@@ -94,11 +113,17 @@
             this.pnl_ChecklistName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).BeginInit();
+            this.tp_UserSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tp_UserSelectedPantry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_DeleteSelectedPantry)).BeginInit();
             this.flp_SelectedPantryItems.SuspendLayout();
             this.pnl_AddPantryItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).BeginInit();
+            this.pnl_UserFirstname.SuspendLayout();
+            this.pnl_UserLastname.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.pnl_UserPassword.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -496,12 +521,116 @@
             // tp_UserSettings
             // 
             this.tp_UserSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(228)))), ((int)(((byte)(216)))));
+            this.tp_UserSettings.Controls.Add(this.btn_Cancel);
+            this.tp_UserSettings.Controls.Add(this.btn_EditUserInfo);
+            this.tp_UserSettings.Controls.Add(this.btn_Confirm);
+            this.tp_UserSettings.Controls.Add(this.pnl_UserPassword);
+            this.tp_UserSettings.Controls.Add(this.label6);
+            this.tp_UserSettings.Controls.Add(this.panel3);
+            this.tp_UserSettings.Controls.Add(this.pnl_UserLastname);
+            this.tp_UserSettings.Controls.Add(this.pnl_UserFirstname);
+            this.tp_UserSettings.Controls.Add(this.label5);
+            this.tp_UserSettings.Controls.Add(this.label4);
+            this.tp_UserSettings.Controls.Add(this.label3);
+            this.tp_UserSettings.Controls.Add(this.lbl_UserSettings);
+            this.tp_UserSettings.Controls.Add(this.pictureBox1);
             this.tp_UserSettings.Location = new System.Drawing.Point(4, 25);
             this.tp_UserSettings.Name = "tp_UserSettings";
             this.tp_UserSettings.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserSettings.Size = new System.Drawing.Size(1255, 668);
             this.tp_UserSettings.TabIndex = 2;
             this.tp_UserSettings.Text = "Checklists";
+            // 
+            // btn_EditUserInfo
+            // 
+            this.btn_EditUserInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.btn_EditUserInfo.FlatAppearance.BorderSize = 0;
+            this.btn_EditUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_EditUserInfo.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_EditUserInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(116)))));
+            this.btn_EditUserInfo.Location = new System.Drawing.Point(525, 443);
+            this.btn_EditUserInfo.Name = "btn_EditUserInfo";
+            this.btn_EditUserInfo.Size = new System.Drawing.Size(205, 50);
+            this.btn_EditUserInfo.TabIndex = 17;
+            this.btn_EditUserInfo.Text = "Edit Information";
+            this.btn_EditUserInfo.UseVisualStyleBackColor = false;
+            this.btn_EditUserInfo.Click += new System.EventHandler(this.btn_EditUserInfo_Click);
+            // 
+            // lbl_UserLastname
+            // 
+            this.lbl_UserLastname.AutoSize = true;
+            this.lbl_UserLastname.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lbl_UserLastname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.lbl_UserLastname.Location = new System.Drawing.Point(3, 10);
+            this.lbl_UserLastname.Name = "lbl_UserLastname";
+            this.lbl_UserLastname.Size = new System.Drawing.Size(41, 23);
+            this.lbl_UserLastname.TabIndex = 16;
+            this.lbl_UserLastname.Text = "Last";
+            // 
+            // lbl_UserFirstname
+            // 
+            this.lbl_UserFirstname.AutoSize = true;
+            this.lbl_UserFirstname.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lbl_UserFirstname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.lbl_UserFirstname.Location = new System.Drawing.Point(3, 10);
+            this.lbl_UserFirstname.Name = "lbl_UserFirstname";
+            this.lbl_UserFirstname.Size = new System.Drawing.Size(47, 23);
+            this.lbl_UserFirstname.TabIndex = 15;
+            this.lbl_UserFirstname.Text = "First";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.label5.Location = new System.Drawing.Point(343, 398);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 26);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Birth Date:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.label4.Location = new System.Drawing.Point(343, 341);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(111, 26);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Last Name:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.label3.Location = new System.Drawing.Point(343, 290);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(116, 26);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "First Name:";
+            // 
+            // lbl_UserSettings
+            // 
+            this.lbl_UserSettings.AutoSize = true;
+            this.lbl_UserSettings.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_UserSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.lbl_UserSettings.Location = new System.Drawing.Point(497, 195);
+            this.lbl_UserSettings.Name = "lbl_UserSettings";
+            this.lbl_UserSettings.Size = new System.Drawing.Size(260, 45);
+            this.lbl_UserSettings.TabIndex = 11;
+            this.lbl_UserSettings.Text = "User\'s Settings";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(565, 67);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(125, 125);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // tp_UserSelectedPantry
             // 
@@ -585,6 +714,124 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Pantry Name";
             // 
+            // pnl_UserFirstname
+            // 
+            this.pnl_UserFirstname.Controls.Add(this.txt_UserFirstname);
+            this.pnl_UserFirstname.Controls.Add(this.lbl_UserFirstname);
+            this.pnl_UserFirstname.Location = new System.Drawing.Point(471, 283);
+            this.pnl_UserFirstname.Name = "pnl_UserFirstname";
+            this.pnl_UserFirstname.Size = new System.Drawing.Size(313, 43);
+            this.pnl_UserFirstname.TabIndex = 18;
+            // 
+            // pnl_UserLastname
+            // 
+            this.pnl_UserLastname.Controls.Add(this.txt_UserLastname);
+            this.pnl_UserLastname.Controls.Add(this.lbl_UserLastname);
+            this.pnl_UserLastname.Location = new System.Drawing.Point(471, 335);
+            this.pnl_UserLastname.Name = "pnl_UserLastname";
+            this.pnl_UserLastname.Size = new System.Drawing.Size(313, 43);
+            this.pnl_UserLastname.TabIndex = 19;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dtp_UserBirthdate);
+            this.panel3.Location = new System.Drawing.Point(471, 389);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(313, 43);
+            this.panel3.TabIndex = 20;
+            // 
+            // dtp_UserBirthdate
+            // 
+            this.dtp_UserBirthdate.Enabled = false;
+            this.dtp_UserBirthdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtp_UserBirthdate.Location = new System.Drawing.Point(3, 8);
+            this.dtp_UserBirthdate.Name = "dtp_UserBirthdate";
+            this.dtp_UserBirthdate.Size = new System.Drawing.Size(307, 26);
+            this.dtp_UserBirthdate.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 14F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.label6.Location = new System.Drawing.Point(343, 450);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 26);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Password:";
+            this.label6.Visible = false;
+            // 
+            // pnl_UserPassword
+            // 
+            this.pnl_UserPassword.Controls.Add(this.txt_UserPassword);
+            this.pnl_UserPassword.Location = new System.Drawing.Point(471, 443);
+            this.pnl_UserPassword.Name = "pnl_UserPassword";
+            this.pnl_UserPassword.Size = new System.Drawing.Size(313, 43);
+            this.pnl_UserPassword.TabIndex = 22;
+            this.pnl_UserPassword.Visible = false;
+            // 
+            // txt_UserPassword
+            // 
+            this.txt_UserPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.txt_UserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txt_UserPassword.Location = new System.Drawing.Point(3, 8);
+            this.txt_UserPassword.Name = "txt_UserPassword";
+            this.txt_UserPassword.PasswordChar = '*';
+            this.txt_UserPassword.Size = new System.Drawing.Size(307, 26);
+            this.txt_UserPassword.TabIndex = 0;
+            // 
+            // txt_UserFirstname
+            // 
+            this.txt_UserFirstname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.txt_UserFirstname.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_UserFirstname.Location = new System.Drawing.Point(3, 6);
+            this.txt_UserFirstname.Name = "txt_UserFirstname";
+            this.txt_UserFirstname.Size = new System.Drawing.Size(307, 30);
+            this.txt_UserFirstname.TabIndex = 16;
+            this.txt_UserFirstname.Visible = false;
+            // 
+            // txt_UserLastname
+            // 
+            this.txt_UserLastname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.txt_UserLastname.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_UserLastname.Location = new System.Drawing.Point(3, 6);
+            this.txt_UserLastname.Name = "txt_UserLastname";
+            this.txt_UserLastname.Size = new System.Drawing.Size(307, 30);
+            this.txt_UserLastname.TabIndex = 17;
+            this.txt_UserLastname.Visible = false;
+            // 
+            // btn_Confirm
+            // 
+            this.btn_Confirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.btn_Confirm.FlatAppearance.BorderSize = 0;
+            this.btn_Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Confirm.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Confirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(116)))));
+            this.btn_Confirm.Location = new System.Drawing.Point(643, 515);
+            this.btn_Confirm.Name = "btn_Confirm";
+            this.btn_Confirm.Size = new System.Drawing.Size(125, 50);
+            this.btn_Confirm.TabIndex = 23;
+            this.btn_Confirm.Text = "Confirm";
+            this.btn_Confirm.UseVisualStyleBackColor = false;
+            this.btn_Confirm.Visible = false;
+            this.btn_Confirm.Click += new System.EventHandler(this.btn_Confirm_Click);
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(76)))));
+            this.btn_Cancel.FlatAppearance.BorderSize = 0;
+            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(116)))));
+            this.btn_Cancel.Location = new System.Drawing.Point(487, 515);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(125, 50);
+            this.btn_Cancel.TabIndex = 24;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Visible = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
             // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,6 +872,9 @@
             this.pnl_ChecklistName.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_EditChecklistTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ChecklistDelete)).EndInit();
+            this.tp_UserSettings.ResumeLayout(false);
+            this.tp_UserSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tp_UserSelectedPantry.ResumeLayout(false);
             this.tp_UserSelectedPantry.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_DeleteSelectedPantry)).EndInit();
@@ -632,6 +882,13 @@
             this.pnl_AddPantryItem.ResumeLayout(false);
             this.pnl_AddPantryItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddPantryItem)).EndInit();
+            this.pnl_UserFirstname.ResumeLayout(false);
+            this.pnl_UserFirstname.PerformLayout();
+            this.pnl_UserLastname.ResumeLayout(false);
+            this.pnl_UserLastname.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.pnl_UserPassword.ResumeLayout(false);
+            this.pnl_UserPassword.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -681,5 +938,24 @@
         private System.Windows.Forms.Label lbl_AddPantryItem;
         private System.Windows.Forms.PictureBox pb_EditChecklistTitle;
         private System.Windows.Forms.PictureBox pb_DeleteSelectedPantry;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_UserSettings;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_EditUserInfo;
+        private System.Windows.Forms.Label lbl_UserLastname;
+        private System.Windows.Forms.Label lbl_UserFirstname;
+        private System.Windows.Forms.Panel pnl_UserLastname;
+        private System.Windows.Forms.Panel pnl_UserFirstname;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DateTimePicker dtp_UserBirthdate;
+        private System.Windows.Forms.Panel pnl_UserPassword;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_UserPassword;
+        private System.Windows.Forms.TextBox txt_UserFirstname;
+        private System.Windows.Forms.TextBox txt_UserLastname;
+        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Button btn_Confirm;
     }
 }
