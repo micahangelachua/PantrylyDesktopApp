@@ -654,6 +654,12 @@ namespace PantrylyDesktopApp
 
         private void pb_Checklist_Click(object sender, EventArgs e)
         {
+            if (selectedChecklist == null)
+            {
+                selectedChecklist = currentUser.GetUserChecklists(currentUser.Email)[0];
+                ExpandSelectedChecklist(selectedChecklist);
+            }
+
             tc_UserDashboard.SelectedIndex = 1;
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#334E4C).png";

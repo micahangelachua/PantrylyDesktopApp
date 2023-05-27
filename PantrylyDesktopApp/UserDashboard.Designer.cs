@@ -315,10 +315,10 @@
             this.tc_UserDashboard.Controls.Add(this.tp_UserChecklists);
             this.tc_UserDashboard.Controls.Add(this.tp_UserSettings);
             this.tc_UserDashboard.Controls.Add(this.tp_UserSelectedPantry);
-            this.tc_UserDashboard.Location = new System.Drawing.Point(154, 32);
+            this.tc_UserDashboard.Location = new System.Drawing.Point(154, 35);
             this.tc_UserDashboard.Name = "tc_UserDashboard";
             this.tc_UserDashboard.SelectedIndex = 0;
-            this.tc_UserDashboard.Size = new System.Drawing.Size(1263, 697);
+            this.tc_UserDashboard.Size = new System.Drawing.Size(1263, 694);
             this.tc_UserDashboard.TabIndex = 12;
             // 
             // tp_UserOverview
@@ -333,7 +333,7 @@
             this.tp_UserOverview.Location = new System.Drawing.Point(4, 25);
             this.tp_UserOverview.Name = "tp_UserOverview";
             this.tp_UserOverview.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_UserOverview.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserOverview.Size = new System.Drawing.Size(1255, 665);
             this.tp_UserOverview.TabIndex = 0;
             this.tp_UserOverview.Text = "Overview";
             // 
@@ -388,7 +388,7 @@
             this.tp_UserChecklists.Location = new System.Drawing.Point(4, 25);
             this.tp_UserChecklists.Name = "tp_UserChecklists";
             this.tp_UserChecklists.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_UserChecklists.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserChecklists.Size = new System.Drawing.Size(1255, 665);
             this.tp_UserChecklists.TabIndex = 1;
             this.tp_UserChecklists.Text = "Pantries";
             // 
@@ -537,7 +537,7 @@
             this.tp_UserSettings.Location = new System.Drawing.Point(4, 25);
             this.tp_UserSettings.Name = "tp_UserSettings";
             this.tp_UserSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_UserSettings.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserSettings.Size = new System.Drawing.Size(1255, 665);
             this.tp_UserSettings.TabIndex = 2;
             this.tp_UserSettings.Text = "Checklists";
             // 
@@ -641,7 +641,7 @@
             this.tp_UserSelectedPantry.Location = new System.Drawing.Point(4, 25);
             this.tp_UserSelectedPantry.Name = "tp_UserSelectedPantry";
             this.tp_UserSelectedPantry.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_UserSelectedPantry.Size = new System.Drawing.Size(1255, 668);
+            this.tp_UserSelectedPantry.Size = new System.Drawing.Size(1255, 665);
             this.tp_UserSelectedPantry.TabIndex = 3;
             this.tp_UserSelectedPantry.Text = "Selected Pantry";
             // 
