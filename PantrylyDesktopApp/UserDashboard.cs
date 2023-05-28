@@ -251,7 +251,7 @@ namespace PantrylyDesktopApp
             foreach(PantryItems item in selectedPantry_PantryItems)
             {
                 pnl_NewPantryItem = new Panel();
-                pnl_NewPantryItem.Size = new Size(1068, 100);
+                pnl_NewPantryItem.Size = new Size((flp_SelectedPantryItems.ClientSize.Width - 50), 100);
                 pnl_NewPantryItem.BackColor = ColorTranslator.FromHtml("#FCF5EF");
                 pnl_NewPantryItem.Margin = new Padding(3, 3, 3, 25);
 
