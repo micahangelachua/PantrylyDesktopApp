@@ -330,9 +330,25 @@ namespace PantrylyDesktopApp
 
         private void pb_EditPantryItemClick(object sender, EventArgs e)
         {
-            lbl_NewPantryItemName.Dispose();
             PictureBox pictureBox = (PictureBox)sender;
             PantryItems item = new PantryItems(pictureBox.Tag.ToString());
+
+            Panel itemPanel = null;
+            Label itemLabel = null;
+
+            foreach (Control control in flp_SelectedPantryItems.Controls)
+            {
+                if (control is Panel panel && panel.Controls.Contains(pictureBox))
+                {
+                    itemPanel = panel;
+                    itemLabel = panel.Controls.OfType<Label>().FirstOrDefault();
+                    break;
+                }
+            }
+
+            if (itemPanel != null)
+            {
+                itemLabel.Dispose();
 
             txt_NewPantryItemName = new TextBox();
             txt_NewPantryItemName.Text = item.PantryItemName;
@@ -341,10 +357,10 @@ namespace PantrylyDesktopApp
             txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
             txt_NewPantryItemName.Tag = item.PantryItemID;
 
-            pnl_NewPantryItem.Controls.Add(txt_NewPantryItemName);
+                itemPanel.Controls.Add(txt_NewPantryItemName);
             txt_NewPantryItemName.Focus();
             txt_NewPantryItemName.KeyDown += new KeyEventHandler(PantryItemNameUpdate);
-
+            }
         }
 
         private void PantryItemNameUpdate(object sender, KeyEventArgs e)
