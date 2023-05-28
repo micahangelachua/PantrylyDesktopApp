@@ -728,7 +728,7 @@ namespace PantrylyDesktopApp
                 pb_ChecklistItemEdit.Location = new Point(pnl_NewChecklistItem.Width - 60, 10);
                 pb_ChecklistItemEdit.Size = new Size(25, 25);
                 pb_ChecklistItemEdit.SizeMode = PictureBoxSizeMode.Zoom;
-                
+
                 PictureBox pb_ChecklistItemDelete = new PictureBox();
                 pb_ChecklistItemDelete.ImageLocation = "../../Resources/Icons/bin(#334E4C).png";
                 pb_ChecklistItemDelete.Location = new Point(pnl_NewChecklistItem.Width - 30, 10);
