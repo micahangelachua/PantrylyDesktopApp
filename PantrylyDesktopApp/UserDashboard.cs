@@ -331,7 +331,8 @@ namespace PantrylyDesktopApp
         private void pb_EditPantryItemClick(object sender, EventArgs e)
         {
             lbl_NewPantryItemName.Dispose();
-            PantryItems item = new PantryItems(pb_EditPantryItem.Tag.ToString());
+            PictureBox pictureBox = (PictureBox)sender;
+            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
 
             txt_NewPantryItemName = new TextBox();
             txt_NewPantryItemName.Text = item.PantryItemName;
@@ -725,6 +726,11 @@ namespace PantrylyDesktopApp
             selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
             ExpandSelectedChecklist(selectedChecklist);
         }
+        
+        private void pb_EditChecklistTitle_Click(object sender, EventArgs e)
+        {
+            
+        }
 
         #endregion
 
@@ -762,12 +768,14 @@ namespace PantrylyDesktopApp
                 pb_ChecklistItemEdit.Location = new Point(pnl_NewChecklistItem.Width - 60, 10);
                 pb_ChecklistItemEdit.Size = new Size(25, 25);
                 pb_ChecklistItemEdit.SizeMode = PictureBoxSizeMode.Zoom;
+                pb_ChecklistItemEdit.Tag = item.ChecklistItemID;
 
                 PictureBox pb_ChecklistItemDelete = new PictureBox();
                 pb_ChecklistItemDelete.ImageLocation = "../../Resources/Icons/bin(#334E4C).png";
                 pb_ChecklistItemDelete.Location = new Point(pnl_NewChecklistItem.Width - 30, 10);
                 pb_ChecklistItemDelete.Size = new Size(25, 25);
                 pb_ChecklistItemDelete.SizeMode = PictureBoxSizeMode.Zoom;
+                pb_ChecklistItemDelete.Tag = item.ChecklistItemID;
 
                 pnl_NewChecklistItem.Controls.Add(chk_NewChecklistItemName);
                 pnl_NewChecklistItem.Controls.Add(pb_ChecklistItemEdit);
@@ -816,11 +824,16 @@ namespace PantrylyDesktopApp
         private void pb_ChecklistItemEdit_Click(object sender, EventArgs e)
         {
             //Edit Checklist Item
+
         }
 
         private void pb_ChecklistItemDelete_Click(object sender, EventArgs e)
         {
             //Delete Checklist Item
+            PictureBox pictureBox = (PictureBox)sender;
+            ChecklistItems item = new ChecklistItems(pictureBox.Tag.ToString());
+            item.Delete();
+            LoadChecklistItems();
         }
 
         private void pb_AddItem_Click(object sender, EventArgs e)
@@ -969,5 +982,6 @@ namespace PantrylyDesktopApp
 
         }
         #endregion
+
     }
 }

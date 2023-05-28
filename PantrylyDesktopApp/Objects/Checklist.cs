@@ -99,13 +99,6 @@ namespace PantrylyDesktopApp
             MessageBox.Show("Added a new checklist.");
         }
 
-        public void UpdateTitleChecklist(string newTitle, string id)
-        {
-            string txtQuery = "UPDATE Checklist set checklist_Name = '"+newTitle+ "' WHERE checklist_ID = '"+id+"' ";
-            
-            executeQuery(txtQuery);
-        }
-
         public List<ChecklistItems> GetChecklistItems(string checklistId)
         {
             setConnection();
@@ -140,6 +133,13 @@ namespace PantrylyDesktopApp
         {
             DeleteChecklistItems();
             string txtQuery = "DELETE FROM Checklist WHERE checklist_ID = '" + ChecklistID + "'";
+            executeQuery(txtQuery);
+        }
+
+        public void Update(string newName)
+        {
+            string txtQuery = "UPDATE Checklist set checklist_Name = '" + newName + "' WHERE checklist_ID = '" + ChecklistID + "' ";
+
             executeQuery(txtQuery);
         }
     }

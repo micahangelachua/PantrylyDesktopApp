@@ -78,7 +78,7 @@ namespace PantrylyDesktopApp
         }
 
         // Update:
-        public void UpdateChecklistItemDescription (string newDescription)
+        public void UpdateName(string newDescription)
         {
             string txtQuery = @"UPDATE ChecklistItems set checklistItems_Description = '" + newDescription + "' WHERE checklistItems_ID = '" + ChecklistItemID + "'";
 
@@ -92,8 +92,7 @@ namespace PantrylyDesktopApp
             executeQuery(txtQuery);
         }
 
-        // Delete:
-        public void DeleteChecklistItem()
+        public void Delete()
         {
             string txtQuery = "DELETE FROM ChecklistItems WHERE checklistItems_ID = '" + ChecklistItemID + "'";
             executeQuery(txtQuery);
