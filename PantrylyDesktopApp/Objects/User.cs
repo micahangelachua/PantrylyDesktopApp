@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace PantrylyDesktopApp
 {
@@ -137,6 +138,14 @@ namespace PantrylyDesktopApp
             }
 
             return pantries;
+        }
+
+        public void UserInformationUpdate(string fname, string lname, string bday)
+        {
+            string txtQuery = @"UPDATE Users SET user_FirstName = '" + fname + "', user_LastName = '" + lname + "', " +
+                "user_Birthday = '" + bday + "' WHERE user_ID = '" + UserID + "'";
+             executeQuery(txtQuery);
+            
         }
     }
 }

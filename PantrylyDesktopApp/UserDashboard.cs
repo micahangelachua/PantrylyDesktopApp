@@ -98,6 +98,7 @@ namespace PantrylyDesktopApp
             FormUtils.MakeButtonRounded(btn_Confirm);
 
             lbl_UserFname.Text = currentUser.FirstName;
+        
         }
 
         private void UserDashboard_Load(object sender, EventArgs e)
@@ -821,6 +822,7 @@ namespace PantrylyDesktopApp
 
         private void pb_Settings_Click(object sender, EventArgs e)
         {
+            LoadUserInformation();
             tc_UserDashboard.SelectedIndex = 2;
             pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
             pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
@@ -830,6 +832,13 @@ namespace PantrylyDesktopApp
         #endregion
 
         #region UserSettings
+
+        private void LoadUserInformation()
+        {
+            lbl_UserFirstname.Text = currentUser.FirstName;
+            lbl_UserLastname.Text = currentUser.LastName;
+            dtp_UserBirthdate.Text = currentUser.Birthday;
+        }
         private void btn_EditUserInfo_Click(object sender, EventArgs e)
         {
             txt_UserFirstname.Visible = true;
@@ -860,21 +869,33 @@ namespace PantrylyDesktopApp
 
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
-            txt_UserFirstname.Text = string.Empty;
-            txt_UserLastname.Text = string.Empty;
-            txt_UserPassword.Text = string.Empty;
+            if(currentUser.Password == txt_UserPassword.Text && txt_UserPassword.Text.Trim() != "" && txt_UserLastname.Text.Trim() != "" && txt_UserFirstname.Text.Trim() != "")
+            {
+                currentUser.UserInformationUpdate(txt_UserFirstname.Text, txt_UserLastname.Text, dtp_UserBirthdate.Text);
 
-            txt_UserFirstname.Visible = false;
-            txt_UserLastname.Visible = false;
-            dtp_UserBirthdate.Enabled = false;
-            label6.Visible = false;
-            pnl_UserPassword.Visible = false;
-            btn_Cancel.Visible = false;
-            btn_Confirm.Visible = false;
-            btn_EditUserInfo.Visible = true;
+                txt_UserFirstname.Text = string.Empty;
+                txt_UserLastname.Text = string.Empty;
+                txt_UserPassword.Text = string.Empty;
 
-            DialogResult msgConfirm = MessageBox.Show("Please Log back in", "SUCCESS");
-            this.Close();
+                txt_UserFirstname.Visible = false;
+                txt_UserLastname.Visible = false;
+                dtp_UserBirthdate.Enabled = false;
+                label6.Visible = false;
+                pnl_UserPassword.Visible = false;
+                btn_Cancel.Visible = false;
+                btn_Confirm.Visible = false;
+                btn_EditUserInfo.Visible = true;
+
+                DialogResult msgConfirm = MessageBox.Show("Please Log back in", "SUCCESS");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Can't update, wrong password");
+            }
+           
+
+
         }
         #endregion
     }
