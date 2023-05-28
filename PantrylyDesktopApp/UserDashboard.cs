@@ -112,7 +112,43 @@ namespace PantrylyDesktopApp
 
         #endregion 
 
-        #region PantryDashboard
+        #region Pantry
+        //------------LOAD PANTRY
+        private void LoadPantries()
+        {
+            userPantries.Clear();
+            userPantries = currentUser.GetUserPantries(currentUser.Email);
+
+            foreach (Control control in flp_PantriesContainer.Controls)
+            {
+                flp_PantriesContainer.Controls.OfType<Label>().ToList().ForEach(x => flp_PantriesContainer.Controls.Remove(x));
+                flp_PantriesContainer.Controls.OfType<Panel>().ToList().ForEach(x => flp_PantriesContainer.Controls.Remove(x));
+            }
+
+            foreach (Pantry pantry in userPantries)
+            {
+                pnl_Pantry = new Panel();
+                pnl_Pantry.Size = new Size(250, 200);
+                pnl_Pantry.BorderStyle = BorderStyle.None;
+                pnl_Pantry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+                pnl_Pantry.Tag = pantry.PantryID;
+
+                lbl_PantryName = new Label();
+                lbl_PantryName.Text = pantry.Pantry_Name;
+                lbl_PantryName.Size = new Size(250, 37);
+                lbl_PantryName.BackColor = ColorTranslator.FromHtml("#D4664E");
+                lbl_PantryName.Font = new Font("Ink Free", 16, FontStyle.Regular);
+                lbl_PantryName.TextAlign = ContentAlignment.MiddleCenter;
+                lbl_PantryName.Tag = pantry.PantryID;
+
+                pnl_Pantry.Controls.Add(lbl_PantryName);
+
+                flp_PantriesContainer.Controls.Add(pnl_Pantry);
+                pnl_Pantry.Click += pnl_Pantry_Click;
+            }
+        }
+
+        //------------CREATE PANTRY
         private void pb_AddNewPantry_Click(object sender, EventArgs e)
         {
             pnl_newPantry = new Panel();
@@ -148,43 +184,7 @@ namespace PantrylyDesktopApp
                
             }
         }
-
-        //Show All Pantries of the current user
-        private void LoadPantries()
-        {
-            userPantries.Clear();
-            userPantries = currentUser.GetUserPantries(currentUser.Email);
-
-            foreach (Control control in flp_PantriesContainer.Controls)
-            {
-                flp_PantriesContainer.Controls.OfType<Label>().ToList().ForEach(x => flp_PantriesContainer.Controls.Remove(x));
-                flp_PantriesContainer.Controls.OfType<Panel>().ToList().ForEach(x => flp_PantriesContainer.Controls.Remove(x));
-            }
-
-            foreach (Pantry pantry in userPantries)
-            {
-                pnl_Pantry = new Panel();
-                pnl_Pantry.Size = new Size(250, 200);
-                pnl_Pantry.BorderStyle = BorderStyle.None;
-                pnl_Pantry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-                pnl_Pantry.Tag = pantry.PantryID;
-
-                lbl_PantryName = new Label();
-                lbl_PantryName.Text = pantry.Pantry_Name;
-                lbl_PantryName.Size = new Size(250, 37);
-                lbl_PantryName.BackColor = ColorTranslator.FromHtml("#D4664E");
-                lbl_PantryName.Font = new Font("Ink Free", 16, FontStyle.Regular);
-                lbl_PantryName.TextAlign = ContentAlignment.MiddleCenter;
-                lbl_PantryName.Tag = pantry.PantryID;
-
-                pnl_Pantry.Controls.Add(lbl_PantryName);
-
-                flp_PantriesContainer.Controls.Add(pnl_Pantry);
-                pnl_Pantry.Click += pnl_Pantry_Click;
-            }
-        }
         
-
         private void txt_newPantryName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -207,13 +207,7 @@ namespace PantrylyDesktopApp
             }
         }
 
-        private void ExpandSelectedPantry(Pantry pantry)
-        {
-            lbl_SelectedPantryName.Text = pantry.Pantry_Name;
-            LoadPantryItems();
-        }
-
-        // Event for clicking on a pantry panel in Dashboard.
+        //------------EXPAND SELECTED PANTRY
         private void pnl_Pantry_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 3;
@@ -235,10 +229,27 @@ namespace PantrylyDesktopApp
                 }
             }
         }
+
+        private void ExpandSelectedPantry(Pantry pantry)
+        {
+            lbl_SelectedPantryName.Text = pantry.Pantry_Name;
+            LoadPantryItems();
+        }
+
+        //------------DELETE PANTRY
+        private void pb_DeleteSelectedPantry_Click(object sender, EventArgs e)
+        {
+            // Delete the selected Pantry
+            selectedPantry.DeletePantry();
+            LoadPantries();
+            selectedPantry = null;
+            selectedPantry_PantryItems.Clear();
+            tc_UserDashboard.SelectedIndex = 0;
+        }
         #endregion
 
         #region PantryItems
-
+        //------------LOAD PANTRY ITEMS
         private void LoadPantryItems()
         {
             selectedPantry_PantryItems.Clear();
@@ -320,72 +331,7 @@ namespace PantrylyDesktopApp
             }
         }
 
-        private void pb_DeletePantryItemClick(object sender, EventArgs e)
-        {
-            PictureBox pictureBox = (PictureBox)sender;
-            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
-            item.Delete();
-            LoadPantryItems();
-        }
-
-        private void pb_EditPantryItemClick(object sender, EventArgs e)
-        {
-            PictureBox pictureBox = (PictureBox)sender;
-            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
-
-            Panel itemPanel = null;
-            Label itemLabel = null;
-
-            foreach (Control control in flp_SelectedPantryItems.Controls)
-            {
-                if (control is Panel panel && panel.Controls.Contains(pictureBox))
-                {
-                    itemPanel = panel;
-                    itemLabel = panel.Controls.OfType<Label>().FirstOrDefault();
-                    break;
-                }
-            }
-
-            if (itemPanel != null)
-            {
-                itemLabel.Dispose();
-
-                txt_NewPantryItemName = new TextBox();
-                txt_NewPantryItemName.Text = item.PantryItemName;
-                txt_NewPantryItemName.Size = new Size(250, 37);
-                txt_NewPantryItemName.Location = new Point(442, 34);
-                txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
-                txt_NewPantryItemName.Tag = item.PantryItemID;
-
-                itemPanel.Controls.Add(txt_NewPantryItemName);
-                txt_NewPantryItemName.Focus();
-                txt_NewPantryItemName.KeyDown += new KeyEventHandler(PantryItemNameUpdate);
-            }
-        }
-
-        private void PantryItemNameUpdate(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                TextBox textbox = (TextBox)sender;
-                PantryItems item = new PantryItems(textbox.Tag.ToString());
-                item.UpdateName(textbox.Text);
-
-                LoadPantryItems();
-            }
-        }
-        
-
-        private void pb_DeleteSelectedPantry_Click(object sender, EventArgs e)
-        {
-            // Delete the selected Pantry
-            selectedPantry.DeletePantry();
-            LoadPantries();
-            selectedPantry = null;
-            selectedPantry_PantryItems.Clear();
-            tc_UserDashboard.SelectedIndex = 0;
-        }
-
+        //------------CREATE PANTRY ITEM
         private void pb_AddPantryItem_Click(object sender, EventArgs e)
         {
             pnl_NewPantryItem = new Panel();
@@ -500,6 +446,64 @@ namespace PantrylyDesktopApp
             }
         }
 
+        //------------DELETE PANTRY ITEM
+        private void pb_DeletePantryItemClick(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
+            item.Delete();
+            LoadPantryItems();
+        }
+
+        //------------UPDATE PANTRY ITEM (NAME)
+        private void pb_EditPantryItemClick(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
+
+            Panel itemPanel = null;
+            Label itemLabel = null;
+
+            foreach (Control control in flp_SelectedPantryItems.Controls)
+            {
+                if (control is Panel panel && panel.Controls.Contains(pictureBox))
+                {
+                    itemPanel = panel;
+                    itemLabel = panel.Controls.OfType<Label>().FirstOrDefault();
+                    break;
+                }
+            }
+
+            if (itemPanel != null)
+            {
+                itemLabel.Dispose();
+
+                txt_NewPantryItemName = new TextBox();
+                txt_NewPantryItemName.Text = item.PantryItemName;
+                txt_NewPantryItemName.Size = new Size(250, 37);
+                txt_NewPantryItemName.Location = new Point(442, 34);
+                txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
+                txt_NewPantryItemName.Tag = item.PantryItemID;
+
+                itemPanel.Controls.Add(txt_NewPantryItemName);
+                txt_NewPantryItemName.Focus();
+                txt_NewPantryItemName.KeyDown += new KeyEventHandler(PantryItemNameUpdate);
+            }
+        }
+
+        private void PantryItemNameUpdate(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TextBox textbox = (TextBox)sender;
+                PantryItems item = new PantryItems(textbox.Tag.ToString());
+                item.UpdateName(textbox.Text);
+
+                LoadPantryItems();
+            }
+        }
+
+        //------------UPDATE PANTRY ITEM (QUANTITY)
         private void pb_DecPantryItem_Click(object sender, EventArgs e)
         {
             // Decrement lbl_PantryItemQty
