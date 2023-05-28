@@ -312,7 +312,9 @@ namespace PantrylyDesktopApp
 
                 pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
                 pb_IncPantryItem.Click += new EventHandler(pb_IncPantryItem_Click);
+
                 pb_DeletePantryItem.Click += new EventHandler(pb_DeletePantryItemClick);
+                pb_EditPantryItem.Click += new EventHandler(pb_EditPantryItemClick);
 
                 flp_SelectedPantryItems.Controls.Add(pnl_NewPantryItem);
             }
@@ -320,7 +322,8 @@ namespace PantrylyDesktopApp
 
         private void pb_DeletePantryItemClick(object sender, EventArgs e)
         {
-            PantryItems item = new PantryItems(pb_DeletePantryItem.Tag.ToString());
+            PictureBox pictureBox = (PictureBox)sender;
+            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
             item.Delete();
             LoadPantryItems();
         }
@@ -335,6 +338,7 @@ namespace PantrylyDesktopApp
             txt_NewPantryItemName.Size = new Size(250, 37);
             txt_NewPantryItemName.Location = new Point(442, 34);
             txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
+            txt_NewPantryItemName.Tag = item.PantryItemID;
 
             pnl_NewPantryItem.Controls.Add(txt_NewPantryItemName);
             txt_NewPantryItemName.Focus();
@@ -346,8 +350,9 @@ namespace PantrylyDesktopApp
         {
             if (e.KeyCode == Keys.Enter)
             {
-                PantryItems item = new PantryItems(pb_EditPantryItem.Tag.ToString());
-                item.UpdateName(txt_NewPantryItemName.Text);
+                TextBox textbox = (TextBox)sender;
+                PantryItems item = new PantryItems(textbox.Tag.ToString());
+                item.UpdateName(textbox.Text);
 
                 LoadPantryItems();
             }
@@ -358,7 +363,9 @@ namespace PantrylyDesktopApp
         {
             // Delete the selected Pantry
             selectedPantry.DeletePantry();
-            LoadPantryItems();
+            LoadPantries();
+            selectedPantry = null;
+            selectedPantry_PantryItems.Clear();
             tc_UserDashboard.SelectedIndex = 0;
         }
 
@@ -479,7 +486,8 @@ namespace PantrylyDesktopApp
         private void pb_DecPantryItem_Click(object sender, EventArgs e)
         {
             // Decrement lbl_PantryItemQty
-            PantryItems item = new PantryItems(pb_DecPantryItem.Tag.ToString());
+            PictureBox pictureBox = (PictureBox)sender;
+            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
             item.DecreaseQty();
             LoadPantryItems();
         }
@@ -487,19 +495,10 @@ namespace PantrylyDesktopApp
         private void pb_IncPantryItem_Click(object sender, EventArgs e)
         {
             // Increment lbl_PantryItemQty
-            PantryItems item = new PantryItems(pb_IncPantryItem.Tag.ToString());
+            PictureBox pictureBox = (PictureBox)sender;
+            PantryItems item = new PantryItems(pictureBox.Tag.ToString());
             item.IncreaseQty();
             LoadPantryItems();
-        }
-
-        private void pb_Edit_Click(object sender, EventArgs e)
-        {
-            // Edit Pantry Item
-        }
-
-        private void pb_Delete_Click(object sender, EventArgs e)
-        {
-            // Delete Pantry Item
         }
         #endregion
         

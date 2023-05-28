@@ -74,13 +74,6 @@ namespace PantrylyDesktopApp
                     VALUES ('" + PantryItem_ID + "', '" + PantryItemName + "','" + PantryItem_Quantity + "','" + PantryID + "')";
             executeQuery(txtQuery);
         }
-        
-        public void UpdatePantryItemName(string name)
-        {
-            string txtQuery = @"UPDATE PantryItems set pantryItems_ItemName = '" + name + "' WHERE  pantryItems_ID = '" + PantryItemID + "'";
-        
-            executeQuery(txtQuery);
-        }
 
         public void DecreaseQty()
         {
@@ -101,13 +94,14 @@ namespace PantrylyDesktopApp
 
         public void Delete()
         {
-            string txtQuery = @"DELETE FROM PantryItems WHERE pantryItem_ID = '"+PantryItemID+"'";
+            string txtQuery = @"DELETE FROM PantryItems WHERE pantryItems_ID = '"+PantryItemID+"'";
             executeQuery(txtQuery);
         }
 
         public void UpdateName(string newName)
         {
-            string txtQuery = @"UPDATE PantryItems SET pantryItem_Name = '" + newName + "' WHERE pantryItem_ID";
+            string txtQuery = @"UPDATE PantryItems set pantryItems_ItemName = '" + newName + "' WHERE  pantryItems_ID = '" + PantryItemID + "'";
+
             executeQuery(txtQuery);
         }
     }
