@@ -49,17 +49,17 @@ namespace PantrylyDesktopApp
 
         public Pantry(string id)
         {
+            PantryID = id;
             setConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM Pantry WHERE pantry_ID = '" + id + "'";
+            string CommandText = "SELECT * FROM Pantry WHERE pantry_ID = '" + PantryID + "'";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
 
             PantryDS.Reset();
             DB.Fill(PantryDS);
             PantryDT = PantryDS.Tables[0];
 
-            PantryID = id;
             Pantry_Name = PantryDT.Rows[0][1].ToString();
             Pantry_CreatorEmail = PantryDT.Rows[0][2].ToString();
         }
@@ -71,6 +71,42 @@ namespace PantrylyDesktopApp
 
             executeQuery(txtQuery);
             MessageBox.Show("Added a new pantry.");
+        }
+
+        public List<PantryItems> GetPantryItems(string id)
+        {
+            setConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "SELECT * FROM PantryItems WHERE pantryItems_PantryID = '" + id + "'";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+
+            PantryDS.Reset();
+            DB.Fill(PantryDS);
+            PantryDT = PantryDS.Tables[0];
+
+            List<PantryItems> pantryItems = new List<PantryItems>();
+
+            for (int i = 0; i < PantryDT.Rows.Count; i++)
+            {
+                PantryItems pantryItem = new PantryItems(PantryDT.Rows[i][0].ToString());
+                pantryItems.Add(pantryItem);
+            }
+
+            return pantryItems;
+        }
+        
+        public void DeletePantryItems()
+        {
+            string txtQuery = "DELETE FROM PantryItems WHERE pantryItems_PantryID = '" + PantryID + "'";
+            executeQuery(txtQuery);
+        }
+
+        public void DeletePantry()
+        {
+            DeletePantryItems();
+            string txtQuery = "DELETE FROM Pantry WHERE pantry_ID = '"+PantryID+"'";
+            executeQuery(txtQuery);
         }
 
     }
