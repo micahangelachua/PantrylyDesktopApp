@@ -253,7 +253,7 @@ namespace PantrylyDesktopApp
                 pnl_NewPantryItem = new Panel();
                 pnl_NewPantryItem.Size = new Size((flp_SelectedPantryItems.ClientSize.Width - 50), 100);
                 pnl_NewPantryItem.BackColor = ColorTranslator.FromHtml("#FCF5EF");
-                pnl_NewPantryItem.Margin = new Padding(3, 3, 3, 25);
+                pnl_NewPantryItem.Margin = new Padding(0, 0, 0, 25);
 
                 lbl_NewPantryItemName = new Label();
                 lbl_NewPantryItemName.Size = new Size(250, 37);
