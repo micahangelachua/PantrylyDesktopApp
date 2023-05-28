@@ -311,6 +311,8 @@ namespace PantrylyDesktopApp
 
                 pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
                 pb_IncPantryItem.Click += new EventHandler(pb_IncPantryItem_Click);
+                pb_Edit.Click += new EventHandler(pb_Edit_Click);
+                pb_Delete.Click += new EventHandler(pb_Delete_Click);
 
                 flp_SelectedPantryItems.Controls.Add(pnl_NewPantryItem);
             }
@@ -455,14 +457,15 @@ namespace PantrylyDesktopApp
             LoadPantryItems();
         }
 
-        /*
-         * TODO: Add event that when Ellipsis is clicked on a pantry item panel, it will show a panel with 2 buttons:
-         * "Edit" and "Delete", when Edit is clicked, panel's visibility will be turned to false and a textbox will be shown
-         * for user to enter new name for Item entry.
-         * 
-         * Maybe(?) - Event where user clicks on Item Name label to edit the name, same for item quantity label to edit quantity
-         * instead of clicking the inc and dec button till desired number is reached?
-         */
+        private void pb_Edit_Click(object sender, EventArgs e)
+        {
+            // Edit Pantry Item
+        }
+
+        private void pb_Delete_Click(object sender, EventArgs e)
+        {
+            // Delete Pantry Item
+        }
         #endregion
         
 
