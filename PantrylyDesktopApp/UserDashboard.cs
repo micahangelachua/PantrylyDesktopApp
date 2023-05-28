@@ -350,16 +350,16 @@ namespace PantrylyDesktopApp
             {
                 itemLabel.Dispose();
 
-            txt_NewPantryItemName = new TextBox();
-            txt_NewPantryItemName.Text = item.PantryItemName;
-            txt_NewPantryItemName.Size = new Size(250, 37);
-            txt_NewPantryItemName.Location = new Point(442, 34);
-            txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
-            txt_NewPantryItemName.Tag = item.PantryItemID;
+                txt_NewPantryItemName = new TextBox();
+                txt_NewPantryItemName.Text = item.PantryItemName;
+                txt_NewPantryItemName.Size = new Size(250, 37);
+                txt_NewPantryItemName.Location = new Point(442, 34);
+                txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
+                txt_NewPantryItemName.Tag = item.PantryItemID;
 
                 itemPanel.Controls.Add(txt_NewPantryItemName);
-            txt_NewPantryItemName.Focus();
-            txt_NewPantryItemName.KeyDown += new KeyEventHandler(PantryItemNameUpdate);
+                txt_NewPantryItemName.Focus();
+                txt_NewPantryItemName.KeyDown += new KeyEventHandler(PantryItemNameUpdate);
             }
         }
 
