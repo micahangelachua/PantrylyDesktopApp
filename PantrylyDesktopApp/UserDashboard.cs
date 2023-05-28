@@ -273,7 +273,7 @@ namespace PantrylyDesktopApp
                 pb_DecPantryItem = new PictureBox();
                 pb_DecPantryItem.ImageLocation = "../../Resources/Icons/minus(#334E4C).png";
                 pb_DecPantryItem.Size = new Size(25, 25);
-                pb_DecPantryItem.Location = new Point(480, 59);
+                pb_DecPantryItem.Location = new Point(lbl_PantryItemQty.Location.X - 50, 59);
                 pb_DecPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
                 pb_DecPantryItem.Cursor = Cursors.Hand;
                 pb_DecPantryItem.Tag = item.PantryItemID;
@@ -281,7 +281,7 @@ namespace PantrylyDesktopApp
                 pb_IncPantryItem = new PictureBox();
                 pb_IncPantryItem.ImageLocation = "../../Resources/Icons/add(#334E4C).png";
                 pb_IncPantryItem.Size = new Size(25, 25);
-                pb_IncPantryItem.Location = new Point(563, 59);
+                pb_IncPantryItem.Location = new Point(lbl_PantryItemQty.Location.X + 50, 59);
                 pb_IncPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
                 pb_IncPantryItem.Cursor = Cursors.Hand;
                 pb_IncPantryItem.Tag = item.PantryItemID;
@@ -289,7 +289,7 @@ namespace PantrylyDesktopApp
                 pb_Edit = new PictureBox();
                 pb_Edit.ImageLocation = "../../Resources/Icons/edit(#334e4c).png";
                 pb_Edit.Size = new Size(25, 25);
-                pb_Edit.Location = new Point(1000, 10);
+                pb_Edit.Location = new Point(pnl_NewPantryItem.ClientSize.Width - 60, 10);
                 pb_Edit.SizeMode = PictureBoxSizeMode.Zoom;
                 pb_Edit.Cursor = Cursors.Hand;
                 pb_Edit.Tag = item.PantryItemID;
@@ -297,7 +297,7 @@ namespace PantrylyDesktopApp
                 pb_Delete = new PictureBox();
                 pb_Delete.ImageLocation = "../../Resources/Icons/bin(#334e4c).png";
                 pb_Delete.Size = new Size(25, 25);
-                pb_Delete.Location = new Point(1030, 10);
+                pb_Delete.Location = new Point(pnl_NewPantryItem.ClientSize.Width - 30, 10);
                 pb_Delete.SizeMode = PictureBoxSizeMode.Zoom;
                 pb_Delete.Cursor = Cursors.Hand;
                 pb_Delete.Tag = item.PantryItemID;
