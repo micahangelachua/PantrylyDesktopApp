@@ -106,6 +106,7 @@ namespace PantrylyDesktopApp
             LoadPantries();
             LoadChecklist();
             LoadChecklistsEntries();
+            pnl_AddPantryItem.Width = flowLayoutPanel1.ClientSize.Width - 50;
         }
 
         #endregion 
