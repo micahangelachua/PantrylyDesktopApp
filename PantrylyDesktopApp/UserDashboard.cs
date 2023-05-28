@@ -529,14 +529,13 @@ namespace PantrylyDesktopApp
                      * HOW THIS WORKS:
                      * - flp_ChecklistItems.Controls - return collection of all controls in this FlowLayoutPanel.
                      * - OfType<CheckBox> - works as a filter, so return just the checkboxes.
+                     * - Where(x => x.Name != "pnl_AddChecklistItemContainer" - any control that isnt named "pnl_ChecklistItemContainer".
                      * - ToList() - place filtered collection in a list.
                      * - ForEach(x => flp_ChecklistItems.Controls.Remove(x)) - pretty much a foreach loop for removing the
                      * filtered collection, in this case it's the checkboxes.
                      */
-                    flp_ChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
-                    flp_ChecklistItems.Controls.OfType<Label>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
-                    flp_CrossedChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_CrossedChecklistItems.Controls.Remove(x));
-                    flp_CrossedChecklistItems.Controls.OfType<Label>().ToList().ForEach(x => flp_CrossedChecklistItems.Controls.Remove(x));
+                    flp_ChecklistItems.Controls.OfType<Panel>().Where(x => x.Name != "pnl_AddChecklistItemContainer").ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
+                    flp_CrossedChecklistItems.Controls.OfType<Panel>().ToList().ForEach(x => flp_CrossedChecklistItems.Controls.Remove(x));
 
                     selectedChecklist_ChecklistItems = selectedChecklist.GetChecklistItems(checklistId);
 
