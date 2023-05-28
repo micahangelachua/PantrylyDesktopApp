@@ -332,9 +332,10 @@ namespace PantrylyDesktopApp
         private void pb_AddPantryItem_Click(object sender, EventArgs e)
         {
             pnl_NewPantryItem = new Panel();
-            pnl_NewPantryItem.Size = new Size(1068, 100);
+            pnl_NewPantryItem.Size = new Size(1129, 100);
             pnl_NewPantryItem.BackColor = ColorTranslator.FromHtml("#FCF5EF");
-            pnl_NewPantryItem.Margin = new Padding(3, 3, 3, 25);
+            pnl_NewPantryItem.Margin = new Padding(25, 25, 25, 25);
+            pnl_NewPantryItem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
             txt_NewPantryItemName = new TextBox();
             txt_NewPantryItemName.Text = "Enter Item name...";
