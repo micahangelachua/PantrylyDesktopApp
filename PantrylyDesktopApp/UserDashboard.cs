@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,6 +49,7 @@ namespace PantrylyDesktopApp
         private TextBox txt_NewPantryItemName;
         private Label lbl_NewPantryItemName;
         private Label lbl_PantryItemQty;
+        private TextBox txt_PantryItemQty;
         private PictureBox pb_DecPantryItem;
         private PictureBox pb_IncPantryItem;
         private PictureBox pb_Ellipsis;
@@ -75,9 +77,12 @@ namespace PantrylyDesktopApp
         private Checklist selectedChecklist;
         private List<ChecklistItems> selectedChecklist_ChecklistItems = new List<ChecklistItems>();
         private Pantry selectedPantry;
-       
+        private List<PantryItems> selectedPantry_PantryItems = new List<PantryItems>();
+
 
         #endregion
+
+        #region ONLOAD
         //Constructor
         public UserDashboard(string id)
         {
@@ -100,10 +105,11 @@ namespace PantrylyDesktopApp
             LoadPantries();
             LoadChecklist();
             LoadChecklistsEntries();
-            //LoadChecklistItems();
         }
 
-        #region Pantry
+        #endregion 
+
+        #region PantryDashboard
         private void pb_AddNewPantry_Click(object sender, EventArgs e)
         {
             pnl_newPantry = new Panel();
@@ -158,6 +164,7 @@ namespace PantrylyDesktopApp
                 pnl_Pantry.Size = new Size(250, 200);
                 pnl_Pantry.BorderStyle = BorderStyle.None;
                 pnl_Pantry.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+                pnl_Pantry.Tag = pantry.PantryID;
 
                 lbl_PantryName = new Label();
                 lbl_PantryName.Text = pantry.Pantry_Name;
@@ -165,6 +172,7 @@ namespace PantrylyDesktopApp
                 lbl_PantryName.BackColor = ColorTranslator.FromHtml("#D4664E");
                 lbl_PantryName.Font = new Font("Ink Free", 16, FontStyle.Regular);
                 lbl_PantryName.TextAlign = ContentAlignment.MiddleCenter;
+                lbl_PantryName.Tag = pantry.PantryID;
 
                 pnl_Pantry.Controls.Add(lbl_PantryName);
 
@@ -187,7 +195,7 @@ namespace PantrylyDesktopApp
 
                     Pantry newPantry = new Pantry(currentUser.Email, newName);
                     newPantry.CreateNewPantry();
-                    LoadChecklist();
+                    LoadPantries();
                 }
                 else
                 {
@@ -196,15 +204,121 @@ namespace PantrylyDesktopApp
             }
         }
 
+        private void ExpandSelectedPantry(Pantry pantry)
+        {
+            lbl_SelectedPantryName.Text = pantry.Pantry_Name;
+            LoadPantryItems();
+        }
+
         // Event for clicking on a pantry panel in Dashboard.
         private void pnl_Pantry_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 3;
+            Panel clickedPanel = (Panel)sender;
+            string pantryName = null;
+
+            foreach (Control control in clickedPanel.Controls)
+            {
+                if (control is Label)
+                {
+                    pantryName = ((Label)control).Text;
+                    string pantryId = ((Label)control).Tag.ToString();
+                    selectedPantry = new Pantry(pantryId);
+
+                    ExpandSelectedPantry(selectedPantry);
+                }
+            }
         }
+        #endregion
+
+        #region PantryItems
+
+        private void LoadPantryItems()
+        {
+            selectedPantry_PantryItems.Clear();
+            selectedPantry_PantryItems = selectedPantry.GetPantryItems(selectedPantry.PantryID);
+
+            foreach (Control control in flp_SelectedPantryItems.Controls)
+            {
+                flp_SelectedPantryItems.Controls.OfType<Panel>().ToList().ForEach(x => flp_SelectedPantryItems.Controls.Remove(x));
+            }
+            
+            foreach(PantryItems item in selectedPantry_PantryItems)
+            {
+                pnl_NewPantryItem = new Panel();
+                pnl_NewPantryItem.Size = new Size(1068, 100);
+                pnl_NewPantryItem.BackColor = ColorTranslator.FromHtml("#FCF5EF");
+                pnl_NewPantryItem.Margin = new Padding(3, 3, 3, 25);
+
+                lbl_NewPantryItemName = new Label();
+                lbl_NewPantryItemName.Size = new Size(250, 37);
+                lbl_NewPantryItemName.Text = item.PantryItemName;
+                lbl_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
+                lbl_NewPantryItemName.ForeColor = ColorTranslator.FromHtml("#334E4C");
+                lbl_NewPantryItemName.Location = new Point((pnl_NewPantryItem.Width - lbl_NewPantryItemName.Width) / 2, 15);
+                lbl_NewPantryItemName.TextAlign = ContentAlignment.MiddleCenter;
+
+                lbl_PantryItemQty = new Label();
+                lbl_PantryItemQty.Size = new Size(26, 30);
+                lbl_PantryItemQty.Text = item.PantryItem_Quantity.ToString();
+                lbl_PantryItemQty.Location = new Point((pnl_NewPantryItem.Width - lbl_PantryItemQty.Width) / 2, 56);
+                lbl_PantryItemQty.Font = new Font("Comic Sans MS", 16, FontStyle.Regular);
+                lbl_PantryItemQty.ForeColor = ColorTranslator.FromHtml("#334E4C");
+
+                pb_DecPantryItem = new PictureBox();
+                pb_DecPantryItem.ImageLocation = "../../Resources/Icons/minus(#334E4C).png";
+                pb_DecPantryItem.Size = new Size(25, 25);
+                pb_DecPantryItem.Location = new Point(480, 59);
+                pb_DecPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
+                pb_DecPantryItem.Cursor = Cursors.Hand;
+                pb_DecPantryItem.Tag = item.PantryItemID;
+
+                pb_IncPantryItem = new PictureBox();
+                pb_IncPantryItem.ImageLocation = "../../Resources/Icons/add(#334E4C).png";
+                pb_IncPantryItem.Size = new Size(25, 25);
+                pb_IncPantryItem.Location = new Point(563, 59);
+                pb_IncPantryItem.SizeMode = PictureBoxSizeMode.Zoom;
+                pb_IncPantryItem.Cursor = Cursors.Hand;
+                pb_IncPantryItem.Tag = item.PantryItemID;
+
+                pb_Edit = new PictureBox();
+                pb_Edit.ImageLocation = "../../Resources/Icons/edit(#334e4c).png";
+                pb_Edit.Size = new Size(25, 25);
+                pb_Edit.Location = new Point(1000, 10);
+                pb_Edit.SizeMode = PictureBoxSizeMode.Zoom;
+                pb_Edit.Cursor = Cursors.Hand;
+                pb_Edit.Tag = item.PantryItemID;
+
+                pb_Delete = new PictureBox();
+                pb_Delete.ImageLocation = "../../Resources/Icons/bin(#334e4c).png";
+                pb_Delete.Size = new Size(25, 25);
+                pb_Delete.Location = new Point(1030, 10);
+                pb_Delete.SizeMode = PictureBoxSizeMode.Zoom;
+                pb_Delete.Cursor = Cursors.Hand;
+                pb_Delete.Tag = item.PantryItemID;
+
+                pnl_NewPantryItem.Controls.Add(lbl_NewPantryItemName);
+                pnl_NewPantryItem.Controls.Add(lbl_PantryItemQty);
+                pnl_NewPantryItem.Controls.Add(pb_DecPantryItem);
+                pnl_NewPantryItem.Controls.Add(pb_IncPantryItem);
+                pnl_NewPantryItem.Controls.Add(pb_Edit);
+                pnl_NewPantryItem.Controls.Add(pb_Delete);
+
+                pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
+                pb_IncPantryItem.Click += new EventHandler(pb_IncPantryItem_Click);
+
+                flp_SelectedPantryItems.Controls.Add(pnl_NewPantryItem);
+            }
+        }
+
+        
 
         private void pb_DeleteSelectedPantry_Click(object sender, EventArgs e)
         {
             // Delete the selected Pantry
+            selectedPantry.DeletePantry();
+            LoadPantryItems();
+            tc_UserDashboard.SelectedIndex = 0;
         }
 
         private void pb_AddPantryItem_Click(object sender, EventArgs e)
@@ -227,6 +341,12 @@ namespace PantrylyDesktopApp
             lbl_NewPantryItemName.ForeColor = ColorTranslator.FromHtml("#334E4C");
             lbl_NewPantryItemName.Location = new Point((pnl_NewPantryItem.Width - lbl_NewPantryItemName.Width) / 2, 15);
             lbl_NewPantryItemName.TextAlign = ContentAlignment.MiddleCenter;
+
+            txt_PantryItemQty = new TextBox();
+            txt_PantryItemQty.Size = new Size(100, 37);
+            txt_PantryItemQty.Text = "0";
+            txt_PantryItemQty.Location = new Point(100, 34);
+            txt_PantryItemQty.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
 
             lbl_PantryItemQty = new Label();
             lbl_PantryItemQty.Size = new Size(26, 30);
@@ -264,6 +384,8 @@ namespace PantrylyDesktopApp
             pb_Delete.Cursor = Cursors.Hand;
 
             pnl_NewPantryItem.Controls.Add(txt_NewPantryItemName);
+            pnl_NewPantryItem.Controls.Add(txt_PantryItemQty);
+
             pb_DecPantryItem.Click += new EventHandler(pb_DecPantryItem_Click);
             pb_IncPantryItem.Click += new EventHandler(pb_IncPantryItem_Click);
 
@@ -273,6 +395,7 @@ namespace PantrylyDesktopApp
                 flp_SelectedPantryItems.Controls.Add(pnl_NewPantryItem);
                 txt_NewPantryItemName.Focus();
                 txt_NewPantryItemName.KeyDown += new KeyEventHandler(txt_NewPantryItemName_KeyDown);
+                txt_PantryItemQty.KeyDown += new KeyEventHandler(txt_NewPantryItemName_KeyDown);
             }
         }
 
@@ -281,20 +404,32 @@ namespace PantrylyDesktopApp
             if (e.KeyCode == Keys.Enter)
             {
                 string newName = txt_NewPantryItemName.Text;
+                string qty = txt_PantryItemQty.Text;
+
                 txt_NewPantryItemName.Dispose();
+                txt_PantryItemQty.Dispose();
+
                 if (!string.IsNullOrEmpty(newName))
                 {
-                    lbl_NewPantryItemName.Text = newName;
-                    pnl_NewPantryItem.Controls.Add(lbl_NewPantryItemName);
-                    pnl_NewPantryItem.Controls.Add(lbl_PantryItemQty);
-                    pnl_NewPantryItem.Controls.Add(pb_DecPantryItem);
-                    pnl_NewPantryItem.Controls.Add(pb_IncPantryItem);
-                    pnl_NewPantryItem.Controls.Add(pb_Edit);
-                    pnl_NewPantryItem.Controls.Add(pb_Delete);
+                    if (qty != "0")
+                    {
+                        lbl_NewPantryItemName.Text = newName;
+                        lbl_PantryItemQty.Text = qty;
+
+                        PantryItems newItem = new PantryItems(newName, selectedPantry.PantryID, int.Parse(qty));
+                        newItem.AddItemToPantry();
+
+                        LoadPantryItems();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Qty cannot be 0");
+                        flp_SelectedPantryItems.Controls.Remove(pnl_NewPantryItem);
+                    }
                 }
                 else
                 {
-                    flp_SelectedPantryItems.Controls.Remove(pnl_NewPantryItem);
+                    flp_SelectedPantryItems.Controls.Remove(pnl_NewPantryItem); 
                 }
             }
         }
@@ -302,11 +437,17 @@ namespace PantrylyDesktopApp
         private void pb_DecPantryItem_Click(object sender, EventArgs e)
         {
             // Decrement lbl_PantryItemQty
+            PantryItems item = new PantryItems(pb_DecPantryItem.Tag.ToString());
+            item.DecreaseQty();
+            LoadPantryItems();
         }
 
         private void pb_IncPantryItem_Click(object sender, EventArgs e)
         {
             // Increment lbl_PantryItemQty
+            PantryItems item = new PantryItems(pb_IncPantryItem.Tag.ToString());
+            item.IncreaseQty();
+            LoadPantryItems();
         }
 
         /*
@@ -366,6 +507,7 @@ namespace PantrylyDesktopApp
             LoadChecklistsEntries();
             Panel clickedPanel = (Panel)sender;
             string checklistName = null;
+
             foreach (Control control in clickedPanel.Controls)
             {
                 if (control is Label)
@@ -532,6 +674,17 @@ namespace PantrylyDesktopApp
             LoadChecklistItems();
         }
 
+        private void pb_ChecklistDelete_Click(object sender, EventArgs e)
+        {
+            selectedChecklist.DeleteChecklist();
+
+            LoadChecklist();
+            LoadChecklistsEntries();
+
+            selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
+            ExpandSelectedChecklist(selectedChecklist);
+        }
+
         #endregion
 
         #region ChecklistItems
@@ -675,18 +828,6 @@ namespace PantrylyDesktopApp
         }
 
         #endregion
-
-        private void pb_ChecklistDelete_Click(object sender, EventArgs e)
-        {
-            selectedChecklist.DeleteChecklistItems();
-            selectedChecklist.DeleteChecklist();
-
-            LoadChecklist();
-            LoadChecklistsEntries();
-
-            selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
-            ExpandSelectedChecklist(selectedChecklist);
-        }
 
         #region UserSettings
         private void btn_EditUserInfo_Click(object sender, EventArgs e)
