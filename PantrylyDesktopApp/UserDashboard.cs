@@ -66,6 +66,7 @@ namespace PantrylyDesktopApp
         private Label lbl_ChecklistEntryName;
         private Label lbl_ChecklistEntryDateCreated;
 
+        private Panel pnl_NewChecklistItem;
         private CheckBox chk_NewChecklistItemName;
         private TextBox txt_NewChecklistItemName;
         private CheckBox chk_CrossedChecklistItemName;
@@ -712,26 +713,47 @@ namespace PantrylyDesktopApp
 
             foreach (ChecklistItems item in selectedChecklist_ChecklistItems)
             {
+                pnl_NewChecklistItem = new Panel();
+                pnl_NewChecklistItem.BackColor = ColorTranslator.FromHtml("#D9D9D9");
+                pnl_NewChecklistItem.Size = new Size(flp_ChecklistItems.ClientSize.Width - 25, 50);
+                pnl_NewChecklistItem.Margin = new Padding(25, 0, 0, 10);
+
                 CheckBox chk_NewChecklistItemName = new CheckBox();
                 chk_NewChecklistItemName.AutoSize = true;
                 chk_NewChecklistItemName.Text = item.Description;
+                chk_NewChecklistItemName.Location = new Point(5, 10);
                 chk_NewChecklistItemName.BackColor = ColorTranslator.FromHtml("#D9D9D9");
-                
-                chk_NewChecklistItemName.TextAlign = ContentAlignment.MiddleLeft;
                 chk_NewChecklistItemName.Tag = item.ChecklistItemID;
 
-                chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
+                PictureBox pb_ChecklistItemEdit = new PictureBox();
+                pb_ChecklistItemEdit.ImageLocation = "../../Resources/Icons/edit(#334E4C).png";
+                pb_ChecklistItemEdit.Location = new Point(pnl_NewChecklistItem.Width - 60, 10);
+                pb_ChecklistItemEdit.Size = new Size(25, 25);
+                pb_ChecklistItemEdit.SizeMode = PictureBoxSizeMode.Zoom;
+                
+                PictureBox pb_ChecklistItemDelete = new PictureBox();
+                pb_ChecklistItemDelete.ImageLocation = "../../Resources/Icons/bin(#334E4C).png";
+                pb_ChecklistItemDelete.Location = new Point(pnl_NewChecklistItem.Width - 30, 10);
+                pb_ChecklistItemDelete.Size = new Size(25, 25);
+                pb_ChecklistItemDelete.SizeMode = PictureBoxSizeMode.Zoom;
 
+                pnl_NewChecklistItem.Controls.Add(chk_NewChecklistItemName);
+                pnl_NewChecklistItem.Controls.Add(pb_ChecklistItemEdit);
+                pnl_NewChecklistItem.Controls.Add(pb_ChecklistItemDelete);
+
+                chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
+                pb_ChecklistItemEdit.Click += pb_ChecklistItemEdit_Click;
+                pb_ChecklistItemDelete.Click += pb_ChecklistItemDelete_Click;
 
                 if (item.ChecklistItem_isDone == 0) 
                 {
                     chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
-                    flp_ChecklistItems.Controls.Add(chk_NewChecklistItemName);
+                    flp_ChecklistItems.Controls.Add(pnl_NewChecklistItem);
                 } 
                 else 
                 {
                     chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Strikeout);
-                    flp_CrossedChecklistItems.Controls.Add(chk_NewChecklistItemName);
+                    flp_CrossedChecklistItems.Controls.Add(pnl_NewChecklistItem);
                 }
                 
             }
@@ -757,6 +779,16 @@ namespace PantrylyDesktopApp
                 flp_ChecklistItems.Controls.Add(checkBox);
                 checkBox.Font = new Font("Comic Sans MS", 14, FontStyle.Regular);
             }
+        }
+
+        private void pb_ChecklistItemEdit_Click(object sender, EventArgs e)
+        {
+            //Edit Checklist Item
+        }
+
+        private void pb_ChecklistItemDelete_Click(object sender, EventArgs e)
+        {
+            //Delete Checklist Item
         }
 
         private void pb_AddItem_Click(object sender, EventArgs e)
