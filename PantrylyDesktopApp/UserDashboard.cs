@@ -216,6 +216,9 @@ namespace PantrylyDesktopApp
         private void pnl_Pantry_Click(object sender, EventArgs e)
         {
             tc_UserDashboard.SelectedIndex = 3;
+            pb_Dashboard.ImageLocation = "../../Resources/Icons/dashboard(#FFE074).png";
+            pb_Checklist.ImageLocation = "../../Resources/Icons/to-do-list(#FFE074).png";
+            pb_Settings.ImageLocation = "../../Resources/Icons/settings(#FFE074).png";
             Panel clickedPanel = (Panel)sender;
             string pantryName = null;
 
