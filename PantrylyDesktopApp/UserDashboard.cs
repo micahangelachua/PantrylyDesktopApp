@@ -319,8 +319,6 @@ namespace PantrylyDesktopApp
             }
         }
 
-        
-
         private void pb_DeleteSelectedPantry_Click(object sender, EventArgs e)
         {
             // Delete the selected Pantry
