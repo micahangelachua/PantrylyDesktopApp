@@ -99,9 +99,15 @@ namespace PantrylyDesktopApp
             executeQuery(txtQuery);
         }
 
-        public void DeletePantryItem()
+        public void Delete()
         {
             string txtQuery = @"DELETE FROM PantryItems WHERE pantryItem_ID = '"+PantryItemID+"'";
+            executeQuery(txtQuery);
+        }
+
+        public void UpdateName(string newName)
+        {
+            string txtQuery = @"UPDATE PantryItems SET pantryItem_Name = '" + newName + "' WHERE pantryItem_ID";
             executeQuery(txtQuery);
         }
     }
