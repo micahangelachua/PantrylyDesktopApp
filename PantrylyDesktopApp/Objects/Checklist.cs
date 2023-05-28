@@ -138,6 +138,7 @@ namespace PantrylyDesktopApp
 
         public void DeleteChecklist()
         {
+            DeleteChecklistItems();
             string txtQuery = "DELETE FROM Checklist WHERE checklist_ID = '" + ChecklistID + "'";
             executeQuery(txtQuery);
         }
