@@ -742,17 +742,21 @@ namespace PantrylyDesktopApp
         {
             selectedChecklist.DeleteChecklist();
             userChecklists = currentUser.GetUserChecklists(currentUser.Email);
-            LoadChecklist();
-            LoadChecklistsEntries();
-            if (userChecklists != null)
+
+            if (userChecklists.Count != 0)
             {
                 selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
                 ExpandSelectedChecklist(selectedChecklist);
             } else
             {
-                tc_UserDashboard.SelectedIndex = 1;
+                tc_UserDashboard.SelectedIndex = 0;
             }
-            
+
+            lbl_ChecklistDetailsName.ResetText();
+
+            LoadChecklist();
+            LoadChecklistsEntries();
+
         }
         
         private void pb_EditChecklistTitle_Click(object sender, EventArgs e)
