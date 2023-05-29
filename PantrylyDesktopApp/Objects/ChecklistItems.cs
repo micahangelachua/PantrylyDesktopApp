@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace PantrylyDesktopApp
 {
@@ -52,17 +53,17 @@ namespace PantrylyDesktopApp
 
         public ChecklistItems(string id) //constructor to get and set object properties
         {
+            ChecklistItemID = id;
             setConnection();
             sql_con.Open();
             sql_cmd = sql_con.CreateCommand();
-            string CommandText = "SELECT * FROM ChecklistItems WHERE checklistItems_ID = '" + id + "'";
+            string CommandText = "SELECT * FROM ChecklistItems WHERE checklistItems_ID = '" + ChecklistItemID + "'";
             DB = new SQLiteDataAdapter(CommandText, sql_con);
 
             ChecklistItemsDS.Reset();
             DB.Fill(ChecklistItemsDS);
             ChecklistItemsDT = ChecklistItemsDS.Tables[0];
 
-            ChecklistItemID = ChecklistItemsDT.Rows[0][0].ToString();
             Description = ChecklistItemsDT.Rows[0][1].ToString();
             ChecklistItem_ChecklistID = ChecklistItemsDT.Rows[0][2].ToString();
             ChecklistItem_isDone = int.Parse(ChecklistItemsDT.Rows[0][3].ToString());
@@ -96,6 +97,8 @@ namespace PantrylyDesktopApp
         {
             string txtQuery = "DELETE FROM ChecklistItems WHERE checklistItems_ID = '" + ChecklistItemID + "'";
             executeQuery(txtQuery);
+
+            MessageBox.Show("Deleted");
         }
     }
 }
