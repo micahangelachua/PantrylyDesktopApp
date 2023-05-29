@@ -71,6 +71,9 @@ namespace PantrylyDesktopApp
         private TextBox txt_NewChecklistItemName;
         private CheckBox chk_CrossedChecklistItemName;
 
+        private PictureBox pb_ChecklistItemEdit;
+        private PictureBox pb_ChecklistItemDelete;
+
         private User currentUser;
         private List<Checklist> userChecklists = new List<Checklist>();
         private List<Pantry> userPantries = new List<Pantry>();
@@ -408,7 +411,7 @@ namespace PantrylyDesktopApp
                 txt_NewPantryItemName.Focus();
                 txt_NewPantryItemName.KeyDown += new KeyEventHandler(txt_NewPantryItemName_KeyDown);
                 txt_PantryItemQty.KeyDown += new KeyEventHandler(txt_NewPantryItemName_KeyDown);
-            }
+            } 
         }
 
         private void txt_NewPantryItemName_KeyDown(object sender, KeyEventArgs e)
@@ -872,9 +875,11 @@ namespace PantrylyDesktopApp
             chk_NewChecklistItemName.Location = new Point(0, 0);
 
             flp_ChecklistItems.Controls.Add(txt_NewChecklistItemName);
+
             
             txt_NewChecklistItemName.Focus();
             txt_NewChecklistItemName.KeyDown += new KeyEventHandler(txt_NewChecklistItemName_KeyDown);
+
         }
 
         private void txt_NewChecklistItemName_KeyDown(object sender, KeyEventArgs e)
@@ -890,8 +895,7 @@ namespace PantrylyDesktopApp
                     ChecklistItems checklistItem = new ChecklistItems(newName, selectedChecklist.ChecklistID);
                     checklistItem.AddItemToChecklist();
 
-                    flp_ChecklistItems.Controls.Add(chk_NewChecklistItemName);
-                    chk_NewChecklistItemName.CheckedChanged += checkBox_CheckedChanged;
+                    LoadChecklistItems();
                 }
                 else
                 {

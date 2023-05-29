@@ -240,7 +240,7 @@
             this.lbl_DasboardLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(102)))), ((int)(((byte)(78)))));
             this.lbl_DasboardLogo.Location = new System.Drawing.Point(651, 1);
             this.lbl_DasboardLogo.Name = "lbl_DasboardLogo";
-            this.lbl_DasboardLogo.Size = new System.Drawing.Size(111, 46);
+            this.lbl_DasboardLogo.Size = new System.Drawing.Size(105, 42);
             this.lbl_DasboardLogo.TabIndex = 3;
             this.lbl_DasboardLogo.Text = "Pantryly";
             // 
@@ -345,7 +345,7 @@
             this.tp_UserOverview.Controls.Add(this.lbl_UserOverviewChecklists);
             this.tp_UserOverview.Location = new System.Drawing.Point(4, 25);
             this.tp_UserOverview.Name = "tp_UserOverview";
-            this.tp_UserOverview.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tp_UserOverview.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserOverview.Size = new System.Drawing.Size(1227, 669);
             this.tp_UserOverview.TabIndex = 0;
             this.tp_UserOverview.Text = "Overview";
@@ -398,7 +398,7 @@
             this.tp_UserChecklists.Controls.Add(this.splitContainer1);
             this.tp_UserChecklists.Location = new System.Drawing.Point(4, 25);
             this.tp_UserChecklists.Name = "tp_UserChecklists";
-            this.tp_UserChecklists.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tp_UserChecklists.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserChecklists.Size = new System.Drawing.Size(1227, 669);
             this.tp_UserChecklists.TabIndex = 1;
             this.tp_UserChecklists.Text = "Checklists";
@@ -419,7 +419,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pnl_ChecklistDetailsContainer);
             this.splitContainer1.Size = new System.Drawing.Size(1221, 663);
-            this.splitContainer1.SplitterDistance = 414;
+            this.splitContainer1.SplitterDistance = 413;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -431,7 +431,7 @@
             this.flp_ChecklistEntryContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_ChecklistEntryContainer.Location = new System.Drawing.Point(78, 100);
             this.flp_ChecklistEntryContainer.Name = "flp_ChecklistEntryContainer";
-            this.flp_ChecklistEntryContainer.Size = new System.Drawing.Size(257, 500);
+            this.flp_ChecklistEntryContainer.Size = new System.Drawing.Size(256, 500);
             this.flp_ChecklistEntryContainer.TabIndex = 2;
             // 
             // lblChecklists
@@ -439,7 +439,7 @@
             this.lblChecklists.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblChecklists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(116)))));
             this.lblChecklists.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChecklists.Location = new System.Drawing.Point(62, 63);
+            this.lblChecklists.Location = new System.Drawing.Point(61, 63);
             this.lblChecklists.Name = "lblChecklists";
             this.lblChecklists.Size = new System.Drawing.Size(290, 37);
             this.lblChecklists.TabIndex = 1;
@@ -457,7 +457,7 @@
             this.pnl_ChecklistDetailsContainer.Controls.Add(this.pnl_ChecklistName);
             this.pnl_ChecklistDetailsContainer.Location = new System.Drawing.Point(32, 25);
             this.pnl_ChecklistDetailsContainer.Name = "pnl_ChecklistDetailsContainer";
-            this.pnl_ChecklistDetailsContainer.Size = new System.Drawing.Size(754, 612);
+            this.pnl_ChecklistDetailsContainer.Size = new System.Drawing.Size(758, 612);
             this.pnl_ChecklistDetailsContainer.TabIndex = 3;
             // 
             // flp_CrossedChecklistItems
@@ -467,7 +467,7 @@
             this.flp_CrossedChecklistItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_CrossedChecklistItems.Location = new System.Drawing.Point(17, 409);
             this.flp_CrossedChecklistItems.Name = "flp_CrossedChecklistItems";
-            this.flp_CrossedChecklistItems.Size = new System.Drawing.Size(720, 188);
+            this.flp_CrossedChecklistItems.Size = new System.Drawing.Size(724, 188);
             this.flp_CrossedChecklistItems.TabIndex = 2;
             this.flp_CrossedChecklistItems.WrapContents = false;
             // 
@@ -479,7 +479,7 @@
             this.flp_ChecklistItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_ChecklistItems.Location = new System.Drawing.Point(17, 127);
             this.flp_ChecklistItems.Name = "flp_ChecklistItems";
-            this.flp_ChecklistItems.Size = new System.Drawing.Size(720, 276);
+            this.flp_ChecklistItems.Size = new System.Drawing.Size(724, 276);
             this.flp_ChecklistItems.TabIndex = 1;
             this.flp_ChecklistItems.WrapContents = false;
             // 
@@ -522,7 +522,7 @@
             this.pnl_ChecklistName.Controls.Add(this.lbl_ChecklistDetailsName);
             this.pnl_ChecklistName.Location = new System.Drawing.Point(17, 21);
             this.pnl_ChecklistName.Name = "pnl_ChecklistName";
-            this.pnl_ChecklistName.Size = new System.Drawing.Size(720, 100);
+            this.pnl_ChecklistName.Size = new System.Drawing.Size(724, 100);
             this.pnl_ChecklistName.TabIndex = 0;
             // 
             // pb_EditChecklistTitle
@@ -530,7 +530,7 @@
             this.pb_EditChecklistTitle.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pb_EditChecklistTitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb_EditChecklistTitle.Image = ((System.Drawing.Image)(resources.GetObject("pb_EditChecklistTitle.Image")));
-            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(640, 12);
+            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(644, 12);
             this.pb_EditChecklistTitle.Name = "pb_EditChecklistTitle";
             this.pb_EditChecklistTitle.Size = new System.Drawing.Size(30, 30);
             this.pb_EditChecklistTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -543,7 +543,7 @@
             this.pb_ChecklistDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pb_ChecklistDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb_ChecklistDelete.Image = ((System.Drawing.Image)(resources.GetObject("pb_ChecklistDelete.Image")));
-            this.pb_ChecklistDelete.Location = new System.Drawing.Point(676, 12);
+            this.pb_ChecklistDelete.Location = new System.Drawing.Point(680, 12);
             this.pb_ChecklistDelete.Name = "pb_ChecklistDelete";
             this.pb_ChecklistDelete.Size = new System.Drawing.Size(30, 30);
             this.pb_ChecklistDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -579,7 +579,7 @@
             this.tp_UserSettings.Controls.Add(this.pictureBox1);
             this.tp_UserSettings.Location = new System.Drawing.Point(4, 25);
             this.tp_UserSettings.Name = "tp_UserSettings";
-            this.tp_UserSettings.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tp_UserSettings.Padding = new System.Windows.Forms.Padding(3);
             this.tp_UserSettings.Size = new System.Drawing.Size(1227, 669);
             this.tp_UserSettings.TabIndex = 2;
             this.tp_UserSettings.Text = "Settings";
@@ -800,7 +800,7 @@
             this.tp_UserSelectedPantry.Controls.Add(this.pnl_UserSettingsHeader);
             this.tp_UserSelectedPantry.Location = new System.Drawing.Point(4, 25);
             this.tp_UserSelectedPantry.Name = "tp_UserSelectedPantry";
-            this.tp_UserSelectedPantry.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.tp_UserSelectedPantry.Padding = new System.Windows.Forms.Padding(10);
             this.tp_UserSelectedPantry.Size = new System.Drawing.Size(1227, 669);
             this.tp_UserSelectedPantry.TabIndex = 3;
             this.tp_UserSelectedPantry.Text = "Selected Pantry";
@@ -812,7 +812,7 @@
             this.pnl_UserSettingsContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_UserSettingsContent.Location = new System.Drawing.Point(10, 70);
             this.pnl_UserSettingsContent.Name = "pnl_UserSettingsContent";
-            this.pnl_UserSettingsContent.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.pnl_UserSettingsContent.Padding = new System.Windows.Forms.Padding(10);
             this.pnl_UserSettingsContent.Size = new System.Drawing.Size(1207, 589);
             this.pnl_UserSettingsContent.TabIndex = 4;
             // 
@@ -825,7 +825,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(25, 25, 25, 25);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(25);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1187, 151);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.WrapContents = false;
@@ -873,11 +873,11 @@
             this.flp_SelectedPantryItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(221)))), ((int)(((byte)(240)))));
             this.flp_SelectedPantryItems.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flp_SelectedPantryItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flp_SelectedPantryItems.Location = new System.Drawing.Point(10, 135);
+            this.flp_SelectedPantryItems.Location = new System.Drawing.Point(10, 161);
             this.flp_SelectedPantryItems.Margin = new System.Windows.Forms.Padding(0);
             this.flp_SelectedPantryItems.Name = "flp_SelectedPantryItems";
-            this.flp_SelectedPantryItems.Padding = new System.Windows.Forms.Padding(25, 25, 25, 25);
-            this.flp_SelectedPantryItems.Size = new System.Drawing.Size(1187, 444);
+            this.flp_SelectedPantryItems.Padding = new System.Windows.Forms.Padding(25);
+            this.flp_SelectedPantryItems.Size = new System.Drawing.Size(1187, 418);
             this.flp_SelectedPantryItems.TabIndex = 1;
             this.flp_SelectedPantryItems.WrapContents = false;
             // 
@@ -888,7 +888,7 @@
             this.pnl_UserSettingsHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_UserSettingsHeader.Location = new System.Drawing.Point(10, 10);
             this.pnl_UserSettingsHeader.Name = "pnl_UserSettingsHeader";
-            this.pnl_UserSettingsHeader.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.pnl_UserSettingsHeader.Padding = new System.Windows.Forms.Padding(10);
             this.pnl_UserSettingsHeader.Size = new System.Drawing.Size(1207, 60);
             this.pnl_UserSettingsHeader.TabIndex = 3;
             // 
