@@ -116,7 +116,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.pnl_ChecklistDetailsContainer.SuspendLayout();
-            this.flp_ChecklistItems.SuspendLayout();
             this.pnl_AddChecklistItemContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddItem)).BeginInit();
             this.pnl_ChecklistName.SuspendLayout();
@@ -452,12 +451,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_ChecklistDetailsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.pnl_ChecklistDetailsContainer.Controls.Add(this.pnl_AddChecklistItemContainer);
             this.pnl_ChecklistDetailsContainer.Controls.Add(this.flp_CrossedChecklistItems);
             this.pnl_ChecklistDetailsContainer.Controls.Add(this.flp_ChecklistItems);
             this.pnl_ChecklistDetailsContainer.Controls.Add(this.pnl_ChecklistName);
             this.pnl_ChecklistDetailsContainer.Location = new System.Drawing.Point(32, 25);
             this.pnl_ChecklistDetailsContainer.Name = "pnl_ChecklistDetailsContainer";
-            this.pnl_ChecklistDetailsContainer.Size = new System.Drawing.Size(758, 612);
+            this.pnl_ChecklistDetailsContainer.Size = new System.Drawing.Size(764, 612);
             this.pnl_ChecklistDetailsContainer.TabIndex = 3;
             // 
             // flp_CrossedChecklistItems
@@ -467,7 +467,7 @@
             this.flp_CrossedChecklistItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_CrossedChecklistItems.Location = new System.Drawing.Point(17, 409);
             this.flp_CrossedChecklistItems.Name = "flp_CrossedChecklistItems";
-            this.flp_CrossedChecklistItems.Size = new System.Drawing.Size(724, 188);
+            this.flp_CrossedChecklistItems.Size = new System.Drawing.Size(730, 188);
             this.flp_CrossedChecklistItems.TabIndex = 2;
             this.flp_CrossedChecklistItems.WrapContents = false;
             // 
@@ -475,11 +475,10 @@
             // 
             this.flp_ChecklistItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flp_ChecklistItems.AutoScroll = true;
-            this.flp_ChecklistItems.Controls.Add(this.pnl_AddChecklistItemContainer);
             this.flp_ChecklistItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flp_ChecklistItems.Location = new System.Drawing.Point(17, 127);
+            this.flp_ChecklistItems.Location = new System.Drawing.Point(17, 166);
             this.flp_ChecklistItems.Name = "flp_ChecklistItems";
-            this.flp_ChecklistItems.Size = new System.Drawing.Size(724, 276);
+            this.flp_ChecklistItems.Size = new System.Drawing.Size(730, 237);
             this.flp_ChecklistItems.TabIndex = 1;
             this.flp_ChecklistItems.WrapContents = false;
             // 
@@ -487,7 +486,7 @@
             // 
             this.pnl_AddChecklistItemContainer.Controls.Add(this.label1);
             this.pnl_AddChecklistItemContainer.Controls.Add(this.pb_AddItem);
-            this.pnl_AddChecklistItemContainer.Location = new System.Drawing.Point(3, 3);
+            this.pnl_AddChecklistItemContainer.Location = new System.Drawing.Point(17, 127);
             this.pnl_AddChecklistItemContainer.Name = "pnl_AddChecklistItemContainer";
             this.pnl_AddChecklistItemContainer.Size = new System.Drawing.Size(687, 36);
             this.pnl_AddChecklistItemContainer.TabIndex = 1;
@@ -522,7 +521,7 @@
             this.pnl_ChecklistName.Controls.Add(this.lbl_ChecklistDetailsName);
             this.pnl_ChecklistName.Location = new System.Drawing.Point(17, 21);
             this.pnl_ChecklistName.Name = "pnl_ChecklistName";
-            this.pnl_ChecklistName.Size = new System.Drawing.Size(724, 100);
+            this.pnl_ChecklistName.Size = new System.Drawing.Size(730, 100);
             this.pnl_ChecklistName.TabIndex = 0;
             // 
             // pb_EditChecklistTitle
@@ -530,7 +529,7 @@
             this.pb_EditChecklistTitle.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pb_EditChecklistTitle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb_EditChecklistTitle.Image = ((System.Drawing.Image)(resources.GetObject("pb_EditChecklistTitle.Image")));
-            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(644, 12);
+            this.pb_EditChecklistTitle.Location = new System.Drawing.Point(650, 12);
             this.pb_EditChecklistTitle.Name = "pb_EditChecklistTitle";
             this.pb_EditChecklistTitle.Size = new System.Drawing.Size(30, 30);
             this.pb_EditChecklistTitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -543,7 +542,7 @@
             this.pb_ChecklistDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pb_ChecklistDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb_ChecklistDelete.Image = ((System.Drawing.Image)(resources.GetObject("pb_ChecklistDelete.Image")));
-            this.pb_ChecklistDelete.Location = new System.Drawing.Point(680, 12);
+            this.pb_ChecklistDelete.Location = new System.Drawing.Point(686, 12);
             this.pb_ChecklistDelete.Name = "pb_ChecklistDelete";
             this.pb_ChecklistDelete.Size = new System.Drawing.Size(30, 30);
             this.pb_ChecklistDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -961,7 +960,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.pnl_ChecklistDetailsContainer.ResumeLayout(false);
-            this.flp_ChecklistItems.ResumeLayout(false);
             this.pnl_AddChecklistItemContainer.ResumeLayout(false);
             this.pnl_AddChecklistItemContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_AddItem)).EndInit();

@@ -341,14 +341,13 @@ namespace PantrylyDesktopApp
             pnl_NewPantryItem.Size = new Size(1129, 100);
             pnl_NewPantryItem.BackColor = ColorTranslator.FromHtml("#FCF5EF");
             pnl_NewPantryItem.Margin = new Padding(25, 25, 25, 25);
-            pnl_NewPantryItem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
             txt_NewPantryItemName = new TextBox();
             txt_NewPantryItemName.Text = "Enter Item name...";
             txt_NewPantryItemName.Size = new Size(250, 37);
             txt_NewPantryItemName.Location = new Point(442, 34);
             txt_NewPantryItemName.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
-
+            
             lbl_NewPantryItemName = new Label();
             lbl_NewPantryItemName.Size = new Size(250, 37);
             lbl_NewPantryItemName.Text = "New Item";
@@ -742,12 +741,18 @@ namespace PantrylyDesktopApp
         private void pb_ChecklistDelete_Click(object sender, EventArgs e)
         {
             selectedChecklist.DeleteChecklist();
-
+            userChecklists = currentUser.GetUserChecklists(currentUser.Email);
             LoadChecklist();
             LoadChecklistsEntries();
-
-            selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
-            ExpandSelectedChecklist(selectedChecklist);
+            if (userChecklists != null)
+            {
+                selectedChecklist = new Checklist(userChecklists[0].ChecklistID);
+                ExpandSelectedChecklist(selectedChecklist);
+            } else
+            {
+                tc_UserDashboard.SelectedIndex = 1;
+            }
+            
         }
         
         private void pb_EditChecklistTitle_Click(object sender, EventArgs e)
@@ -765,7 +770,9 @@ namespace PantrylyDesktopApp
 
             foreach (Control control in flp_ChecklistItems.Controls)
             {
+                flp_ChecklistItems.Controls.OfType<Panel>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
                 flp_ChecklistItems.Controls.OfType<CheckBox>().ToList().ForEach(x => flp_ChecklistItems.Controls.Remove(x));
+
             }
             foreach (Control control in flp_CrossedChecklistItems.Controls)
             {
@@ -815,6 +822,7 @@ namespace PantrylyDesktopApp
                 } 
                 else 
                 {
+                    chk_NewChecklistItemName.Checked = true;
                     chk_NewChecklistItemName.Font = new Font("Comic Sans MS", 14, FontStyle.Strikeout);
                     flp_CrossedChecklistItems.Controls.Add(pnl_NewChecklistItem);
                 }
@@ -875,7 +883,6 @@ namespace PantrylyDesktopApp
             chk_NewChecklistItemName.Location = new Point(0, 0);
 
             flp_ChecklistItems.Controls.Add(txt_NewChecklistItemName);
-
             
             txt_NewChecklistItemName.Focus();
             txt_NewChecklistItemName.KeyDown += new KeyEventHandler(txt_NewChecklistItemName_KeyDown);
